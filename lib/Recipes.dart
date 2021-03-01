@@ -18,7 +18,7 @@ class _HealthyRecipesState extends State<HealthyRecipes> {
     appBar: AppBar(
       elevation: 0,
       brightness: Brightness.light,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blueGrey,
       leading: IconButton(
         onPressed: () {
           Navigator.pop(context);
