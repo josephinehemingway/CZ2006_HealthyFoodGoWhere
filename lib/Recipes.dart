@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_app/HomePage.dart';
+import 'HomePage.dart';
 import 'animation.dart';
-import 'package:flutter_app/my_flutter_app_icons.dart';
+import 'my_flutter_app_icons.dart';
 
 class HealthyRecipes extends StatefulWidget {
   @override
@@ -16,6 +16,7 @@ class _HealthyRecipesState extends State<HealthyRecipes> {
     backgroundColor: Colors.white,
 
     appBar: AppBar(
+      title: Text('Healthy Recipes'),
       elevation: 0,
       brightness: Brightness.light,
       backgroundColor: Colors.blueGrey,
