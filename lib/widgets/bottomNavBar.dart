@@ -102,7 +102,7 @@ class BottomNavBar extends StatelessWidget {
                 icon: Icon(Icons.home),
                   color: MenuState.home == selectedMenu
                       ? Colors.teal[300]
-                      : Colors.grey.withOpacity(.60),
+                      : Colors.grey.withOpacity(.40),
                 onPressed: () {
                   Navigator.pop(context);
                   Navigator.pushNamed(context, HomePage.routeName);
@@ -112,7 +112,7 @@ class BottomNavBar extends StatelessWidget {
                 icon: Icon(MyFlutterApp.chefhat),
                 color: MenuState.recipe == selectedMenu
                     ? Colors.teal[300]
-                    : Colors.grey.withOpacity(.60),
+                    : Colors.grey.withOpacity(.40),
                 onPressed: () {
                   Navigator.pop(context);
                   Navigator.pushNamed(context, HealthyRecipes.routeName);
@@ -122,7 +122,7 @@ class BottomNavBar extends StatelessWidget {
                 icon: Icon(MyFlutterApp.cutlery),
                 color: MenuState.eatery == selectedMenu
                     ? Colors.teal[300]
-                    : Colors.grey.withOpacity(.60),
+                    : Colors.grey.withOpacity(.40),
                 onPressed: () {
                   Navigator.pop(context);
                   Navigator.pushNamed(context, HealthyEateries.routeName);
@@ -132,7 +132,7 @@ class BottomNavBar extends StatelessWidget {
                 icon: Icon(Icons.person),
                   color: MenuState.profile == selectedMenu
                       ? Colors.teal[300]
-                      : Colors.grey.withOpacity(.60),
+                      : Colors.grey.withOpacity(.40),
                 onPressed: () {
                   Navigator.pop(context);
                   Navigator.pushNamed(context, Profile.routeName);
