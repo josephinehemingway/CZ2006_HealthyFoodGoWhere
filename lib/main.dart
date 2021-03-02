@@ -7,18 +7,11 @@ import 'animation.dart';
 import 'screens/Home/HomePage.dart';
 import 'screens/Login/LoginPage.dart';
 
-
-void main() => runApp(
-  MaterialApp(
-    title: 'HealthyGoWhere App',
-    theme: theme(),
-    debugShowCheckedModeBanner: false,
-    home: BottomNavBar(),
-    routes: routes,
-
-  )
-);
-
-
-
-
+void main() => runApp(MaterialApp(
+      title: 'HealthyGoWhere App',
+      theme: theme(),
+      debugShowCheckedModeBanner: false,
+      // home: BottomNavBar(),
+      routes: routes,
+      initialRoute: LoginPage.routeName,
+    ));

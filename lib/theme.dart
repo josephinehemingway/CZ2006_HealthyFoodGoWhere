@@ -46,7 +46,7 @@ AppBar myAppBar(String title, context, Widget prevPg){
   );
 }
 
-AppBar profileAppBar(String title, context, Widget prevPg, Widget logout){
+AppBar AppBarwithIcon(String title, context, Widget prevPg, Icon customIcon){
   return AppBar(
     backgroundColor: Colors.white,
     elevation: 0,
@@ -59,13 +59,9 @@ AppBar profileAppBar(String title, context, Widget prevPg, Widget logout){
     ),
     title: Row(children: <Widget> [
       Text(title, style: TextStyle(color: Colors.black)),
-      IconButton(
-        onPressed: (){
-          Navigator.pop(context);
-          Navigator.pushNamed(context, '/login');
-        },
-        icon: Icon(Icons.logout, size: 20, color: Colors.black)
-      ),]),
+      SizedBox(width: 140),
+      customIcon,
+      ]),
  
 
 

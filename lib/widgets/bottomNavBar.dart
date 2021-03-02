@@ -8,6 +8,7 @@ import '../screens/Profile/Profile.dart';
 import '../screens/Recipe/RecipesListPage.dart';
 import 'package:flutter_app/widgets/my_flutter_app_icons.dart';
 
+/*
 class BottomNavBar extends StatefulWidget {
   @override
   _BottomNavBarState createState() => _BottomNavBarState();
@@ -57,6 +58,88 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 title: Text('Profile')
             )],
         )
+    );
+  }
+}
+
+ */
+
+enum MenuState { home, recipe, eatery, profile }
+
+class BottomNavBar extends StatelessWidget {
+  const BottomNavBar({
+    Key key,
+    @required this.selectedMenu,
+  }) : super(key: key);
+
+  final MenuState selectedMenu;
+
+  @override
+  Widget build(BuildContext context) {
+    final Color inActiveIconColor = Color(0xFFB6B6B6);
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(0, -15),
+            blurRadius: 20,
+            color: Color(0xFFDADADA).withOpacity(0.15),
+          ),
+        ],
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(40),
+          topRight: Radius.circular(40),
+        ),
+      ),
+      child: SafeArea(
+          top: false,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              IconButton(
+                icon: Icon(Icons.home),
+                  color: MenuState.home == selectedMenu
+                      ? Colors.teal[300]
+                      : Colors.grey.withOpacity(.60),
+                onPressed: () {
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, HomePage.routeName);
+                },
+              ),
+              IconButton(
+                icon: Icon(MyFlutterApp.chefhat),
+                color: MenuState.recipe == selectedMenu
+                    ? Colors.teal[300]
+                    : Colors.grey.withOpacity(.60),
+                onPressed: () {
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, HealthyRecipes.routeName);
+                },
+              ),
+              IconButton(
+                icon: Icon(MyFlutterApp.cutlery),
+                color: MenuState.eatery == selectedMenu
+                    ? Colors.teal[300]
+                    : Colors.grey.withOpacity(.60),
+                onPressed: () {
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, HealthyEateries.routeName);
+                },
+              ),
+              IconButton(
+                icon: Icon(Icons.person),
+                  color: MenuState.profile == selectedMenu
+                      ? Colors.teal[300]
+                      : Colors.grey.withOpacity(.60),
+                onPressed: () {
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, Profile.routeName);
+                  },
+              ),
+            ],
+          )),
     );
   }
 }

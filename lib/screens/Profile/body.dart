@@ -24,11 +24,6 @@ class Body extends StatelessWidget {
           ),)),
           SizedBox(height: 20),
 
-          // FadeAnimation_Y(1,Text("Preferences", style: TextStyle( //name
-          //     fontSize: 28,
-          //     fontWeight: FontWeight.bold
-          // ),)),
-
         FadeAnimation_Y(1,ProfileMenu(
             text: "My Account",
             icon: Icon(Icons.person),

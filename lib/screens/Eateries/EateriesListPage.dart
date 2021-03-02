@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_app/screens/Home/HomePage.dart';
-import '../../animation.dart';
-import 'package:flutter_app/widgets/my_flutter_app_icons.dart';
+import '../../widgets/bottomNavBar.dart';
+import '../../widgets/my_flutter_app_icons.dart';
 
 import '../../theme.dart';
 
@@ -19,6 +19,8 @@ class _HealthyEateriesState extends State<HealthyEateries> {
     resizeToAvoidBottomInset: false,
     backgroundColor: Colors.white,
 
-    appBar: myAppBar('Healthy Eateries', context, HomePage()),
+      appBar: AppBarwithIcon('Healthy Eateries', context, HomePage(),
+          Icon(MyFlutterApp.cutlery, size: 20, color: Colors.black)),
+      bottomNavigationBar: BottomNavBar(selectedMenu: MenuState.eatery)
   );
 }
