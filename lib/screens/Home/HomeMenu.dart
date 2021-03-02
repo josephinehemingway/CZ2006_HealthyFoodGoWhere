@@ -18,6 +18,7 @@ class HomeMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.center,
         width: 300,
         child: MaterialButton(
             minWidth: 200,
