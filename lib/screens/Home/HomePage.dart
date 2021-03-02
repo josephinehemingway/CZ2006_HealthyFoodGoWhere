@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage>{
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  FadeAnimation(1, Container(
+                  FadeAnimation_Y(1, Container(
                     height: MediaQuery.of(context).size.height / 3,
                     margin: EdgeInsets.only(),
                     decoration: BoxDecoration(
@@ -45,21 +45,21 @@ class _HomePageState extends State<HomePage>{
                       children: <Widget>[
                         Column(
                             children: <Widget>[
-                              FadeAnimation(1, Text("Welcome Back!", style: TextStyle(
+                              FadeAnimation_Y(1, Text("Welcome Back!", style: TextStyle(
                                   fontSize: 30,
                                   fontWeight: FontWeight.bold
                               ),)),
 
                               SizedBox(height: 15,),
 
-                              FadeAnimation(1.2, Text("here's to a healthier you!", style: TextStyle(
+                              FadeAnimation_Y(1, Text("here's to a healthier you!", style: TextStyle(
                                   fontSize: 22,
                                   color: Colors.grey[700]
                               ),)),
 
                               SizedBox(height: 10,),
 
-                              FadeAnimation(1.2, Column(
+                              FadeAnimation_Y(1, Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
                                   Text("Tune in to our healthy food", style: TextStyle(
@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage>{
 
                               SizedBox(height: 20,),
 
-                              FadeAnimation(1.5,MaterialButton(
+                              FadeAnimation_Y(1,MaterialButton(
                                   minWidth: 300,
                                   height: 70,
                                   onPressed: () {
@@ -100,7 +100,7 @@ class _HomePageState extends State<HomePage>{
 
                               SizedBox(height: 10,),
 
-                              FadeAnimation(1.5,MaterialButton(
+                              FadeAnimation_Y(1,MaterialButton(
                                   minWidth: 300,
                                   height: 70,
                                   onPressed: () {

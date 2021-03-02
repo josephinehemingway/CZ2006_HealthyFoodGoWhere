@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/screens/Login/LoginPage.dart';
 
 
 ThemeData theme(){
@@ -42,5 +43,31 @@ AppBar myAppBar(String title, context, Widget prevPg){
       },
       icon: Icon(Icons.arrow_back_ios, size: 20, color: Colors.black,),
     ),
+  );
+}
+
+AppBar profileAppBar(String title, context, Widget prevPg, Widget logout){
+  return AppBar(
+    backgroundColor: Colors.white,
+    elevation: 0,
+    leading: IconButton(
+      onPressed: () {
+        Navigator.pop(context);
+        Navigator.push(context, MaterialPageRoute(builder: (context) => (prevPg)));
+      },
+      icon: Icon(Icons.arrow_back_ios, size: 20, color: Colors.black,),
+    ),
+    title: Row(children: <Widget> [
+      Text(title, style: TextStyle(color: Colors.black)),
+      IconButton(
+        onPressed: (){
+          Navigator.pop(context);
+          Navigator.pushNamed(context, '/login');
+        },
+        icon: Icon(Icons.logout, size: 20, color: Colors.black)
+      ),]),
+ 
+
+
   );
 }

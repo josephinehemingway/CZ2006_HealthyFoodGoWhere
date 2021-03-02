@@ -21,9 +21,9 @@ class Body extends StatelessWidget {
               children: <Widget>[
                 Column(
                   children: <Widget>[
-                    FadeAnimation(1, Container(
+                    FadeAnimation_Y(1, Container(
                       //height: MediaQuery.of(context).size.height / 3,
-                      margin: EdgeInsets.only(top: 100, left: 10),
+                      margin: EdgeInsets.only(top: 182, left: 10),
                       height: 200,
                       width: 270,
                       decoration: BoxDecoration(
@@ -34,7 +34,7 @@ class Body extends StatelessWidget {
                       ),
                     )),
 
-                    FadeAnimation(1,
+                    FadeAnimation_Y(1,
                         Text("h e a l t h y  g o  w h e r e", style: TextStyle(
                             fontSize: 25,
                             color: Colors.grey[700],
@@ -44,7 +44,7 @@ class Body extends StatelessWidget {
 
                     SizedBox(height: 7,),
 
-                    FadeAnimation(
+                    FadeAnimation_Y(
                         1, Text("healthy food everywhere", style: TextStyle(
                         fontSize: 15,
                         color: Colors.grey,
@@ -53,7 +53,7 @@ class Body extends StatelessWidget {
                     ),)),
                     SizedBox(height: 20,),
 
-                    FadeAnimation(1.5, MaterialButton(
+                    FadeAnimation_Y(1.5, MaterialButton(
                       minWidth: 230,
                       height: 60,
                       onPressed: () {
@@ -80,7 +80,7 @@ class Body extends StatelessWidget {
                         Text("  "),
                       ],),
 
-                    FadeAnimation(1.5, Row(
+                    FadeAnimation_Y(1.5, Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text("Don't have an account? "),
@@ -90,7 +90,7 @@ class Body extends StatelessWidget {
                       ],
                     )),
 
-                    FadeAnimation(1, Container(
+                    FadeAnimation_Y(1, Container(
                       //height: MediaQuery.of(context).size.height / 3,
                       margin: EdgeInsets.only(top: 3),
                       height: 200,

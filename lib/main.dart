@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_app/routes.dart';
 import 'package:flutter_app/theme.dart';
 import 'package:flutter_app/widgets/bottomNavBar.dart';
 import 'animation.dart';
@@ -13,6 +14,8 @@ void main() => runApp(
     theme: theme(),
     debugShowCheckedModeBanner: false,
     home: BottomNavBar(),
+    routes: routes,
+
   )
 );
 
