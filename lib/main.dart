@@ -1,72 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_app/theme.dart';
+import 'package:flutter_app/widgets/bottomNavBar.dart';
 import 'animation.dart';
-import 'HomePage.dart';
-import 'Login.dart';
-import 'Eateries.dart';
-import 'Profile.dart';
-import 'Recipes.dart';
-import 'package:flutter_app/my_flutter_app_icons.dart';
+import 'screens/Home/HomePage.dart';
+import 'screens/Login/LoginPage.dart';
+
 
 void main() => runApp(
   MaterialApp(
     title: 'HealthyGoWhere App',
-    theme: ThemeData(fontFamily: 'GlacialIndifference'),
+    theme: theme(),
     debugShowCheckedModeBanner: false,
     home: BottomNavBar(),
   )
 );
 
 
-class BottomNavBar extends StatefulWidget {
-  @override
-  _BottomNavBarState createState() => _BottomNavBarState();
-}
 
-class _BottomNavBarState extends State<BottomNavBar> {
-  @override
-  int _currentIndex = 0;
-  final List<Widget> _children = [
-    new HomePage(),
-    new HealthyRecipes(),
-    new HealthyEateries(),
-    new Profile()
-  ];
-
-  void onTabTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
-
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      body: _children[_currentIndex],
-        bottomNavigationBar: BottomNavigationBar(
-          onTap: onTabTapped, // new
-          selectedItemColor: Colors.teal[300],
-          unselectedItemColor: Colors.grey.withOpacity(.60),
-          currentIndex: _currentIndex, // new
-          backgroundColor: Colors.black12,
-          items: [
-            new BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              title: Text('Home'),
-            ),
-            new BottomNavigationBarItem(
-              icon: Icon(MyFlutterApp.chefhat),
-              title: Text('Recipes'),
-            ),
-            new BottomNavigationBarItem(
-              icon: Icon(MyFlutterApp.cutlery),
-              title: Text('Eateries'),
-            ),
-            new BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                title: Text('Profile')
-            )],
-        )
-    );
-  }
-}
 
