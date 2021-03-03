@@ -21,8 +21,8 @@ class HomeMenu extends StatelessWidget {
       alignment: Alignment.center,
         width: 300,
         child: MaterialButton(
-            minWidth: 200,
-            height: 80,
+            minWidth: MediaQuery.of(context).size.width *0.75,
+            height: MediaQuery.of(context).size.width *0.2,
             onPressed: () {
               Navigator.pop(context);
               Navigator.push(
@@ -31,31 +31,34 @@ class HomeMenu extends StatelessWidget {
             color: Colors.teal[200],
             elevation: 3,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(15),
             ),
-            child: Row(
-              children: <Widget>[
-                SizedBox(width: 8),
-                customIcon,
-                SizedBox(width: 20),
-                Column(children: <Widget>[
-                  Text(title,
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 22,
-                          color: Colors.white)),
-                  SizedBox(
-                    height: 3,
-                  ),
-                  Text(subtitle,
-                      style: TextStyle(
-                          fontWeight: FontWeight.w300,
-                          fontSize: 15,
-                          color: Colors.grey[700]))
-                ]),
-                SizedBox(width: 20),
-                customIcon,
-              ],
-            )));
+            child: Align(
+                alignment: Alignment.center,
+                child: Row(
+                  children: <Widget>[
+                    SizedBox(width: 8),
+                    customIcon,
+                    SizedBox(width: 20),
+                    Column(children: <Widget>[
+                      Text(title,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 22,
+                              color: Colors.white)),
+                      SizedBox(
+                        height: 3,
+                      ),
+                      Text(subtitle,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w300,
+                              fontSize: 15,
+                              color: Colors.grey[700]))
+                    ]),
+                    SizedBox(width: 20),
+                    customIcon,
+                  ],
+                )
+            ),));
   }
 }

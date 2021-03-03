@@ -55,7 +55,7 @@ class Body extends StatelessWidget {
                           SizedBox(height: 10,),
                           FadeAnimation_Y(
                               1, Text("Welcome Back!", style: TextStyle(
-                              fontSize: 30,
+                              fontSize: 32,
                               fontWeight: FontWeight.bold
                           ),)),
 
@@ -63,7 +63,7 @@ class Body extends StatelessWidget {
 
                           FadeAnimation_Y(1, Text(
                             "here's to a healthier you!", style: TextStyle(
-                              fontSize: 22,
+                              fontSize: 24,
                               color: Colors.grey[700]
                           ),)),
 
@@ -74,10 +74,10 @@ class Body extends StatelessWidget {
                             children: <Widget>[
                               Text("Tune in to our healthy food",
                                   style: TextStyle(
-                                      fontSize: 15, color: Colors.grey)),
+                                      fontSize: 18, color: Colors.grey)),
                               Text("recommendations anytime, anywhere!",
                                   style: TextStyle(
-                                      fontSize: 15, color: Colors.grey)),
+                                      fontSize: 18, color: Colors.grey)),
                             ],)),
 
                           SizedBox(height: 20,),
