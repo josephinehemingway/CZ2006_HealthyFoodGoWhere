@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import '../../theme.dart';
+import '../../widgets/customAppBar.dart';
 import '../Home/HomePage.dart';
 import '../../widgets/bottomNavBar.dart';
 import '../../animation.dart';
@@ -13,14 +13,23 @@ class HealthyRecipes extends StatefulWidget {
 }
 
 class _HealthyRecipesState extends State<HealthyRecipes> {
-
+  nested() {
+    return NestedScrollView(
+      headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+        return <Widget>[
+          collapsibleAppBar('Healthy Recipes', context, HomePage(),
+              'images/appbar_recipe.png'),
+        ];
+      },
+      body: Center(
+        child: Text("hello"),
+      ),
+    );
+  }
   @override
   Widget build(BuildContext context) => Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: AppBarwithIcon('Healthy Recipes', context, HomePage(),
-          Icon(MyFlutterApp.chefhat, size: 20, color: Colors.black)),
-
-      bottomNavigationBar: BottomNavBar(selectedMenu: MenuState.recipe)
-
-  );
+    resizeToAvoidBottomInset: false,
+    bottomNavigationBar: BottomNavBar(selectedMenu: MenuState.recipe),
+    body: nested(),
+    );
 }

@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_app/screens/Home/HomePage.dart';
 import '../../widgets/bottomNavBar.dart';
+import '../../widgets/customAppBar.dart';
 import '../../widgets/my_flutter_app_icons.dart';
-
-import '../../theme.dart';
 
 class HealthyEateries extends StatefulWidget {
   static String routeName = '/eateries';
@@ -13,14 +12,24 @@ class HealthyEateries extends StatefulWidget {
 }
 
 class _HealthyEateriesState extends State<HealthyEateries> {
+  nested() {
+    return NestedScrollView(
+      headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+        return <Widget>[
+          collapsibleAppBar('Healthy Eateries', context, HomePage(),
+              'images/appbar_eatery.png'),
+        ];
+      },
+      body: Center(
+        child: Text("hello"),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) => Scaffold(
-    resizeToAvoidBottomInset: false,
-    backgroundColor: Colors.white,
-
-      appBar: AppBarwithIcon('Healthy Eateries', context, HomePage(),
-          Icon(MyFlutterApp.cutlery, size: 20, color: Colors.black)),
-      bottomNavigationBar: BottomNavBar(selectedMenu: MenuState.eatery)
-  );
+        resizeToAvoidBottomInset: false,
+        bottomNavigationBar: BottomNavBar(selectedMenu: MenuState.eatery),
+        body: nested(),
+      );
 }

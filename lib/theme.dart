@@ -31,39 +31,4 @@ AppBarTheme appBarTheme() {
   );
 }
 
-AppBar myAppBar(String title, context, Widget prevPg){
-  return AppBar(
-    title: Text(title, style: TextStyle(color: Colors.black)),
-    backgroundColor: Colors.white,
-    elevation: 0,
-    leading: IconButton(
-      onPressed: () {
-        Navigator.pop(context);
-        Navigator.push(context, MaterialPageRoute(builder: (context) => (prevPg)));
-      },
-      icon: Icon(Icons.arrow_back_ios, size: 20, color: Colors.black,),
-    ),
-  );
-}
 
-AppBar AppBarwithIcon(String title, context, Widget prevPg, Icon customIcon){
-  return AppBar(
-    backgroundColor: Colors.white,
-    elevation: 0,
-    leading: IconButton(
-      onPressed: () {
-        Navigator.pop(context);
-        Navigator.push(context, MaterialPageRoute(builder: (context) => (prevPg)));
-      },
-      icon: Icon(Icons.arrow_back_ios, size: 20, color: Colors.black,),
-    ),
-    title: Row(children: <Widget> [
-      Text(title, style: TextStyle(color: Colors.black)),
-      SizedBox(width: 140),
-      customIcon,
-      ]),
- 
-
-
-  );
-}

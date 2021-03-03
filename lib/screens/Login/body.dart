@@ -17,15 +17,19 @@ class Body extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 Column(
                   children: <Widget>[
+
                     FadeAnimation_Y(1, Container(
                       //height: MediaQuery.of(context).size.height / 3,
-                      margin: EdgeInsets.only(top: 182, left: 10),
-                      height: 200,
-                      width: 270,
+                      // margin: EdgeInsets.only(top: 182, left: 10),
+                      height: MediaQuery.of(context).size.width *0.5,
+                      width: MediaQuery.of(context).size.width *0.65,
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage('images/loginui.png'),
@@ -33,6 +37,7 @@ class Body extends StatelessWidget {
                           )
                       ),
                     )),
+                    SizedBox(height: MediaQuery.of(context).size.height *0.02),
 
                     FadeAnimation_Y(1,
                         Text("h e a l t h y  g o  w h e r e", style: TextStyle(
@@ -54,8 +59,8 @@ class Body extends StatelessWidget {
                     SizedBox(height: 20,),
 
                     FadeAnimation_Y(1.5, MaterialButton(
-                      minWidth: 230,
-                      height: 60,
+                      minWidth: MediaQuery.of(context).size.width *0.6,
+                      height: MediaQuery.of(context).size.width *0.15,
                       onPressed: () {
                         Navigator.pop(context);
                         Navigator.push(context, MaterialPageRoute(builder: (
@@ -89,7 +94,8 @@ class Body extends StatelessWidget {
                         ),),
                       ],
                     )),
-
+                    SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.05, ),
                     FadeAnimation_Y(1, Container(
                       //height: MediaQuery.of(context).size.height / 3,
                       margin: EdgeInsets.only(top: 3),
@@ -98,7 +104,8 @@ class Body extends StatelessWidget {
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage('images/loginbottom.png'),
-                              fit: BoxFit.fill
+                              fit: BoxFit.fill,
+                            alignment: Alignment.bottomCenter,
                           )
                       ),
                     )),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/User.dart';
 
 class ProfilePic extends StatelessWidget {
   const ProfilePic({
@@ -8,14 +9,14 @@ class ProfilePic extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 135,
-      width: 135,
+      height: 155,
+      width: 155,
       child: Stack(
         fit: StackFit.expand,
         overflow: Overflow.visible,
         children: [
           CircleAvatar(
-            backgroundImage: AssetImage("images/loginbottom.png"), //profile pic
+            backgroundImage: AssetImage("images/testPic.png"), //profile pic
           ),
           // Positioned(
           //   right: -16,
