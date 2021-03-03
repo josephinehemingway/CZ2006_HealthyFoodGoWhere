@@ -22,7 +22,8 @@ class ProfileMenu extends StatelessWidget {
             .size
             .width *0.07,),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        color: Color(0xFFF5F6F9),
+        // color: Color(0xFFF5F6F9),
+        color: Colors.teal[100],
         onPressed: press,
         child: Row(
           children: [ icon,
