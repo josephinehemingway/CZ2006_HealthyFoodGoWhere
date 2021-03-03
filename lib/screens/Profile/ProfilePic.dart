@@ -9,8 +9,8 @@ class ProfilePic extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 135,
-      width: 135,
+      height: 155,
+      width: 155,
       child: Stack(
         fit: StackFit.expand,
         overflow: Overflow.visible,

@@ -19,39 +19,40 @@ class Body extends StatelessWidget {
         width: double.infinity,
 
         child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // crossAxisAlignment: CrossAxisAlignment.center,
+            // mainAxisSize: MainAxisSize.max,
+            // mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
+              Stack(
+                  overflow: Overflow.visible,
+                  children: <Widget>[
+                    Container(
+                      height: MediaQuery
+                          .of(context)
+                          .size
+                          .height / 2.5,
+                      margin: EdgeInsets.only(),
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage('images/homepage.png'),
+                              fit: BoxFit.fill
+                          )
+                      ),
+                      child: Align(
+                          alignment: Alignment(0.05,0.8),
+                          child: FadeAnimation_Y(1,ProfilePic())),),
+                  ]
+              ),
 
-             Stack(
-              overflow: Overflow.visible,
-              children: [
-                FadeAnimation_Y(1, Container(
-                  height: MediaQuery
-                      .of(context)
-                      .size
-                      .height / 2.9,
-                  margin: EdgeInsets.only(),
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage('images/homepage.png'),
-                          fit: BoxFit.fill
-                      )
-                  ))),
-                  Positioned(
-                    height: 165,
-                    width: 165,
-                    top: 145,
-                    left: 110,
-                    child: (FadeAnimation_Y(1,ProfilePic())),
-                  ),
-              ]),
               Expanded(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     Column(
                         children: <Widget>[
-                          SizedBox(height: 20,),
+                          SizedBox(height: 10,),
                           FadeAnimation_Y(
                               1, Text("Welcome Back!", style: TextStyle(
                               fontSize: 30,
