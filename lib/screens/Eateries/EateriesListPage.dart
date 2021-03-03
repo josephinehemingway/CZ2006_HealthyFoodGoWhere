@@ -29,7 +29,7 @@ class _HealthyEateriesState extends State<HealthyEateries> {
   @override
   Widget build(BuildContext context) => Scaffold(
         resizeToAvoidBottomInset: false,
-        bottomNavigationBar: BottomNavBar(selectedMenu: MenuState.recipe),
+        bottomNavigationBar: BottomNavBar(selectedMenu: MenuState.eatery),
         body: nested(),
       );
 }
