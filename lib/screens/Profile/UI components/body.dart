@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/screens/Profile/ProfileMenu.dart';
-import 'package:flutter_app/screens/Profile/ProfilePic.dart';
+import 'package:flutter_app/screens/Profile/UI%20components/ProfileMenu.dart';
+import 'package:flutter_app/screens/Profile/UI%20components/ProfilePic.dart';
 import 'package:flutter_app/widgets/my_flutter_app_icons.dart';
-import '../../animation.dart';
+import '../../../animation.dart';
 
 //Profile Body
 class Body extends StatelessWidget {

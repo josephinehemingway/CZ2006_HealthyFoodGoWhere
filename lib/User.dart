@@ -3,9 +3,19 @@ import 'package:flutter/material.dart';
 class User {
   String name;
   String email;
-  AssetImage profilePic;
-  List <String> intolerance;
+  String profilePic;
+  List <String> allergies;
   List <String> dietaryPref;
-  //location etc
+
+  User(
+      this.name,
+      this.email,
+      this.profilePic,
+      this.allergies,
+      this.dietaryPref
+      );
+
+
+
 }
 

@@ -19,8 +19,10 @@ class _HealthyEateriesState extends State<HealthyEateries> {
     resizeToAvoidBottomInset: false,
     backgroundColor: Colors.white,
 
-      appBar: AppBarwithIcon('Healthy Eateries', context, HomePage(),
-          Icon(MyFlutterApp.cutlery, size: 20, color: Colors.black)),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(200),
+        child: AppBarwithFilter('Healthy Eateries', context, HomePage(), 'images/appbar_eatery.png'),
+      ),
       bottomNavigationBar: BottomNavBar(selectedMenu: MenuState.eatery)
   );
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_app/screens/Home/HomeMenu.dart';
-import 'package:flutter_app/screens/Profile/ProfilePic.dart';
+import 'package:flutter_app/screens/Profile/UI%20components/ProfilePic.dart';
 import 'package:flutter_app/widgets/my_flutter_app_icons.dart';
 import '../Eateries/EateriesListPage.dart';
 import '../Recipe/RecipesListPage.dart';

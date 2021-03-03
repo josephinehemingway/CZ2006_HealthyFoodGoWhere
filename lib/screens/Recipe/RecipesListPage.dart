@@ -17,9 +17,10 @@ class _HealthyRecipesState extends State<HealthyRecipes> {
   @override
   Widget build(BuildContext context) => Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBarwithIcon('Healthy Recipes', context, HomePage(),
-          Icon(MyFlutterApp.chefhat, size: 20, color: Colors.black)),
-
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(200),
+        child: AppBarwithFilter('Healthy Recipes', context, HomePage(), 'images/appbar_recipe.png'),
+      ),
       bottomNavigationBar: BottomNavBar(selectedMenu: MenuState.recipe)
 
   );
