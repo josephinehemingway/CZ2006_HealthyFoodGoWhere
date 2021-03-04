@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_app/screens/Home/HomePage.dart';
 import 'package:flutter_app/screens/Login/body.dart';
+import 'package:provider/provider.dart';
+import 'loadingPage.dart';
+import 'package:flutter_app/auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 
 class LoginPage extends StatelessWidget {
@@ -11,8 +16,26 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         body: Body()
+        // body: ChangeNotifierProvider(
+        //   create: (context) => GoogleAuth(),
+        //   child: StreamBuilder(
+        //     stream: FirebaseAuth.instance.authStateChanges(),
+        //     builder: (context, snapshot) {
+        //       final provider = Provider.of<GoogleAuth>(context);
+        //
+        //       if (provider.isSigningIn) {
+        //         return loading();
+        //       } else if (snapshot.hasData) {
+        //         return HomePage();
+        //       } else {
+        //         return Body();
+        //       }
+        //     },
+        //   ),
+        // ),
     );
   }
+
 }
   /*
   Widget makeInput({label, obscureText = false}) {
