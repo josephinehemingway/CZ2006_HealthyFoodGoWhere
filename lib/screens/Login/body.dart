@@ -1,10 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../animation.dart';
 import '../Home/HomePage.dart';
+import 'package:flutter_app/auth.dart';
 
 //Login Body
 class Body extends StatelessWidget {
-  @override
+  FirebaseUser user;
+
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery
@@ -63,8 +66,12 @@ class Body extends StatelessWidget {
                       height: MediaQuery.of(context).size.width *0.15,
                       onPressed: () {
                         Navigator.pop(context);
-                        Navigator.push(context, MaterialPageRoute(builder: (
-                            context) => HomePage()));
+                        signInWithGoogle().then((user) =>{
+                          this.user = user,
+                          Navigator.push(context, MaterialPageRoute(builder: (
+                          context) => HomePage()))
+
+                        });
                       },
                       color: Colors.teal[200],
                       elevation: 3,
