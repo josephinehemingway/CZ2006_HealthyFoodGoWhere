@@ -1,8 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/screens/Login/googleSignInButton.dart';
 import '../../animation.dart';
-import '../Home/HomePage.dart';
-import 'package:flutter_app/auth.dart';
 
 //Login Body
 class Body extends StatelessWidget {
@@ -61,46 +60,23 @@ class Body extends StatelessWidget {
                     ),)),
                     SizedBox(height: 20,),
 
-                    FadeAnimation_Y(1.5, MaterialButton(
-                      minWidth: MediaQuery.of(context).size.width *0.6,
-                      height: MediaQuery.of(context).size.width *0.15,
-                      onPressed: () {
-                        Navigator.pop(context);
-                        signInWithGoogle().then((user) =>{
-                          this.user = user,
-                          Navigator.push(context, MaterialPageRoute(builder: (
-                          context) => HomePage()))
+                    FadeAnimation_Y(1.5, GoogleSignInButton()),
 
-                        });
-                      },
-                      color: Colors.teal[200],
-                      elevation: 3,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: Text("Login via Gmail", style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 18,
-                          color: Colors.white,
-                          fontFamily: 'GlacialIndifference'
-                      ),),
-                    )),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text("  "),
-                      ],),
-
-                    FadeAnimation_Y(1.5, Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text("Don't have an account? "),
-                        Text("Sign up", style: TextStyle(
-                            fontWeight: FontWeight.w600, fontSize: 18
-                        ),),
-                      ],
-                    )),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.center,
+                    //   children: <Widget>[
+                    //     Text("  "),
+                    //   ],),
+                    //
+                    // FadeAnimation_Y(1.5, Row(
+                    //   mainAxisAlignment: MainAxisAlignment.center,
+                    //   children: <Widget>[
+                    //     Text("Don't have an account? "),
+                    //     Text("Sign up", style: TextStyle(
+                    //         fontWeight: FontWeight.w600, fontSize: 18
+                    //     ),),
+                    //   ],
+                    // )),
                     SizedBox(
                     height: MediaQuery.of(context).size.height * 0.05, ),
                     FadeAnimation_Y(1, Container(
