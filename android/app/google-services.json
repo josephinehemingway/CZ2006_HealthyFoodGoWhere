@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "969037051780",
+    "project_id": "healthygowhere",
+    "storage_bucket": "healthygowhere.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:969037051780:android:e27e2b5a1c6f6e707d8fd1",
+        "android_client_info": {
+          "package_name": "com.example.flutter_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "969037051780-bm4ghebdvsr91ks3akvtjilql8a1j8a9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flutter_app",
+            "certificate_hash": "2f72855c57db9d6fd5f93bc1986cf1e4057e4a62"
+          }
+        },
+        {
+          "client_id": "969037051780-9n0bmq19p0totfiagrojm48k02h2ve1a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrOmaIxdW922He5F6E2Qjb0VfSrDBMKi4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "969037051780-9n0bmq19p0totfiagrojm48k02h2ve1a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
