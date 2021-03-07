@@ -21,7 +21,6 @@ class GoogleSignInButton extends StatelessWidget {
         onPressed: () {
           // final provider = Provider.of<GoogleAuth>(context, listen: false);
           // provider.signIn();
-
           // Navigator.pop(context);
           signInWithGoogle().then((result) =>
           { if(result!=null){

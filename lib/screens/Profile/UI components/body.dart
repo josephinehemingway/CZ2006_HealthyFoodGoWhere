@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/auth.dart';
 import 'package:flutter_app/screens/Profile/UI%20components/ProfileMenu.dart';
 import 'package:flutter_app/screens/Profile/UI%20components/ProfilePic.dart';
 import 'package:flutter_app/widgets/my_flutter_app_icons.dart';
@@ -45,6 +46,7 @@ class Body extends StatelessWidget {
             text: "Log Out",
             icon: Icon(Icons.logout),
             press: () => {
+              signOutGoogle(),
               Navigator.pop(context),
               Navigator.pushNamed(context, '/login')
             },
