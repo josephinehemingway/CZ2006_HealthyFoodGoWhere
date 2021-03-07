@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 
 
 class GoogleSignInButton extends StatelessWidget {
-  FirebaseUser user;
+  User user;
   @override
   Widget build(BuildContext context) =>
       MaterialButton(
@@ -23,13 +23,13 @@ class GoogleSignInButton extends StatelessWidget {
           // provider.signIn();
 
           // Navigator.pop(context);
-          signIn().then((user) =>
-          {
+          signInWithGoogle().then((result) =>
+          { if(result!=null){
             this.user = user,
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => HomePage())
           )
-          });
+          }});
         },
         color: Colors.teal[200],
         elevation: 3,

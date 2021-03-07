@@ -5,7 +5,7 @@ import '../../animation.dart';
 
 //Login Body
 class Body extends StatelessWidget {
-  FirebaseUser user;
+  User user;
 
   Widget build(BuildContext context) {
     return Container(
