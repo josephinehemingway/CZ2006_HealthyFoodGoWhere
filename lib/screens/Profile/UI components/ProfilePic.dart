@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/User.dart';
+import 'package:flutter_app/auth.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
+
 
 class ProfilePic extends StatelessWidget {
   const ProfilePic({
@@ -16,7 +19,7 @@ class ProfilePic extends StatelessWidget {
         overflow: Overflow.visible,
         children: [
           CircleAvatar(
-            backgroundImage: AssetImage("images/testPic.png"), //profile pic
+            backgroundImage: getProfilePic(), //profile pic
           ),
           // Positioned(
           //   right: -16,

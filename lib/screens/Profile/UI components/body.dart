@@ -17,14 +17,14 @@ class Body extends StatelessWidget {
 
           SizedBox(height: 20),
 
-        FadeAnimation_Y(1,Text("Kenn Lim", style: TextStyle( //name
+        FadeAnimation_Y(1,Text(getProfileName(), style: TextStyle( //name
               fontSize: 28,
               fontWeight: FontWeight.bold
           ),)),
 
           SizedBox(height: 2),
 
-        FadeAnimation_Y(1,Text("kennlim@gmail.com", style: TextStyle( //email
+        FadeAnimation_Y(1,Text(getEmail(), style: TextStyle( //email
               fontSize: 20,
           ),)),
 
