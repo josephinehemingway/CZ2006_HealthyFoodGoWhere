@@ -30,14 +30,6 @@ class Body extends StatelessWidget {
 
           SizedBox(height: 20),
 
-        FadeAnimation_Y(1,ProfileMenu(
-            text: "My Intolerances",
-            icon: Icon(Icons.dangerous),
-            press: () => {
-              Navigator.pop(context),
-            Navigator.pushNamed(context, '/editIntolerance')},
-          )),
-
           FadeAnimation_Y(1,ProfileMenu(
             text: "My Dietary Preferences",
             icon: Icon(MyFlutterApp.cutlery),
@@ -45,6 +37,14 @@ class Body extends StatelessWidget {
               Navigator.pop(context),
               Navigator.pushNamed(context, '/editPref')
             },
+          )),
+
+          FadeAnimation_Y(1,ProfileMenu(
+            text: "My Intolerances",
+            icon: Icon(Icons.dangerous),
+            press: () => {
+              Navigator.pop(context),
+              Navigator.pushNamed(context, '/editIntolerance')},
           )),
 
           FadeAnimation_Y(1,ProfileMenu(
