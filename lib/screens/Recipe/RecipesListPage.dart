@@ -67,7 +67,7 @@ class _HealthyRecipesState extends State<HealthyRecipes> with SingleTickerProvid
           itemCount: 5, //recipeData.length,
           physics: BouncingScrollPhysics(),
           itemBuilder: (context, index){
-            return RecipeCard();
+            return FadeAnimation_Y(0.1, RecipeCard());
           },
           padding:EdgeInsets.symmetric(horizontal: 10),
         ),
