@@ -62,21 +62,6 @@ class Body extends StatelessWidget {
 
                     FadeAnimation_Y(1.5, GoogleSignInButton()),
 
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.center,
-                    //   children: <Widget>[
-                    //     Text("  "),
-                    //   ],),
-                    //
-                    // FadeAnimation_Y(1.5, Row(
-                    //   mainAxisAlignment: MainAxisAlignment.center,
-                    //   children: <Widget>[
-                    //     Text("Don't have an account? "),
-                    //     Text("Sign up", style: TextStyle(
-                    //         fontWeight: FontWeight.w600, fontSize: 18
-                    //     ),),
-                    //   ],
-                    // )),
                     SizedBox(
                     height: MediaQuery.of(context).size.height * 0.05, ),
                     FadeAnimation_Y(1, Container(

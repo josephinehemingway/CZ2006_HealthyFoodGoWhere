@@ -16,23 +16,7 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         body: Body()
-        // body: ChangeNotifierProvider(
-        //   create: (context) => GoogleAuth(),
-        //   child: StreamBuilder(
-        //     stream: FirebaseAuth.instance.authStateChanges(),
-        //     builder: (context, snapshot) {
-        //       final provider = Provider.of<GoogleAuth>(context);
-        //
-        //       if (provider.isSigningIn) {
-        //         return loading();
-        //       } else if (snapshot.hasData) {
-        //         return HomePage();
-        //       } else {
-        //         return Body();
-        //       }
-        //     },
-        //   ),
-        // ),
+
     );
   }
 
