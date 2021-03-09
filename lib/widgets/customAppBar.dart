@@ -149,8 +149,6 @@ SliverAppBar RecipeAppBar(String title, context, Widget prevPg, String image){
 
     elevation: 0,
     backgroundColor: Colors.teal[200],
-    title: Text(title, style: TextStyle(fontSize: 24, color: Colors.white)),
-    centerTitle: true,
     expandedHeight: 180.0,
     floating: false,
     pinned: true,

@@ -19,15 +19,15 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
     return NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
       return <Widget>[
-        // collapsibleAppBar('Healthy Recipes', context, HealthyRecipes(),
-        //     'images/appbar_recipe.png'),
+        RecipeAppBar('Recipe Title', context, HealthyRecipes(),
+            'images/appbar_recipe.png'),
       ];
     },
-    body: WebView(
-    initialUrl: widget.recipeDetails.spoonacularSourceUrl,
-    //JS unrestricted, so that JS can execute in the webview
-    javascriptMode: JavascriptMode.unrestricted,
-      )
-    );
+      body: Scaffold()
+    // body: WebView(
+    // initialUrl: widget.recipeDetails.spoonacularSourceUrl,
+    // //JS unrestricted, so that JS can execute in the webview
+    // javascriptMode: JavascriptMode.unrestricted,
+      );
   }
 }

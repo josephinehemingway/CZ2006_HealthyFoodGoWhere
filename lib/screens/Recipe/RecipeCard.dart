@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/screens/Home/HomePage.dart';
 import 'package:flutter_app/screens/Recipe/RecipeDetailsPage.dart';
 
 class RecipeCard extends StatelessWidget {
@@ -21,10 +20,10 @@ class RecipeCard extends StatelessWidget {
 
           children: [
             GestureDetector(
-              onLongPress: (){
+              onTap: (){
                 Navigator.pop(context);
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => (HomePage())));
+                    context, MaterialPageRoute(builder: (context) => (RecipeDetailsPage())));
               },
               child: Container(
                 height: 210,

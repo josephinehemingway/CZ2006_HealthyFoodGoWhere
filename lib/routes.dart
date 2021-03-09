@@ -2,7 +2,9 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_app/screens/Eateries/EateriesListPage.dart';
 import 'package:flutter_app/screens/Home/HomePage.dart';
 import 'package:flutter_app/screens/Login/LoginPage.dart';
+import 'package:flutter_app/screens/Profile/EditPreferencesUI.dart';
 import 'package:flutter_app/screens/Profile/Profile.dart';
+import 'package:flutter_app/screens/Profile/EditIntoleranceUI.dart';
 import 'package:flutter_app/screens/Recipe/RecipeDetailsPage.dart';
 import 'package:flutter_app/screens/Recipe/RecipesListPage.dart';
 
@@ -12,6 +14,8 @@ final Map<String, WidgetBuilder> routes = {
   HealthyRecipes.routeName: (context) => HealthyRecipes(),
   Profile.routeName: (context) => Profile(),
   LoginPage.routeName: (context) => LoginPage(),
-  RecipeDetailsPage.routeName: (context) => RecipeDetailsPage()
+  RecipeDetailsPage.routeName: (context) => RecipeDetailsPage(),
+  EditPreferences.routeName: (context) => EditPreferences(),
+  EditIntolerance.routeName: (context) => EditIntolerance()
 };
 
