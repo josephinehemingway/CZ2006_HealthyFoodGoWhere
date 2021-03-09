@@ -35,9 +35,9 @@ class ProfilePic extends StatelessWidget {
           //       color: Color(0xFFF5F6F9),
           //       onPressed: () {},
           //       child: Icon(Icons.edit),
-    //           ),
-    //         ),
-    //       )
+          //           ),
+          //         ),
+          //       )
         ],
       ),
     );
