@@ -18,23 +18,23 @@ class Body extends StatelessWidget {
           SizedBox(height: 20),
 
         FadeAnimation_Y(1,Text(getProfileName(), style: TextStyle( //name
-              fontSize: 28,
+              fontSize: 24,
               fontWeight: FontWeight.bold
           ),)),
 
           SizedBox(height: 2),
 
         FadeAnimation_Y(1,Text(getEmail(), style: TextStyle( //email
-              fontSize: 20,
+              fontSize: 18,
           ),)),
 
           SizedBox(height: 20),
 
-        FadeAnimation_Y(1,ProfileMenu(
-            text: "Edit My Profile",
-            icon: Icon(Icons.edit),
-            press: () => {},
-          )),
+        // FadeAnimation_Y(1,ProfileMenu(
+        //     text: "Edit My Profile",
+        //     icon: Icon(Icons.edit),
+        //     press: () => {},
+        //   )),
 
           FadeAnimation_Y(1,ProfileMenu(
             text: "My Dietary Preferences",
