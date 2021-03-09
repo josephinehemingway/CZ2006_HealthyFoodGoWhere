@@ -54,7 +54,7 @@ AppBar AppBarwithImage(String title, context, Widget prevPg, String image){
   );
 }
 
-SliverAppBar collapsibleAppBar(String title, context, Widget prevPg, String image){
+SliverAppBar collapsibleAppBar(String title, String subtitle, context, Widget prevPg, String image){
   return SliverAppBar(
     leading: IconButton(
       onPressed: () {
@@ -83,6 +83,11 @@ SliverAppBar collapsibleAppBar(String title, context, Widget prevPg, String imag
     flexibleSpace: FlexibleSpaceBar(
       centerTitle: true,
       title: Text(title, style: TextStyle(fontSize: 20, color: Colors.white)),
+      // title: Column(
+      //     children: [
+      //       Text(title, style: TextStyle(fontSize: 20, color: Colors.white)),
+      //       Text(subtitle, style: TextStyle(fontSize: 5, color: Colors.white)),
+      //     ]),
       background: Image.asset(image, fit: BoxFit.cover),
 
     ),

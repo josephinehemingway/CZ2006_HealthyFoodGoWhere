@@ -19,8 +19,8 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
     return NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
       return <Widget>[
-        collapsibleAppBar('Healthy Recipes', context, HealthyRecipes(),
-            'images/appbar_recipe.png'),
+        // collapsibleAppBar('Healthy Recipes', context, HealthyRecipes(),
+        //     'images/appbar_recipe.png'),
       ];
     },
     body: WebView(

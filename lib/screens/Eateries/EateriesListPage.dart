@@ -16,7 +16,9 @@ class _HealthyEateriesState extends State<HealthyEateries> {
     return NestedScrollView(
       headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
         return <Widget>[
-          collapsibleAppBar('Healthy Eateries', context, HomePage(),
+          collapsibleAppBar('Healthy Eateries',
+              'These nearby eateries are recommended to you based on your dietary preferences, the set location and the radii distance',
+              context, HomePage(),
               'images/appbar_eatery.png'),
         ];
       },
