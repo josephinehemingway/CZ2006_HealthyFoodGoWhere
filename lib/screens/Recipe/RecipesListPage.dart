@@ -7,7 +7,7 @@ import '../../animation.dart';
 import '../../widgets/my_flutter_app_icons.dart';
 
 class HealthyRecipes extends StatefulWidget {
-  static String routeName = '/recipe';
+  static String routeName = '/recipeList';
   @override
   _HealthyRecipesState createState() => _HealthyRecipesState();
 }
