@@ -34,7 +34,7 @@ class Body extends StatelessWidget {
             text: "My Dietary Preferences",
             icon: Icon(MyFlutterApp.cutlery),
             press: () => {
-              Navigator.pop(context),
+              // Navigator.pop(context),
               Navigator.pushNamed(context, '/editPref')
             },
           )),
@@ -43,7 +43,7 @@ class Body extends StatelessWidget {
             text: "My Intolerances",
             icon: Icon(Icons.dangerous),
             press: () => {
-              Navigator.pop(context),
+              // Navigator.pop(context),
               Navigator.pushNamed(context, '/editIntolerance')},
           )),
 

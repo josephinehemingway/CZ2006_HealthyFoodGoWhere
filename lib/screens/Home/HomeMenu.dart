@@ -24,7 +24,7 @@ class HomeMenu extends StatelessWidget {
             minWidth: MediaQuery.of(context).size.width *0.75,
             height: MediaQuery.of(context).size.width *0.2,
             onPressed: () {
-              Navigator.pop(context);
+              // Navigator.pop(context);
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => (NextPg)));
             },
