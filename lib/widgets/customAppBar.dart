@@ -68,7 +68,7 @@ SliverAppBar collapsibleAppBar(String title, String subtitle, context, Widget pr
     backgroundColor: Colors.teal[200],
     title: Text(title, style: TextStyle(fontSize: 24, color: Colors.white)),
     centerTitle: true,
-    expandedHeight: 180.0,
+    expandedHeight: 190.0,
     floating: false,
     pinned: true,
 
@@ -149,7 +149,7 @@ SliverAppBar RecipeAppBar(String title, context, Widget prevPg, String image){
 
     elevation: 0,
     backgroundColor: Colors.teal[200],
-    expandedHeight: 180.0,
+    expandedHeight: 190.0,
     floating: false,
     pinned: true,
 

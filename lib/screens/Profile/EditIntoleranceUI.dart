@@ -7,6 +7,7 @@ import 'package:flutter_app/screens/Profile/Profile.dart';
 
 class EditIntolerance extends StatefulWidget {
   static String routeName = '/editIntolerance';
+
   @override
   _EditIntoleranceState createState() => _EditIntoleranceState();
 }

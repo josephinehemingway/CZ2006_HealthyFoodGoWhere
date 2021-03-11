@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_app/screens/Eateries/googleMap.dart';
+import 'package:flutter_app/screens/Home/HomeMenu.dart';
 import 'package:flutter_app/screens/Home/HomePage.dart';
 import '../../widgets/bottomNavBar.dart';
 import '../../widgets/customAppBar.dart';
@@ -23,7 +25,11 @@ class _HealthyEateriesState extends State<HealthyEateries> {
         ];
       },
       body: Center(
-        child: Text("hello"),
+        child: HomeMenu(
+          title: "GoogleMaps",
+          subtitle: "healthy eateries nearby",
+          NextPg: GoogleMapScreen(),
+            customIcon: Icon(Icons.location_on_rounded)),
       ),
     );
   }

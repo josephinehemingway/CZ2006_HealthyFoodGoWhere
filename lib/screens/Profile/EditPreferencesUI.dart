@@ -54,6 +54,8 @@ class _EditPreferencesState extends State<EditPreferences> {
                   FadeAnimation_Y(1.2, customCheckBox(title: dietList[7],list: preferenceList)),
                   FadeAnimation_Y(1.2, customCheckBox(title: dietList[8],list: preferenceList)),
                   FadeAnimation_Y(1.2, customCheckBox(title: dietList[9],list: preferenceList)),
+                  SizedBox(height: 20,),
+
                   ]
             )
         )
