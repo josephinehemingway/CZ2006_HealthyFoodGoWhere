@@ -40,4 +40,5 @@ class _HealthyEateriesState extends State<HealthyEateries> {
         bottomNavigationBar: BottomNavBar(selectedMenu: MenuState.eatery),
         body: nested(),
       );
+
 }

@@ -40,10 +40,6 @@ class _EditPreferencesState extends State<EditPreferences> {
               width: double.infinity,
             child: Column(
                 children: <Widget>[
-                    SizedBox(height: 20,),
-                    FadeAnimation_Y(1, Text("Dietary Preferences", style: TextStyle(
-                    fontSize: 22,),)),
-                    SizedBox(height: 20,),
                   FadeAnimation_Y(1.2, customCheckBox(title: dietList[0],list: preferenceList)),
                   FadeAnimation_Y(1.2, customCheckBox(title: dietList[1],list: preferenceList)),
                   FadeAnimation_Y(1.2, customCheckBox(title: dietList[2],list: preferenceList)),
@@ -55,7 +51,6 @@ class _EditPreferencesState extends State<EditPreferences> {
                   FadeAnimation_Y(1.2, customCheckBox(title: dietList[8],list: preferenceList)),
                   FadeAnimation_Y(1.2, customCheckBox(title: dietList[9],list: preferenceList)),
                   SizedBox(height: 20,),
-
                   ]
             )
         )

@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
-import '../User.dart';
+import '../CurrentUser.dart';
 
 class customCheckBox extends StatefulWidget {
   const customCheckBox({
     Key key,
     @required this.title,
     @required this.list,
+    // this.user
 }) : super(key: key);
 
   final String title;
   final List list;
+  // final User user;
 
   @override
   _customCheckBoxState createState() => _customCheckBoxState(this.title, this.list);
@@ -34,7 +36,6 @@ class _customCheckBoxState extends State<customCheckBox> {
           checkedValue = newValue;
           if (checkedValue){
             list.add(title);
-
           }
           else{
             list.remove(title);

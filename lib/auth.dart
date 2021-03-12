@@ -28,7 +28,7 @@ Future<String> signInWithGoogle() async{
     final User currentUser = _auth.currentUser;
     assert(user.uid == currentUser.uid);
 
-    print('signInWithGoogle succeeded: $user');
+    print('signInWithGoogle succeeded');
 
     return '$user';
   }
@@ -36,6 +36,15 @@ Future<String> signInWithGoogle() async{
   return null;
 
 }
+
+String getUserID(){
+  return _auth.currentUser.uid;
+}
+
+String getUserImageURL(){
+  return _auth.currentUser.photoURL;
+}
+
 getProfilePic(){
     if (_auth.currentUser.photoURL != null) {
       return NetworkImage(_auth.currentUser.photoURL.toString());
