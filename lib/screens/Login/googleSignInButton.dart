@@ -3,10 +3,12 @@ import 'package:flutter_app/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_app/screens/Home/HomePage.dart';
 import 'package:provider/provider.dart';
-
+import 'package:flutter_app/CurrentUser.dart';
 
 class GoogleSignInButton extends StatelessWidget {
   User user;
+  CurrentUser curUser = CurrentUser();
+
   @override
   Widget build(BuildContext context) =>
       MaterialButton(
@@ -25,6 +27,12 @@ class GoogleSignInButton extends StatelessWidget {
           signInWithGoogle().then((result) =>
           { if(result!=null){
             this.user = user,
+            curUser.name = getProfileName(),
+            curUser.email = getEmail(),
+            curUser.id = getUserID(),
+            curUser.profilePic = getUserImageURL(),
+
+            curUser.printCurrentUser(),
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => HomePage())
           )

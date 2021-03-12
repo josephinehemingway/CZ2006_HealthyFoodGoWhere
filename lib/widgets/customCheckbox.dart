@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import '../CurrentUser.dart';
 
 class customCheckBox extends StatefulWidget {
   const customCheckBox({
     Key key,
     @required this.title,
     @required this.list,
+    // this.user
 }) : super(key: key);
 
   final String title;
   final List list;
+  // final User user;
 
   @override
   _customCheckBoxState createState() => _customCheckBoxState(this.title, this.list);

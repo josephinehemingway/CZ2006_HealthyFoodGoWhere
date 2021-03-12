@@ -28,7 +28,7 @@ Future<String> signInWithGoogle() async{
     final User currentUser = _auth.currentUser;
     assert(user.uid == currentUser.uid);
 
-    print('signInWithGoogle succeeded: $user');
+    print('signInWithGoogle succeeded');
 
     return '$user';
   }
@@ -36,6 +36,15 @@ Future<String> signInWithGoogle() async{
   return null;
 
 }
+
+String getUserID(){
+  return _auth.currentUser.uid;
+}
+
+String getUserImageURL(){
+  return _auth.currentUser.photoURL;
+}
+
 getProfilePic(){
     if (_auth.currentUser.photoURL != null) {
       return NetworkImage(_auth.currentUser.photoURL.toString());
@@ -57,50 +66,3 @@ Future<void> signOutGoogle() async {
 
   print("User Signed Out");
 }
-//
-// import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:flutter/cupertino.dart';
-// import 'package:google_sign_in/google_sign_in.dart';
-//
-// class GoogleAuth extends ChangeNotifier {
-//
-//   final FirebaseAuth _auth = FirebaseAuth.instance;
-//   final GoogleSignIn googleSignIn = GoogleSignIn();
-//   bool _isSigningIn;
-//
-//   GoogleAuth(){
-//     _isSigningIn = false;
-//   }
-//
-//   bool get isSigningIn => _isSigningIn;
-//
-//   set isSigningIn(bool isSigningIn) {
-//     _isSigningIn = isSigningIn;
-//     notifyListeners();
-//   }
-//
-//   Future signIn() async {
-//     isSigningIn = true;
-//
-//     final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
-//
-//     if (GoogleSignInAccount == null) {
-//       isSigningIn = false;
-//       return;
-//     } else {
-//       final GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount
-//           .authentication;
-//       final AuthCredential credential = GoogleAuthProvider.getCredential(
-//           idToken: googleSignInAuthentication.idToken,
-//           accessToken: googleSignInAuthentication.accessToken);
-//
-//       await _auth.signInWithCredential(credential);
-//       isSigningIn = false;
-//     }
-//   }
-//
-//   void signOut() async {
-//     await googleSignIn.signOut();
-//     _auth.signOut();
-//   }
-// }
