@@ -1,8 +1,6 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-
-class Eatery{
-
+class Eatery {
   // Eatery({
   //   this.name,
   //   this.latitude,
@@ -12,19 +10,18 @@ class Eatery{
   // });
 
   String name;
-  double latitude;
-  double longitude;
-  // LatLng latlng = LatLng(latitude, longitude);
+  String address;
+  double eateryLatitude;
+  double eateryLongitude;
+
   String markerID;
 
-
   Marker marker = Marker(
-    // markerId: MarkerId(markerID),
-    // position: LatLng(1.3476951854010337, 103.688100402735),
-    // infoWindow: InfoWindow(
-    // title: 'NTU Crescent Hall',
-    // snippet: 'A hall of residence in NTU',
-    // )
-    );
-
+      // markerId: MarkerId(markerID),
+      // position: LatLng(1.3476951854010337, 103.688100402735),
+      // infoWindow: InfoWindow(
+      // title: 'NTU Crescent Hall',
+      // snippet: 'A hall of residence in NTU',
+      // )
+      );
 }
