@@ -16,44 +16,6 @@ AppBar myAppBar(String title, context, Widget prevPg){
   );
 }
 
-AppBar AppBarwithImage(String title, context, Widget prevPg, String image){
-  return AppBar(
-    centerTitle: true,
-    flexibleSpace: ClipRRect(
-        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
-        child:(Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(image),
-                  fit: BoxFit.fill
-              )
-          ),
-        ))),
-    backgroundColor: Colors.grey,
-    elevation: 0,
-    shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10))
-    ),
-    leading: IconButton(
-      onPressed: () {
-        Navigator.pop(context);
-        Navigator.push(context, MaterialPageRoute(builder: (context) => (prevPg)));
-      },
-      icon: Icon(Icons.arrow_back_ios, size: 20, color: Colors.white,),
-    ),
-
-    title: Text(title, style: TextStyle(fontSize: 22, color: Colors.white)),
-
-    actions: <Widget>[
-      IconButton(icon: Icon(Icons.filter_alt, size: 22, color: Colors.white,),
-          onPressed: (){
-            // Navigator.pop(context);
-          }
-      ),
-    ],
-  );
-}
-
 SliverAppBar collapsibleAppBar(String title, String subtitle, context, Widget prevPg, String image){
   return SliverAppBar(
     leading: IconButton(
