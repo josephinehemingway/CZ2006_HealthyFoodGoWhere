@@ -6,13 +6,16 @@ class Eatery{
   String description;
   String thumbNail;
   LatLng locationCoords;
+  // int distancefromuser;
 
   Eatery(
       {this.name,
         this.address,
         this.description,
         this.thumbNail,
-        this.locationCoords});
+        this.locationCoords
+        // this.distancefromuser
+  });
 }
 
 final List<Eatery> healthyEateries = [
