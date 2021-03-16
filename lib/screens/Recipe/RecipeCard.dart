@@ -7,13 +7,6 @@ class RecipeCard extends StatelessWidget {
   String duration;
   String calories;
 
-  // const RecipeCard({Key key,
-  //   this.imageUrl = "images/appbar_eatery.png", //insert url,
-  //   this.title = "Avocado Toast", //insert title
-  //   this.duration = "25 minutes", //insert duration
-  //   this.calories = "300kcal" //insert calories
-  // }) : super(key: key);
-
   RecipeCard({Key key,
     this.imageUrl, //insert url,
     this.title, //insert title
