@@ -8,9 +8,8 @@ import 'package:geolocator/geolocator.dart';
 import '../../widgets/bottomNavBar.dart';
 import '../../widgets/customAppBar.dart';
 import '../../widgets/my_flutter_app_icons.dart';
-import 'FileReader.dart';
-import 'dart:io';
 import 'HealthyEateryRecommender.dart';
+import 'package:csv/csv.dart' as csv;
 
 class HealthyEateries extends StatefulWidget {
   static String routeName = '/eateries';
@@ -25,7 +24,9 @@ class _HealthyEateriesState extends State<HealthyEateries> {
   @override
   void initState() {
     super.initState();
-    //_healthyEateriesList = csvToDict('EateryData/HealthyEateries.csv');
+    _loadCSV('EateryData/HealthyEateries.csv');
+    _withinRadiusEateries = filterEateryByRadius(
+        _healthyEateriesList, 1.3527401672849244, 103.69683848785874, 3);
   }
 
   @override
@@ -41,7 +42,8 @@ class _HealthyEateriesState extends State<HealthyEateries> {
         return <Widget>[
           collapsibleAppBar(
               'Healthy Eateries',
-              'These nearby eateries are recommended to you based on your dietary preferences, the set location and the radii distance',
+              //'These nearby eateries are recommended to you based on your dietary preferences, the set location and the radii distance',
+              _healthyEateriesList[0][0],
               context,
               HomePage(),
               'images/appbar_eatery.png'),
@@ -57,7 +59,27 @@ class _HealthyEateriesState extends State<HealthyEateries> {
     );
   }
 
-  // void setRadiusInKm(double radius) {
+  Future<void> _loadCSV(String filePath) async {
+    final _rawData = await rootBundle.loadString(filePath);
+    csv.CsvToListConverter c = new csv.CsvToListConverter(
+        eol: '\r\n', fieldDelimiter: ",", shouldParseNumbers: true);
+    List<List<dynamic>> eateriesList = c.convert(_rawData);
+    List<Map<String, dynamic>> eateriesListOfDict = [];
+    for (List<dynamic> healthyEatery in eateriesList) {
+      eateriesListOfDict.add({
+        'name': healthyEatery[0],
+        'address': healthyEatery[1],
+        'latitude': healthyEatery[2],
+        'longitude': healthyEatery[3],
+        'distanceFromUser': null
+      });
+    }
+    setState(() {
+      _healthyEateriesList = eateriesListOfDict;
+    });
+  }
+
+// void setRadiusInKm(double radius) {
   //   // radius setter
   //   this._radiusInKm = radius;
   // }

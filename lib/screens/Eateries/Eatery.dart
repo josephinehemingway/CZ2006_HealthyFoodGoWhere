@@ -1,27 +1,25 @@
-// import 'package:google_maps_flutter/google_maps_flutter.dart';
-//
-// class Eatery {
-//   // Eatery({
-//   //   this.name,
-//   //   this.latitude,
-//   //   this.longitude,
-//   //   this.latlng,
-//   //   this.marker
-//   // });
-//
-//   String name;
-//   String address;
-//   double eateryLatitude;
-//   double eateryLongitude;
-//
-//   String markerID;
-//
-//   Marker marker = Marker(
-//       // markerId: MarkerId(markerID),
-//       // position: LatLng(1.3476951854010337, 103.688100402735),
-//       // infoWindow: InfoWindow(
-//       // title: 'NTU Crescent Hall',
-//       // snippet: 'A hall of residence in NTU',
-//       // )
-//       );
-// }
+class Eatery {
+  String _name;
+  String _address;
+  double _latitude;
+  double _longitude;
+  double _distanceFromUser;
+  Eatery(
+      {String name,
+      String address,
+      double latitude,
+      double longitude,
+      double distanceFromUser}) {
+    _name = name;
+    _address = address;
+    _latitude = latitude;
+    _longitude = longitude;
+    _distanceFromUser = distanceFromUser;
+  }
+  // getters
+  String get name => _name;
+  String get address => _address;
+  double get latitude => _latitude;
+  double get longitude => _longitude;
+  double get distanceFromUser => _distanceFromUser;
+}
