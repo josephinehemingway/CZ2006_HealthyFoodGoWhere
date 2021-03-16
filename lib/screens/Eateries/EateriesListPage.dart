@@ -24,9 +24,9 @@ class _HealthyEateriesState extends State<HealthyEateries> {
   @override
   void initState() {
     super.initState();
-    _loadCSV('EateryData/HealthyEateries.csv');
-    _withinRadiusEateries = filterEateryByRadius(
-        _healthyEateriesList, 1.3527401672849244, 103.69683848785874, 3);
+    // _loadCSV('EateryData/HealthyEateries.csv');
+    // _withinRadiusEateries = filterEateryByRadius(
+    //     _healthyEateriesList, 1.3527401672849244, 103.69683848785874, 3);
   }
 
   @override
@@ -42,8 +42,7 @@ class _HealthyEateriesState extends State<HealthyEateries> {
         return <Widget>[
           collapsibleAppBar(
               'Healthy Eateries',
-              //'These nearby eateries are recommended to you based on your dietary preferences, the set location and the radii distance',
-              _healthyEateriesList[0][0],
+              'These nearby eateries are recommended to you based on your dietary preferences, the set location and the radii distance',
               context,
               HomePage(),
               'images/appbar_eatery.png'),

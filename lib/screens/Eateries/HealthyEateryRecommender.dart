@@ -26,21 +26,21 @@ List<Map<String, dynamic>> filterEateryByRadius(
 // returns a sample of 5 eateries
 // input: list of dict
 // output: list of Eatery
-List<Eatery> sampleEateries(List<Map<String, dynamic>> healthyEateriesList,
-    {int max = 5}) {
-  List<Eatery> sampleEateries = [];
-  healthyEateriesList..shuffle();
-  if (max > healthyEateriesList.length) max = healthyEateriesList.length;
-  for (Map<String, dynamic> E in healthyEateriesList.sublist(0, max)) {
-    sampleEateries.add(Eatery(
-        name: E['name'],
-        address: E['address'],
-        latitude: E['latitude'],
-        longitude: E['longitude'],
-        distanceFromUser: E['distanceFromUser']));
-  }
-  return sampleEateries;
-}
+// List<Eatery> sampleEateries(List<Map<String, dynamic>> healthyEateriesList,
+//     {int max = 5}) {
+//   List<Eatery> sampleEateries = [];
+//   healthyEateriesList..shuffle();
+//   if (max > healthyEateriesList.length) max = healthyEateriesList.length;
+//   for (Map<String, dynamic> E in healthyEateriesList.sublist(0, max)) {
+//     sampleEateries.add(Eatery(
+//         name: E['name'],
+//         address: E['address'],
+//         latitude: E['latitude'],
+//         longitude: E['longitude'],
+//         distanceFromUser: E['distanceFromUser']));
+//   }
+//   return sampleEateries;
+// }
 
 // return distance between the coordinates
 // output: double
