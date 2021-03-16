@@ -4,7 +4,7 @@ import 'package:flutter_app/screens/Profile/UI%20components/ProfileMenu.dart';
 import 'package:flutter_app/widgets/bottomNavBar.dart';
 import 'package:flutter_app/widgets/customAppBar.dart';
 import 'package:flutter_app/widgets/customCheckbox.dart';
-import 'package:flutter_app/screens/Profile/Profile.dart';
+import 'package:flutter_app/screens/Profile/ProfilePage.dart';
 import 'package:flutter_app/CurrentUser.dart';
 
 class EditIntolerance extends StatefulWidget {

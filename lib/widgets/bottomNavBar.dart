@@ -4,7 +4,7 @@ import '../animation.dart';
 import '../screens/Home/HomePage.dart';
 import '../screens/Login/LoginPage.dart';
 import '../screens/Eateries/EateriesListPage.dart';
-import '../screens/Profile/Profile.dart';
+import '../screens/Profile/ProfilePage.dart';
 import '../screens/Recipe/RecipesListPage.dart';
 import 'package:flutter_app/widgets/my_flutter_app_icons.dart';
 

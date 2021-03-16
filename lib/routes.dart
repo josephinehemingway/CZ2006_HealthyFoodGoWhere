@@ -3,7 +3,7 @@ import 'package:flutter_app/screens/Eateries/EateriesListPage.dart';
 import 'package:flutter_app/screens/Home/HomePage.dart';
 import 'package:flutter_app/screens/Login/LoginPage.dart';
 import 'package:flutter_app/screens/Profile/EditPreferencesUI.dart';
-import 'package:flutter_app/screens/Profile/Profile.dart';
+import 'package:flutter_app/screens/Profile/ProfilePage.dart';
 import 'package:flutter_app/screens/Profile/EditIntoleranceUI.dart';
 import 'package:flutter_app/screens/Recipe/RecipeDetailsPage.dart';
 import 'package:flutter_app/screens/Recipe/RecipesListPage.dart';

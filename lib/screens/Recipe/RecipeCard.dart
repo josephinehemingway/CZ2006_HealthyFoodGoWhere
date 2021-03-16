@@ -2,13 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/Recipe/RecipeDetailsPage.dart';
 
 class RecipeCard extends StatelessWidget {
-  final imageUrl, title, duration, calories;
+  String imageUrl;
+  String title;
+  String duration;
+  String calories;
 
-  const RecipeCard({Key key,
-    this.imageUrl = "images/appbar_eatery.png", //insert url,
-    this.title = "Avocado Toast", //insert title
-    this.duration = "25 minutes", //insert duration
-    this.calories = "300kcal" //insert calories
+  // const RecipeCard({Key key,
+  //   this.imageUrl = "images/appbar_eatery.png", //insert url,
+  //   this.title = "Avocado Toast", //insert title
+  //   this.duration = "25 minutes", //insert duration
+  //   this.calories = "300kcal" //insert calories
+  // }) : super(key: key);
+
+  RecipeCard({Key key,
+    this.imageUrl, //insert url,
+    this.title, //insert title
+    this.duration, //insert duration
+    this.calories //insert calories
   }) : super(key: key);
 
   @override

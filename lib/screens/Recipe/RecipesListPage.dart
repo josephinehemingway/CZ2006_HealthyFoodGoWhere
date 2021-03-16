@@ -14,7 +14,29 @@ class HealthyRecipes extends StatefulWidget {
 }
 
 class _HealthyRecipesState extends State<HealthyRecipes> with SingleTickerProviderStateMixin {
-  List<Widget> recipeData = [];
+  List<Widget> recipeData = [
+    RecipeCard(
+      title: 'Avocado Toast',
+      imageUrl: "images/appbar_eatery.png",
+      calories: '299 kCal',
+      duration: '25 mins',
+    ),
+
+    RecipeCard(
+      title: 'French Toast',
+      imageUrl: "images/appbar_recipe.png",
+      calories: '311 kCal',
+      duration: '30 mins',
+    ),
+
+    RecipeCard(
+      title: 'Kaya Toast',
+      imageUrl: "images/appbar_eatery.png",
+      calories: '319 kCal',
+      duration: '25 mins',
+    ),
+  ];
+
   ScrollController _scrollController;
   TabController _tabController;
   int currentIndex = 0;
@@ -64,10 +86,10 @@ class _HealthyRecipesState extends State<HealthyRecipes> with SingleTickerProvid
       },
       body: Container(
         child: ListView.builder(
-          itemCount: 5, //recipeData.length,
+          itemCount: recipeData.length,
           physics: BouncingScrollPhysics(),
           itemBuilder: (context, index){
-            return FadeAnimation_Y(0.1, RecipeCard());
+            return FadeAnimation_Y(0.1, recipeData[index]);
           },
           padding:EdgeInsets.symmetric(horizontal: 10),
         ),
