@@ -3,7 +3,6 @@
 // import 'package:flutter/services.dart';
 // import 'Eatery.dart';
 // import 'HealthyEateryRecommender.dart';
-
 // void main() {
 //   double radiusInKm = 3;
 //   List<Map<String, dynamic>> healthyEateryList = // contains all eateries

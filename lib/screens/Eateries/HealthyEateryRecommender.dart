@@ -10,6 +10,7 @@ List<Map<String, dynamic>> filterEateryByRadius(
     double userLongitude,
     double radiusInKm) {
   List<Map<String, dynamic>> withinRadiusEateries = [];
+
   for (Map<String, dynamic> healthyEatery in healthyEateriesList) {
     double distanceFromUser = getDistance(healthyEatery['latitude'],
         healthyEatery['longitude'], userLatitude, userLongitude);
