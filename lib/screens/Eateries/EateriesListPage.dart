@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -5,9 +7,11 @@ import 'package:flutter_app/screens/Eateries/googleMap.dart';
 import 'package:flutter_app/screens/Home/HomeMenu.dart';
 import 'package:flutter_app/screens/Home/HomePage.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../../widgets/bottomNavBar.dart';
 import '../../widgets/customAppBar.dart';
 import '../../widgets/my_flutter_app_icons.dart';
+import 'Eatery.dart';
 import 'HealthyEateryRecommender.dart';
 import 'package:csv/csv.dart' as csv;
 
@@ -18,15 +22,12 @@ class HealthyEateries extends StatefulWidget {
 }
 
 class _HealthyEateriesState extends State<HealthyEateries> {
-  List<Map<String, dynamic>> _healthyEateriesList;
-  List<Map<String, dynamic>> _withinRadiusEateries;
+  List healthyEateriesList = [];
 
   @override
   void initState() {
+    _loadJSON();
     super.initState();
-    // _loadCSV('EateryData/HealthyEateries.csv');
-    // _withinRadiusEateries = filterEateryByRadius(
-    //     _healthyEateriesList, 1.3527401672849244, 103.69683848785874, 3);
   }
 
   @override
@@ -42,7 +43,8 @@ class _HealthyEateriesState extends State<HealthyEateries> {
         return <Widget>[
           collapsibleAppBar(
               'Healthy Eateries',
-              'These nearby eateries are recommended to you based on your dietary preferences, the set location and the radii distance',
+              healthyEateriesList[0]['name'],
+              //'These nearby eateries are recommended to you based on your dietary preferences, the set location and the radii distance',
               context,
               HomePage(),
               'images/appbar_eatery.png'),
@@ -58,25 +60,43 @@ class _HealthyEateriesState extends State<HealthyEateries> {
     );
   }
 
-  Future<void> _loadCSV(String filePath) async {
-    final _rawData = await rootBundle.loadString(filePath);
-    csv.CsvToListConverter c = new csv.CsvToListConverter(
-        eol: '\r\n', fieldDelimiter: ",", shouldParseNumbers: true);
-    List<List<dynamic>> eateriesList = c.convert(_rawData);
-    List<Map<String, dynamic>> eateriesListOfDict = [];
-    for (List<dynamic> healthyEatery in eateriesList) {
-      eateriesListOfDict.add({
-        'name': healthyEatery[0],
-        'address': healthyEatery[1],
-        'latitude': healthyEatery[2],
-        'longitude': healthyEatery[3],
-        'distanceFromUser': null
-      });
-    }
+  Future<void> _loadJSON() async {
+    final String response =
+        await rootBundle.loadString("assets/HealthyEateries.json");
+    final data = await json.decode(response);
     setState(() {
-      _healthyEateriesList = eateriesListOfDict;
+      healthyEateriesList = data["eateries"];
     });
   }
+
+  // Future<List<Eatery>> _loadJSON(String filePath) async {
+  //   String data = await DefaultAssetBundle.of(context)
+  //       .loadString("assets/HealthyEateries.json");
+  //   final jsonResult = json.decode(data);
+  //   List<Eatery> eateryList = [];
+  //   for (var healthyEatery in jsonResult) {
+  //     eateryList.add(Eatery.fromJson(healthyEatery));
+  //   }
+  //   return eateryList;
+  // }
+  //
+  // Future<List<Eatery>> _loadCSV(String filePath) async {
+  //   final _rawData = await rootBundle.loadString(filePath);
+  //   csv.CsvToListConverter c = new csv.CsvToListConverter(
+  //       eol: '\r\n', fieldDelimiter: ",", shouldParseNumbers: true);
+  //   List<List<dynamic>> eateriesList = c.convert(_rawData);
+  //   List<Eatery> eateryList = [];
+  //   for (List<dynamic> healthyEatery in eateriesList) {
+  //     eateryList.add(Eatery(
+  //         name: healthyEatery[0],
+  //         address: healthyEatery[1],
+  //         description: null,
+  //         thumbNail: null,
+  //         locationCoords: LatLng(healthyEatery[2], healthyEatery[3]),
+  //         distanceFromUser: null));
+  //   }
+  //   return eateryList;
+  // }
 
 // void setRadiusInKm(double radius) {
   //   // radius setter

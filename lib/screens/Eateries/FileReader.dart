@@ -1,22 +1,7 @@
-// import 'dart:io';
-// import 'package:csv/csv.dart' as csv;
-// import 'package:flutter/services.dart';
-// import 'Eatery.dart';
-// import 'HealthyEateryRecommender.dart';
-// void main() {
-//   double radiusInKm = 3;
-//   List<Map<String, dynamic>> healthyEateryList = // contains all eateries
-//       csvToDict('EateryData/HealthyEateries.csv');
-//   List<Map<String, dynamic>> withinRadiusEateries = filterEateryByRadius(
-//       // contains eateries within radius
-//       healthyEateryList,
-//       1.3527401672849244,
-//       103.69683848785874,
-//       radiusInKm);
-//   List<Eatery> sampledEateries =
-//       sampleEateries(withinRadiusEateries, max: 6); // a subset of eateries
-//   print(sampledEateries[0].distanceFromUser.toString()); // using getters
-// }
+import 'package:flutter/services.dart';
+import 'package:csv/csv.dart' as csv;
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'Eatery.dart';
 
 // returns all eateries in csv file - list of dict
 // List<Map<String, dynamic>> csvToDict(String filePath) async {
