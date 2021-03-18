@@ -23,11 +23,10 @@ class HealthyEateries extends StatefulWidget {
 
 class _HealthyEateriesState extends State<HealthyEateries> {
   List healthyEateriesList = [];
-
   @override
   void initState() {
-    _loadJSON();
     super.initState();
+    _loadJSON();
   }
 
   @override
@@ -43,8 +42,7 @@ class _HealthyEateriesState extends State<HealthyEateries> {
         return <Widget>[
           collapsibleAppBar(
               'Healthy Eateries',
-              healthyEateriesList[0]['name'],
-              //'These nearby eateries are recommended to you based on your dietary preferences, the set location and the radii distance',
+              'These nearby eateries are recommended to you based on your dietary preferences, the set location and the radii distance',
               context,
               HomePage(),
               'images/appbar_eatery.png'),
