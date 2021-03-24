@@ -21,9 +21,9 @@ class _HealthyRecipesState extends State<HealthyRecipes> with SingleTickerProvid
 
   Future<List<Recipe>> recipe_Data = ApiService.instance.getListOfRecipe(6);
 
-  List<Widget> recipeData = [];
+  List<Widget> recipeData2 = [];
 
-  List<Widget> recipeData1 = [
+  List<Widget> recipeData = [
     RecipeCard(
       title: 'Avocado Toast',
       imageUrl: "https://cookieandkate.com/images/2012/04/avocado-toast-with-tomatoes-balsamic-vinegar-basil.jpg",

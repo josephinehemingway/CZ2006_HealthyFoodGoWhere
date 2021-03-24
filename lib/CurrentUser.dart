@@ -1,4 +1,4 @@
-import 'package:flutter_app/screens/Profile/EditIntoleranceUI.dart';
+ import 'package:flutter_app/screens/Profile/EditIntoleranceUI.dart';
 import 'package:flutter_app/screens/Profile/EditPreferencesUI.dart';
 import 'auth.dart';
 

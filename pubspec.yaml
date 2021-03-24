@@ -22,7 +22,7 @@ dependencies:
   http: ^0.13.0
   webview_flutter: ^0.3.18+1
   google_maps_flutter: ^2.0.1
-  csv:  ^4.1.0
+  csv:  any
   geolocator: ^7.0.1
   percent_indicator: ^2.1.9+1
 
@@ -61,6 +61,8 @@ flutter:
   assets:
     - images/
     - EateryData/
+    - EateryData/HealthyEateries.csv
+
 #    - images/loginui.png
 #    - images/loginbottom.png
 #    - images/homepage.png

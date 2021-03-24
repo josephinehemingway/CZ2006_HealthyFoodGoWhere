@@ -2,13 +2,19 @@ class Recipe {
   int id;
   String title, image, readyInMinutes;
   List diets;
-
+  bool dairyFree,glutenFree,ketogenic,vegan,vegetarian,whole30;
   Recipe({
     this.id,
     this.title,
     this.image,
     this.readyInMinutes,
     this.diets,
+    this.dairyFree,
+    this.glutenFree,
+    this.ketogenic,
+    this.vegan,
+    this.vegetarian,
+    this.whole30
   });
 
   //This class has ID which allows us to get Recipes and other info
