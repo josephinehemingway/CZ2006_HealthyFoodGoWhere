@@ -82,30 +82,6 @@ class _HealthyRecipesState extends State<HealthyRecipes> with SingleTickerProvid
   }
 
 
-  nested() {
-    return NestedScrollView(
-      controller: _scrollController,
-      headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-        return <Widget>[
-          collapsibleAppBar('Healthy Recipes',
-              'These healthy recipes are tailored to your preferences and will help you achieve your goal!',
-              context, HomePage(),
-              'images/appbar_recipe.png'),
-        ];
-      },
-      body: Container(
-        child: ListView.builder(
-          itemCount: recipeData.length,
-          physics: BouncingScrollPhysics(),
-          itemBuilder: (context, index){
-            return FadeAnimation_Y(0.1, recipeData[index]);
-          },
-          padding:EdgeInsets.symmetric(horizontal: 10),
-        ),
-      ),
-    );
-  }
-
   // nested() {
   //   return NestedScrollView(
   //     controller: _scrollController,
@@ -118,46 +94,70 @@ class _HealthyRecipesState extends State<HealthyRecipes> with SingleTickerProvid
   //       ];
   //     },
   //     body: Container(
-  //       child: FutureBuilder<Recipe>(
-  //         future: ApiService.instance.getRecipe(7777),
-  //         builder: (context, snapshot) {
-  //           if (snapshot.hasData) {
-  //             final recipe = snapshot.data;
-  //             var title =  recipe.title;
-  //             var id = recipe.id;
-  //             var url = recipe.image;
-  //             var duration = recipe.readyInMinutes;
-  //
-  //             recipeData.add(RecipeCard(
-  //               imageUrl: url,
-  //               title: title,
-  //               duration: '25 mins',
-  //               calories: '188kCal',));
-  //
-  //             return ListView.builder(
-  //               itemCount: recipeData.length,
-  //               physics: BouncingScrollPhysics(),
-  //               itemBuilder: (context, index){
-  //                 return FadeAnimation_Y(0.1, recipeData[index]);
-  //               },
-  //               padding:EdgeInsets.symmetric(horizontal: 10),
-  //             );
-  //           } else if (snapshot.hasError) {
-  //             return Text(snapshot.error.toString());
-  //           }
-  //
-  //           return CircularPercentIndicator(
-  //             radius: 60.0,
-  //             lineWidth: 5.0,
-  //             percent: 1.0,
-  //             center: new Text("100%"),
-  //             progressColor: Colors.teal,
-  //           );
+  //       child: ListView.builder(
+  //         itemCount: recipeData.length,
+  //         physics: BouncingScrollPhysics(),
+  //         itemBuilder: (context, index){
+  //           return FadeAnimation_Y(0.1, recipeData[index]);
   //         },
+  //         padding:EdgeInsets.symmetric(horizontal: 10),
   //       ),
   //     ),
   //   );
   // }
+
+  nested() {
+    return NestedScrollView(
+      controller: _scrollController,
+      headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+        return <Widget>[
+          collapsibleAppBar('Healthy Recipes',
+              'These healthy recipes are tailored to your preferences and will help you achieve your goal!',
+              context, HomePage(),
+              'images/appbar_recipe.png'),
+        ];
+      },
+      body: Container(
+        child: FutureBuilder<Recipe>(
+          future: ApiService.instance.getRecipe(2044),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              final recipe = snapshot.data;
+              var title =  recipe.title;
+              var id = recipe.id;
+              var url = recipe.image;
+              var duration = recipe.readyInMinutes;
+
+              recipeData.add(RecipeCard(
+                imageUrl: url,
+                title: title,
+                duration: '25 mins',
+                calories: '188kCal',));
+
+              return ListView.builder(
+                itemCount: recipeData.length,
+                physics: BouncingScrollPhysics(),
+                itemBuilder: (context, index){
+                  return FadeAnimation_Y(0.1, recipeData[index]);
+                },
+                padding:EdgeInsets.symmetric(horizontal: 10),
+              );
+            } else if (snapshot.hasError) {
+              return Text(snapshot.error.toString());
+            }
+
+            return CircularPercentIndicator(
+              radius: 60.0,
+              lineWidth: 5.0,
+              percent: 1.0,
+              center: new Text("100%"),
+              progressColor: Colors.teal,
+            );
+          },
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) => Scaffold(
