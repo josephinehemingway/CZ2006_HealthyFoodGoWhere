@@ -1,21 +1,40 @@
 class Recipe {
-
-  final int id;
-  final String title, imgURL;
+  int id;
+  String title, image, readyInMinutes;
+  List diets;
 
   Recipe({
     this.id,
     this.title,
-    this.imgURL
-
+    this.image,
+    this.readyInMinutes,
+    this.diets,
   });
 
-  factory Recipe.fromMap(Map<String, dynamic> map){
+  //This class has ID which allows us to get Recipes and other info
+  //Factory Constructor Recipe.fromMap parases decoded JSON data to get values of the meal and returns Recipe object
+  factory Recipe.fromJson(final json) {
+    //Recipe object
     return Recipe(
-      id: map['id'],
-      title: map['title'],
-      imgURL: 'https://spoonacular.com/recipeImages/' + map['image'],
+      id: json['id'],
+      title: json['title'],
+      image: 'https://spoonacular.com/recipeImages/' + json['image'],
     );
   }
 
+  getRecipeID() {
+    return this.id;
+  }
+
+  getRecipeTitle() {
+    return this.title;
+  }
+
+  getRecipeImg() {
+    return this.image;
+  }
+
+  getDuration() {
+    return this.readyInMinutes;
+  }
 }

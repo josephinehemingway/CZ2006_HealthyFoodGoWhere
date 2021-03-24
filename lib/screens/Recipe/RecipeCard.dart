@@ -34,11 +34,11 @@ class RecipeCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                    color: Color(0xff707070),
-                    width: 1,
+                    color: Colors.white,
+                    width: 0,
                   ),
                   image: DecorationImage(
-                      image: AssetImage(imageUrl),fit: BoxFit.fill),
+                      image: NetworkImage(imageUrl),fit: BoxFit.fill),
                 ),
                 child: Align(
                   alignment: Alignment.bottomCenter,
