@@ -27,7 +27,7 @@ class RecipeCard extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () async {
-                RecipeDetails recipeDetails = await ApiService.instance.getRecipeDetails(2044);
+                RecipeDetails recipeDetails = await ApiService.instance.getRecipeDetails(7777);
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => (RecipeDetailsPage(
                   recipeDetails: recipeDetails,
