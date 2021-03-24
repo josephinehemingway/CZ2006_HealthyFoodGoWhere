@@ -7,7 +7,7 @@ import 'package:flutter_app/services/api_services.dart';
 class RecipeCard extends StatelessWidget {
   String imageUrl;
   String title;
-  String duration;
+  int duration;
   String calories;
 
   RecipeCard({Key key,
@@ -63,7 +63,7 @@ class RecipeCard extends StatelessWidget {
                                   Text(title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22, color: Colors.white),
                                     maxLines: 3,
                                     overflow: TextOverflow.fade,),
-                                  Text(duration, style: TextStyle(fontSize: 16, color: Colors.white)),
+                                  Text(duration.toString() + " mins", style: TextStyle(fontSize: 16, color: Colors.white)),
                                   Text(calories, style: TextStyle(fontSize: 16, color: Colors.white))])
                         ),
                       )

@@ -14,11 +14,11 @@ class ApiService {
 
   //add base URL for spoonacular API, endpoint and API key as constant
   final String _baseURL = "api.spoonacular.com";
-  static const String API_KEY = "2f3c1b88a1e048819d9d57cad263dc04";
+  static const String API_KEY = "07eeb2eabcc448ceb5363f7c3dcbf0f5";
 
   Future<Recipe> getRecipe(id) async {
     final String _baseURL = "api.spoonacular.com";
-    const String API_KEY = "2f3c1b88a1e048819d9d57cad263dc04";
+    const String API_KEY = "07eeb2eabcc448ceb5363f7c3dcbf0f5";
 
     Map<String, String> parameters = {
       'apiKey': API_KEY,
@@ -46,7 +46,7 @@ class ApiService {
   }
   Future<RecipeDetails> getRecipeDetails(id) async {
     final String _baseURL = "api.spoonacular.com";
-    const String API_KEY = "2f3c1b88a1e048819d9d57cad263dc04";
+    const String API_KEY = "07eeb2eabcc448ceb5363f7c3dcbf0f5";
 
     Map<String, String> parameters = {
       'apiKey': API_KEY,
@@ -88,7 +88,7 @@ class ApiService {
 
   Future<List<Widget>> getListOfRecipeCard() async{
     List<Widget> cardlist;
-    for(int i=0;i<3;i++){
+    for(int i=0;i<2;i++){
       Random random= new Random();
       int id= random.nextInt(8000);
       Recipe recipe = await ApiService.instance.getRecipe(id);

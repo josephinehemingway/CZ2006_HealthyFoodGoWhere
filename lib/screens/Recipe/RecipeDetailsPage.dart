@@ -23,11 +23,11 @@ class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
             'images/appbar_recipe.png'),
       ];
     },
-      body: Scaffold()
-    // body: WebView(
-    // initialUrl: widget.recipeDetails.spoonacularSourceUrl,
-    // //JS unrestricted, so that JS can execute in the webview
-    // javascriptMode: JavascriptMode.unrestricted,
+      body: WebView(
+    initialUrl: widget.recipeDetails.spoonacularSourceUrl,
+    //JS unrestricted, so that JS can execute in the webview
+    javascriptMode: JavascriptMode.unrestricted,
+      ),
       );
   }
 }
