@@ -27,40 +27,21 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class Eatery {
-  String _name;
-  String _address;
-  String _description;
-  String _thumbNail;
-  LatLng _locationCoords;
-  double _distanceFromUser;
+  String name;
+  String address;
+  String description;
+  String thumbNail;
+  LatLng locationCoords;
+  double distancefromuser;
+
   Eatery(
-      {String name,
-      String address,
-      String description,
-      String thumbNail,
-      LatLng locationCoords,
-      double distanceFromUser}) {
-    _name = name;
-    _address = address;
-    _description = description;
-    _thumbNail = thumbNail;
-    _locationCoords = locationCoords;
-    _distanceFromUser = distanceFromUser;
-  } // getters - usage: instance.name, instance.distanceFromUser
-  String get name => _name;
-  String get address => _address;
-  String get description => _description;
-  LatLng get locationCoords => _locationCoords;
-  String get thumbNail => _thumbNail;
-  double get distanceFromUser => _distanceFromUser;
-  Eatery.fromJson(Map<String, dynamic> json) {
-    _name = json['name'];
-    _address = json['address'];
-    _description = null;
-    _thumbNail = null;
-    _locationCoords = LatLng(json['latitude'], json['longitude']);
-    _distanceFromUser = null;
-  }
+      {this.name,
+      this.address,
+      this.description,
+      this.thumbNail,
+      this.locationCoords,
+      this.distancefromuser
+      });
 }
 
 final List<Eatery> healthyEateries = [
@@ -71,7 +52,7 @@ final List<Eatery> healthyEateries = [
       locationCoords: LatLng(1.3558659321699835, 103.67957206122709),
       thumbNail:
           'https://d1sag4ddilekf6.cloudfront.net/compressed/merchants/4-CZJTRFUVVYMBR6/hero/eef5b5223b4e47fe826903cc14131ae1_1591598479662885781.jpeg',
-      distanceFromUser: 2.8),
+      distancefromuser: null),
   Eatery(
       name: 'The Crowded Bowl',
       address: 'NTU North Spine',
@@ -79,7 +60,7 @@ final List<Eatery> healthyEateries = [
       locationCoords: LatLng(1.3484483780466714, 103.68034961859597),
       thumbNail:
           'https://lh5.googleusercontent.com/p/AF1QipOfv3DSTkjsgvwCsUe_flDr4DBXneEVR1hWQCvR=w90-h90-n-k-no',
-      distanceFromUser: 2.3),
+      distancefromuser: null),
   Eatery(
       name: 'Mr Bean',
       address: 'NTU North Spine',
@@ -88,7 +69,7 @@ final List<Eatery> healthyEateries = [
       locationCoords: LatLng(1.344632016183897, 103.68045290273511),
       thumbNail:
           'https://lh5.googleusercontent.com/p/AF1QipPGoxAP7eK6C44vSIx4SdhXdp78qiZz2qKp8-o1=w90-h90-n-k-no',
-      distanceFromUser: 2.5),
+      distancefromuser: null),
   Eatery(
       name: 'Hi-Collar',
       address: '214 E 10th St',
@@ -97,7 +78,7 @@ final List<Eatery> healthyEateries = [
       locationCoords: LatLng(40.729515, -73.985927),
       thumbNail:
           'https://lh5.googleusercontent.com/p/AF1QipNhygtMc1wNzN4n6txZLzIhgJ-QZ044R4axyFZX=w90-h90-n-k-no',
-      distanceFromUser: 2.2),
+      distancefromuser: null),
   Eatery(
       name: 'Everyman Espresso',
       address: '301 W Broadway',
@@ -106,5 +87,5 @@ final List<Eatery> healthyEateries = [
       locationCoords: LatLng(40.721622, -74.004308),
       thumbNail:
           'https://lh5.googleusercontent.com/p/AF1QipOMNvnrTlesBJwUcVVFBqVF-KnMVlJMi7_uU6lZ=w90-h90-n-k-no',
-      distanceFromUser: 2.4)
+      distancefromuser: null)
 ];

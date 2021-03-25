@@ -1,26 +1,43 @@
 import 'dart:math';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 import 'Eatery.dart';
 
 // returns eateries within radius AND updates distanceFromUser attribute
-// input: list of dict
-// output: list of dict
-List<Map<String, dynamic>> filterEateryByRadius(
-    List<Map<String, dynamic>> healthyEateriesList,
+List<Eatery> filterEateryByRadius(
+    List<Eatery> EateryList,
     double userLatitude,
     double userLongitude,
     double radiusInKm) {
-  List<Map<String, dynamic>> withinRadiusEateries = [];
-  for (Map<String, dynamic> healthyEatery in healthyEateriesList) {
-    double distanceFromUser = getDistance(healthyEatery['latitude'],
-        healthyEatery['longitude'], userLatitude, userLongitude);
+
+  List<Eatery> withinRadiusEateries = [];
+
+  for (Eatery healthyEatery in EateryList) {
+    double distanceFromUser = getDistance(healthyEatery.locationCoords.latitude, healthyEatery.locationCoords.longitude, userLatitude, userLongitude);
+
     distanceFromUser = (distanceFromUser * 10).round() / 10;
-    healthyEatery['distanceFromUser'] = distanceFromUser;
+    healthyEatery.distancefromuser = distanceFromUser;
+
     if (distanceFromUser <= radiusInKm) {
       withinRadiusEateries.add(healthyEatery);
     }
   }
+  print(withinRadiusEateries[0].name);
+
   return withinRadiusEateries;
 }
+
+// return distance between the coordinates
+// output: double
+double getDistance(lat1, lon1, lat2, lon2) {
+  var p = 0.017453292519943295;
+  var c = cos;
+  var a = 0.5 -
+      c((lat2 - lat1) * p) / 2 +
+      c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p)) / 2;
+  return 12742 * asin(sqrt(a));
+}
+
 
 // returns a sample of 5 eateries
 // input: list of dict
@@ -41,13 +58,3 @@ List<Map<String, dynamic>> filterEateryByRadius(
 //   return sampleEateries;
 // }
 
-// return distance between the coordinates
-// output: double
-double getDistance(lat1, lon1, lat2, lon2) {
-  var p = 0.017453292519943295;
-  var c = cos;
-  var a = 0.5 -
-      c((lat2 - lat1) * p) / 2 +
-      c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p)) / 2;
-  return 12742 * asin(sqrt(a));
-}

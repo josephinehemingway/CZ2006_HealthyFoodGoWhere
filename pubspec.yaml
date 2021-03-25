@@ -73,6 +73,7 @@ flutter:
 #    - images/appbar_eatery.png
 #    - images/google_logo.png
 #    - images/a_dot_ham.jpeg
+    - EateryData/HealthyEateries.csv
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
