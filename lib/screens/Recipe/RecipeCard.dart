@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/screens/Recipe/Recipe.dart';
+import 'package:flutter_app/screens/Recipe/RecipeDetails.dart';
 import 'package:flutter_app/screens/Recipe/RecipeDetailsPage.dart';
+import 'package:flutter_app/services/api_services.dart';
 
 class RecipeCard extends StatelessWidget {
   String imageUrl;
   String title;
-  String duration;
+  int duration,id;
   String calories;
 
   RecipeCard({Key key,
     this.imageUrl, //insert url,
     this.title, //insert title
     this.duration, //insert duration
-    this.calories //insert calories
+    this.calories, //insert calories
+    this.id
   }) : super(key: key);
 
   @override
@@ -23,10 +27,12 @@ class RecipeCard extends StatelessWidget {
 
           children: [
             GestureDetector(
-              onTap: (){
-                Navigator.pop(context);
+              onTap: () async {
+                RecipeDetails recipeDetails = await ApiService.instance.getRecipeDetails(id);
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => (RecipeDetailsPage())));
+                    context, MaterialPageRoute(builder: (context) => (RecipeDetailsPage(
+                  recipeDetails: recipeDetails,
+                ))));
               },
               child: Container(
                 height: 210,
@@ -58,7 +64,7 @@ class RecipeCard extends StatelessWidget {
                                   Text(title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22, color: Colors.white),
                                     maxLines: 3,
                                     overflow: TextOverflow.fade,),
-                                  Text(duration, style: TextStyle(fontSize: 16, color: Colors.white)),
+                                  Text(duration.toString() + " mins", style: TextStyle(fontSize: 16, color: Colors.white)),
                                   Text(calories, style: TextStyle(fontSize: 16, color: Colors.white))])
                         ),
                       )
