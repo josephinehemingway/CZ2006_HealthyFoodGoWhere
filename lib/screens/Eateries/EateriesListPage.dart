@@ -11,6 +11,7 @@ import 'dart:convert';
 import 'Eatery.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'googleMap.dart';
+import 'package:flutter_app/widgets/my_flutter_app_icons.dart';
 
 class HealthyEateries extends StatefulWidget {
   static String routeName = '/eateries';
@@ -44,7 +45,7 @@ class _HealthyEateriesState extends State<HealthyEateries> {
             name: healthyEats[i][j].toString(),
             address: healthyEats[i][j + 1].toString(),
             description: null,
-            thumbNail: "https://lh5.googleusercontent.com/p/AF1QipNhygtMc1wNzN4n6txZLzIhgJ-QZ044R4axyFZX=w90-h90-n-k-no",
+            thumbNail: "https://d1sag4ddilekf6.cloudfront.net/compressed/merchants/4-CZJTRFUVVYMBR6/hero/eef5b5223b4e47fe826903cc14131ae1_1591598479662885781.jpeg",
             locationCoords: LatLng(
                 double.parse(healthyEats[i][j + 2].toString()), double.parse(healthyEats[i][j + 3].toString()))
         );
@@ -89,15 +90,22 @@ class _HealthyEateriesState extends State<HealthyEateries> {
         ];
       },
       body: new ListView.builder(
-              itemCount: 20,
+              itemCount: HealthyEateries._withinRadiusEateries.length,
               itemBuilder: (BuildContext context, int index) {
                 return Card(
                   margin: const EdgeInsets.all(3),
                   color: Colors.white,
                   child: ListTile(
-                    leading: Text(HealthyEateries._withinRadiusEateries[index].name),
-                    title: Text(HealthyEateries._withinRadiusEateries[index].address),
-                    // trailing: Text(healthyEats[index][2].toString()),
+                    leading: Icon(MyFlutterApp.cutlery, color: Colors.teal[100], size: 30),
+                    title: Text(HealthyEateries._withinRadiusEateries[index].name),
+                    subtitle: Text(HealthyEateries._withinRadiusEateries[index].address),
+                    trailing: IconButton(
+                      icon: Icon(Icons.location_on_rounded, color: Colors.teal[200], size:30),
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => (GoogleMapScreen())));
+                      },
+                    ),
+                    onTap: () {},
                   ),
                 );
               },
