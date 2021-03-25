@@ -9,9 +9,9 @@ import 'dart:math';
 
 class ApiService {
   ApiService._instantiate();
-
+  int id;
   static final ApiService instance = ApiService._instantiate();
-
+  List<Recipe> recipelist=[];
   //add base URL for spoonacular API, endpoint and API key as constant
   final String _baseURL = "api.spoonacular.com";
   static const String API_KEY = "07eeb2eabcc448ceb5363f7c3dcbf0f5";
@@ -75,7 +75,6 @@ class ApiService {
   }
 
   Future<List<Recipe>> getListOfRecipe(int size) async{
-    List<Recipe> recipelist;
     for (int i=0; i<size; i++){
       Random random= new Random();
       int id= random.nextInt(8000);

@@ -7,14 +7,15 @@ import 'package:flutter_app/services/api_services.dart';
 class RecipeCard extends StatelessWidget {
   String imageUrl;
   String title;
-  int duration;
+  int duration,id;
   String calories;
 
   RecipeCard({Key key,
     this.imageUrl, //insert url,
     this.title, //insert title
     this.duration, //insert duration
-    this.calories //insert calories
+    this.calories, //insert calories
+    this.id
   }) : super(key: key);
 
   @override
@@ -27,7 +28,7 @@ class RecipeCard extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () async {
-                RecipeDetails recipeDetails = await ApiService.instance.getRecipeDetails(7777);
+                RecipeDetails recipeDetails = await ApiService.instance.getRecipeDetails(id);
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => (RecipeDetailsPage(
                   recipeDetails: recipeDetails,
