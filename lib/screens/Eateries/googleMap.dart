@@ -6,8 +6,7 @@ import 'package:flutter_app/widgets/customAppBar.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async' show Future;
 import 'Eatery.dart';
-import 'package:flutter/services.dart' show rootBundle;
-import 'package:csv/csv.dart' as csv;
+import 'EateriesListPage.dart';
 
 class GoogleMapScreen extends StatefulWidget {
   @override
@@ -16,15 +15,18 @@ class GoogleMapScreen extends StatefulWidget {
 
 class _GoogleMapScreenState extends State<GoogleMapScreen> {
   List<Marker> allMarkers = [];
+  List<Eatery> eateriesInRange = getEateriesInRadius().sublist(5,11);
+
   PageController _pageController;
   int prevPage;
   GoogleMapController _controller;
 
+
   void initState() {
     // TODO: implement initState
     super.initState();
-    
-    healthyEateries.forEach((element) {
+
+    eateriesInRange.forEach((element) {
       allMarkers.add(Marker(
           markerId: MarkerId(element.name),
           draggable: false,
@@ -54,7 +56,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
         }
         return Center(
           child: SizedBox(
-            height: Curves.easeInOut.transform(value) * 115.0,
+            height: Curves.easeInOut.transform(value) * 125.0,
             width: Curves.easeInOut.transform(value) * 350.0,
             child: widget,
           ),
@@ -69,10 +71,10 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
                 child: Container(
                     margin: EdgeInsets.symmetric(
                       horizontal: 10.0,
-                      vertical: 0.0,
+                      vertical: 10.0,
                     ),
-                    height: 190.0,
-                    width: 375.0,
+                    height: 155.0,
+                    width: 310.0,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.0),
                         boxShadow: [
@@ -89,37 +91,39 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
                             color: Colors.white),
                         child: Row(children: [
                           Container(
-                              height: 123.0,
-                              width: 113.0,
+                              height: 105.0,
+                              width: 90.0,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(10.0),
                                       topLeft: Radius.circular(10.0)),
                                   image: DecorationImage(
                                       image: NetworkImage(
-                                          healthyEateries[index].thumbNail),
+                                          eateriesInRange[index].thumbNail),
                                       fit: BoxFit.cover))),
-                          SizedBox(width: 20.0),
+                          SizedBox(width: 10.0),
                           Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  healthyEateries[index].name,
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Text(
-                                  healthyEateries[index].address,
-                                  style: TextStyle(
-                                      fontSize: 14.0,
-                                      fontWeight: FontWeight.w600),
-                                ),
                                 Container(
-                                  width: 200.0,
-                                  child: Text(
-                                    healthyEateries[index].description,
+                                  width: 180.0,
+                                  child: Text(eateriesInRange[index].name,
+                                    style: TextStyle(
+                                        fontSize: 18.0,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                SizedBox(height: 10.0),
+                                // Text(
+                                //   eateriesInRange[index].address,
+                                //   style: TextStyle(
+                                //       fontSize: 12.0,
+                                //       fontWeight: FontWeight.w300),
+                                // ),
+                                Container(
+                                  width: 180.0,
+                                  child: Text(eateriesInRange[index].address,
                                     style: TextStyle(
                                         fontSize: 12.0,
                                         fontWeight: FontWeight.w300),
@@ -138,7 +142,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
 
   moveCamera() {
     _controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-        target: healthyEateries[_pageController.page.toInt()].locationCoords,
+        target: eateriesInRange[_pageController.page.toInt()].locationCoords,
         zoom: 18.0,
         bearing: 45.0,
         tilt: 10.0)));
@@ -169,7 +173,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
                 width: MediaQuery.of(context).size.width,
                 child: PageView.builder(
                   controller: _pageController,
-                  itemCount: healthyEateries.length,
+                  itemCount: eateriesInRange.length,
                   itemBuilder: (BuildContext context, int index) {
                     return _healthyEateriesList(index);
                   },

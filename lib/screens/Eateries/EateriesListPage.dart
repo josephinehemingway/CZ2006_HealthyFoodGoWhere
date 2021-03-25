@@ -1,31 +1,31 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_app/screens/Eateries/googleMap.dart';
-import 'package:flutter_app/screens/Home/HomeMenu.dart';
 import 'package:flutter_app/screens/Home/HomePage.dart';
 import 'package:geolocator/geolocator.dart';
 import '../../widgets/bottomNavBar.dart';
 import '../../widgets/customAppBar.dart';
-import '../../widgets/my_flutter_app_icons.dart';
 import 'HealthyEateryRecommender.dart';
 import 'package:csv/csv.dart' as csv;
 import 'dart:convert';
 import 'Eatery.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'googleMap.dart';
 
 class HealthyEateries extends StatefulWidget {
   static String routeName = '/eateries';
+  static List<Eatery> _withinRadiusEateries = [];
   @override
   _HealthyEateriesState createState() => _HealthyEateriesState();
+}
+
+List<Eatery> getEateriesInRadius(){
+  return(HealthyEateries._withinRadiusEateries);
 }
 
 class _HealthyEateriesState extends State<HealthyEateries> {
   List<List<dynamic>> healthyEats = [];
   List<List<String>> eatery = [];
-  List<Eatery> withinRadiusEateries = [];
-
 
   loadAsset() async {
     final myEats =  await rootBundle.loadString('EateryData/HealthyEateriesNew.csv');
@@ -43,14 +43,13 @@ class _HealthyEateriesState extends State<HealthyEateries> {
         Eatery eateryobj = Eatery(
             name: healthyEats[i][j].toString(),
             address: healthyEats[i][j + 1].toString(),
+            description: null,
+            thumbNail: "https://lh5.googleusercontent.com/p/AF1QipNhygtMc1wNzN4n6txZLzIhgJ-QZ044R4axyFZX=w90-h90-n-k-no",
             locationCoords: LatLng(
                 double.parse(healthyEats[i][j + 2].toString()), double.parse(healthyEats[i][j + 3].toString()))
         );
-
         EateryList.add(eateryobj);
       }
-      // print(EateryList.length);
-      print(EateryList[1].name);
   }
 
   @override
@@ -67,8 +66,9 @@ class _HealthyEateriesState extends State<HealthyEateries> {
       onPressed: () async{
         await loadAsset();
         createEateryList();
-        withinRadiusEateries = filterEateryByRadius(EateryList, 1.344449690791518, 103.68036711260291, 2);
-        // Navigator.push(context, MaterialPageRoute(builder: (context) => (GoogleMapScreen())));
+        HealthyEateries._withinRadiusEateries = filterEateryByRadius(EateryList, 1.344449690791518, 103.68036711260291, 1.5);
+
+        Navigator.push(context, MaterialPageRoute(builder: (context) => (GoogleMapScreen())));
 
       },),
         resizeToAvoidBottomInset: false,
@@ -95,8 +95,8 @@ class _HealthyEateriesState extends State<HealthyEateries> {
                   margin: const EdgeInsets.all(3),
                   color: Colors.white,
                   child: ListTile(
-                    leading: Text(withinRadiusEateries[index].name),
-                    title: Text(withinRadiusEateries[index].address),
+                    leading: Text(HealthyEateries._withinRadiusEateries[index].name),
+                    title: Text(HealthyEateries._withinRadiusEateries[index].address),
                     // trailing: Text(healthyEats[index][2].toString()),
                   ),
                 );

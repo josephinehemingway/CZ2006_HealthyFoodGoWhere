@@ -16,14 +16,13 @@ List<Eatery> filterEateryByRadius(
     double distanceFromUser = getDistance(healthyEatery.locationCoords.latitude, healthyEatery.locationCoords.longitude, userLatitude, userLongitude);
 
     distanceFromUser = (distanceFromUser * 10).round() / 10;
-
     healthyEatery.distancefromuser = distanceFromUser;
 
     if (distanceFromUser <= radiusInKm) {
       withinRadiusEateries.add(healthyEatery);
     }
   }
-  print(withinRadiusEateries[2].address);
+  print(withinRadiusEateries[0].name);
 
   return withinRadiusEateries;
 }
