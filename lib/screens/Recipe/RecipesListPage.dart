@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_app/screens/Recipe/RecipeCard.dart';
 import 'package:flutter_app/screens/Recipe/Recipe.dart';
+import '../../CurrentUser.dart';
 import '../../widgets/customAppBar.dart';
 import '../Home/HomePage.dart';
 import '../../widgets/bottomNavBar.dart';
@@ -19,8 +20,7 @@ class HealthyRecipes extends StatefulWidget {
 
 class _HealthyRecipesState extends State<HealthyRecipes> with SingleTickerProviderStateMixin {
 
-  Future<List<Recipe>> recipe_Data = ApiService.instance.getListOfRecipe(6);
-
+  CurrentUser user= CurrentUser();
   List<Widget> recipeData2 = [];
 
   List<Widget> recipeData = [
@@ -120,11 +120,11 @@ class _HealthyRecipesState extends State<HealthyRecipes> with SingleTickerProvid
       },
       body: Container(
         child: FutureBuilder<List<Recipe>>(
-          future: ApiService.instance.getListOfRecipe(3),
+          future: ApiService.instance.getListOfRecipe(1,user),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               final recipelist = snapshot.data;
-              for (int i=0; i<3;i++) {
+              for (int i=0; i<1;i++) {
                 var title = recipelist[i].title;
                 var id = recipelist[i].id;
                 var url = recipelist[i].image;
