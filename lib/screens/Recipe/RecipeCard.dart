@@ -65,7 +65,7 @@ class RecipeCard extends StatelessWidget {
                                     maxLines: 3,
                                     overflow: TextOverflow.fade,),
                                   Text(duration.toString() + " mins", style: TextStyle(fontSize: 16, color: Colors.white)),
-                                  Text(calories, style: TextStyle(fontSize: 16, color: Colors.white))])
+                                  Text(calories + " calories", style: TextStyle(fontSize: 16, color: Colors.white))])
                         ),
                       )
                     ],

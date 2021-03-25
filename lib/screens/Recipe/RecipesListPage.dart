@@ -129,13 +129,19 @@ class _HealthyRecipesState extends State<HealthyRecipes> with SingleTickerProvid
                 var id = recipelist[i].id;
                 var url = recipelist[i].image;
                 var duration = recipelist[i].readyInMinutes;
+                var summary = recipelist[i].summary;
+                final start = "contains <b>";
+                final end = "calories";
+                final startIndex = summary.indexOf(start);
+                final endIndex = summary.indexOf(end);
+                var calories = summary.substring(startIndex + start.length, endIndex).trim();
 
                 recipeData.add(RecipeCard(
                   imageUrl: url,
                   title: title,
                   id: id,
                   duration: duration,
-                  calories: '188kCal',));
+                  calories: calories,));
               }
               return ListView.builder(
                 itemCount: recipeData.length,
