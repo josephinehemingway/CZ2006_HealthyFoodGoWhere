@@ -8,7 +8,7 @@ class CurrentUser {
   String _email;
   String _profilePic;
   List <String> _intolerances = [];
-  List <String> _dietaryPref = [];
+  List <String> _dietaryPref = ["Vegetarian"];
 
   void printCurrentUser(){
     print(

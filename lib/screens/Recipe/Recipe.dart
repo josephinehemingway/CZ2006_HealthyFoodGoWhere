@@ -2,7 +2,7 @@ class Recipe {
   int id,readyInMinutes;
   String title, image;
   List diets;
-  bool dairyFree,glutenFree,ketogenic,vegan,vegetarian,whole30;
+  bool dairyFree,glutenFree,ketogenic,vegan,vegetarian,whole30,veryHealthy;
   Recipe({
     this.id,
     this.title,
@@ -14,7 +14,8 @@ class Recipe {
     this.ketogenic,
     this.vegan,
     this.vegetarian,
-    this.whole30
+    this.whole30,
+    this.veryHealthy
   });
 
   //This class has ID which allows us to get Recipes and other info
@@ -26,7 +27,14 @@ class Recipe {
       title:json['title'],
       image:json['image'],
       readyInMinutes: json['readyInMinutes'],
-
+      diets: json['diets'],
+      dairyFree: json['dairyFree'],
+      glutenFree: json['glutenFree'],
+      ketogenic: json['ketogenic'],
+      vegan: json['vegan'],
+      vegetarian: json['vegetarian'],
+      whole30: json['whole30'],
+      veryHealthy: json['veryHealthy']
     );
   }
 
