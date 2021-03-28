@@ -126,7 +126,7 @@ SliverAppBar RecipeAppBar(String title, context, Widget prevPg, String image){
     flexibleSpace: FlexibleSpaceBar(
       centerTitle: true,
       title: Text(title, style: TextStyle(fontSize: 20, color: Colors.white)),
-      background: Image.asset(image, fit: BoxFit.cover),
+      background: Image.network(image, fit: BoxFit.cover),
     ),
   );
 }

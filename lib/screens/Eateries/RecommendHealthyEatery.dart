@@ -1,6 +1,5 @@
 import 'dart:math';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-
 import 'Eatery.dart';
 
 // returns eateries within radius AND updates distanceFromUser attribute

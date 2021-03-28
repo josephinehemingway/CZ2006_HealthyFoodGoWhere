@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/screens/Eateries/EateriesListPage.dart';
-import 'package:flutter_app/screens/Home/HomePage.dart';
+import 'package:flutter_app/screens/Eateries/EateriesListUI.dart';
+import 'package:flutter_app/screens/Home/HomeUI.dart';
 import 'package:flutter_app/widgets/bottomNavBar.dart';
 import 'package:flutter_app/widgets/customAppBar.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async' show Future;
 import 'Eatery.dart';
-import 'EateriesListPage.dart';
+import 'EateriesListUI.dart';
 
 class GoogleMapScreen extends StatefulWidget {
   @override

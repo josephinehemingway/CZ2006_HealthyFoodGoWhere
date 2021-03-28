@@ -3,7 +3,7 @@ import 'package:flutter_app/animation.dart';
 import 'package:flutter_app/widgets/bottomNavBar.dart';
 import 'package:flutter_app/widgets/customAppBar.dart';
 import 'package:flutter_app/widgets/customCheckbox.dart';
-import 'ProfilePage.dart';
+import 'ProfileUI.dart';
 
 class EditPreferences extends StatefulWidget {
   static String routeName = '/editPref';

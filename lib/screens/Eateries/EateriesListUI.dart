@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_app/screens/Home/HomePage.dart';
+import 'package:flutter_app/screens/Home/HomeUI.dart';
 import 'package:geolocator/geolocator.dart';
 import '../../widgets/bottomNavBar.dart';
 import '../../widgets/customAppBar.dart';
-import 'HealthyEateryRecommender.dart';
+import 'RecommendHealthyEatery.dart';
 import 'package:csv/csv.dart' as csv;
 import 'dart:convert';
 import 'Eatery.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'googleMap.dart';
-import 'package:flutter_app/widgets/my_flutter_app_icons.dart';
+import 'googleMapUI.dart';
+import 'package:flutter_app/widgets/customIcons.dart';
 
 class HealthyEateries extends StatefulWidget {
   static String routeName = '/eateries';
