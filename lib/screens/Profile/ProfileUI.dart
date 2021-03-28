@@ -53,13 +53,13 @@ class _ProfileState extends State<Profile> {
               },
             )),
 
-            FadeAnimation_Y(1,ProfileMenu(
-              text: "My Intolerances",
-              icon: Icon(Icons.dangerous),
-              press: () => {
-                // Navigator.pop(context),
-                Navigator.pushNamed(context, '/editIntolerance')},
-            )),
+            // FadeAnimation_Y(1,ProfileMenu(
+            //   text: "My Intolerances",
+            //   icon: Icon(Icons.dangerous),
+            //   press: () => {
+            //     // Navigator.pop(context),
+            //     Navigator.pushNamed(context, '/editIntolerance')},
+            // )),
 
             FadeAnimation_Y(1,ProfileMenu(
               text: "Log Out",
