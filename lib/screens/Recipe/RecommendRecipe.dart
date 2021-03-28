@@ -12,10 +12,10 @@ class RecommendRecipe {
 
   static int selectedRecipes(Recipe recipe, CurrentUser user) {
     int k = 0;
-    if (recipe.veryHealthy == false) {
-      return 1;
-    }
-    else {
+    // if (recipe.veryHealthy == false) {
+    //   return 1;
+    // }
+    // else {
       for (int i = 0; i < user.dietList.length; i++) {
         if (user.dietList[i] == "Dairy Free") {
           if (recipe.dairyFree == false) {
@@ -57,4 +57,3 @@ class RecommendRecipe {
       return k;
     }
   }
-}
