@@ -1,11 +1,15 @@
 import 'package:flutter_app/screens/Profile/EditPreferencesUI.dart';
 import 'auth.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter_app/screens/Eateries/googleMapUI.dart';
 
 class CurrentUser {
   String _id;
   String _name;
   String _email;
   String _profilePic;
+  LatLng _curlocation;
+
   List <String> _dietaryPref = ["Vegetarian"];
 
   void printCurrentUser(){
@@ -14,9 +18,16 @@ class CurrentUser {
             "\nUser Name: " + name +
             "\nUser Email: " + email +
             "\nUser PhotoURL: " + profilePic +
-            "\nUser Dietary Pref: " + dietList.toString()
+            "\nUser Dietary Pref: " + dietList.toString() +
+            "\nUser Current Location: " + curlocation.toString()
 
     );
+  }
+
+  LatLng get curlocation => _curlocation;
+
+  set curlocation(LatLng value) {
+    _curlocation = value;
   }
 
   String get id => _id;
