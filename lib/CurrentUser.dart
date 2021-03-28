@@ -1,4 +1,3 @@
- import 'package:flutter_app/screens/Profile/EditIntoleranceUI.dart';
 import 'package:flutter_app/screens/Profile/EditPreferencesUI.dart';
 import 'auth.dart';
 
@@ -7,7 +6,6 @@ class CurrentUser {
   String _name;
   String _email;
   String _profilePic;
-  List <String> _intolerances = [];
   List <String> _dietaryPref = ["Vegetarian"];
 
   void printCurrentUser(){
@@ -16,7 +14,6 @@ class CurrentUser {
             "\nUser Name: " + name +
             "\nUser Email: " + email +
             "\nUser PhotoURL: " + profilePic +
-            "\nUser Intolerances: " + intolList.toString() +
             "\nUser Dietary Pref: " + dietList.toString()
 
     );
@@ -46,11 +43,6 @@ class CurrentUser {
     _email = value;
   }
 
-  void setIntolerances(List<String> intolList){
-    _intolerances = intolList;
-  }
-
-  List <String> get intolList => _intolerances;
 
   void setDietPref(List<String> dietList){
     _dietaryPref = dietList;

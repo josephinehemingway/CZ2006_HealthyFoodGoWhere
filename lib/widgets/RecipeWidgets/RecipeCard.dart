@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/Recipe/Recipe.dart';
 import 'package:flutter_app/screens/Recipe/RecipeDetails.dart';
-import 'package:flutter_app/screens/Recipe/RecipeDetailsPage.dart';
+import 'package:flutter_app/screens/Recipe/RecipeDetailsUI.dart';
 import 'package:flutter_app/services/api_services.dart';
 
 class RecipeCard extends StatelessWidget {
@@ -31,7 +31,7 @@ class RecipeCard extends StatelessWidget {
                 RecipeDetails recipeDetails = await ApiService.instance.getRecipeDetails(id);
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => (RecipeDetailsPage(
-                  recipeDetails: recipeDetails,
+                  recipeDetails: recipeDetails, recipeTitle: title, recipeImg: imageUrl,
                 ))));
               },
               child: Container(

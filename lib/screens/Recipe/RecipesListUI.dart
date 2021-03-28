@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_app/screens/Recipe/RecipeCard.dart';
+import 'package:flutter_app/widgets/RecipeWidgets/RecipeCard.dart';
 import 'package:flutter_app/screens/Recipe/Recipe.dart';
 import '../../CurrentUser.dart';
 import '../../widgets/customAppBar.dart';
-import '../Home/HomePage.dart';
+import '../Home/HomeUI.dart';
 import '../../widgets/bottomNavBar.dart';
 import '../../animation.dart';
-import '../../widgets/my_flutter_app_icons.dart';
+import '../../widgets/customIcons.dart';
 import 'package:flutter_app/services/api_services.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
@@ -21,8 +21,6 @@ class HealthyRecipes extends StatefulWidget {
 class _HealthyRecipesState extends State<HealthyRecipes> with SingleTickerProviderStateMixin {
 
   CurrentUser user= CurrentUser();
-  List<Widget> recipeData2 = [];
-
   List<Widget> recipeData = [
     // RecipeCard(
     //   title: 'Avocado Toast',

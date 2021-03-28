@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_app/screens/Recipe/Recipe.dart';
-import 'package:flutter_app/screens/Recipe/RecipeCard.dart';
+import 'package:flutter_app/widgets/RecipeWidgets/RecipeCard.dart';
 import 'package:flutter_app/screens/Recipe/RecipeDetails.dart';
 import 'package:flutter_app/screens/Recipe/RecommendRecipe.dart';
 import 'package:http/http.dart' as http;

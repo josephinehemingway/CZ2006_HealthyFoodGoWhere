@@ -3,7 +3,10 @@ import 'package:flutter_app/animation.dart';
 import 'package:flutter_app/widgets/bottomNavBar.dart';
 import 'package:flutter_app/widgets/customAppBar.dart';
 import 'package:flutter_app/widgets/customCheckbox.dart';
-import 'ProfilePage.dart';
+import 'ProfileUI.dart';
+import 'package:flutter_app/widgets/ProfileWidgets/ProfileMenu.dart';
+import 'package:flutter_app/CurrentUser.dart';
+
 
 class EditPreferences extends StatefulWidget {
   static String routeName = '/editPref';
@@ -13,20 +16,18 @@ class EditPreferences extends StatefulWidget {
 
 class _EditPreferencesState extends State<EditPreferences> {
 
+  CurrentUser curUser = CurrentUser();
+  List<String> userPreferenceList = [];
+
   List<String> preferenceList = [];
   List<String> dietList = [
-    'Vegetarian',
-    'Vegan',
+    'Dairy Free',
     'Gluten Free',
     'Ketogenic',
-    'Lacto-Vegetarian',
-    'Ovo-Vegetarian',
-    'Pescetarian',
-    'Paleo',
-    'Primal',
+    'Vegan',
+    'Vegetarian',
     'Whole30'
   ];
-
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -40,17 +41,16 @@ class _EditPreferencesState extends State<EditPreferences> {
               width: double.infinity,
             child: Column(
                 children: <Widget>[
+                  SizedBox(height: 20,),
                   FadeAnimation_Y(1.2, customCheckBox(title: dietList[0],list: preferenceList)),
                   FadeAnimation_Y(1.2, customCheckBox(title: dietList[1],list: preferenceList)),
                   FadeAnimation_Y(1.2, customCheckBox(title: dietList[2],list: preferenceList)),
                   FadeAnimation_Y(1.2, customCheckBox(title: dietList[3],list: preferenceList)),
                   FadeAnimation_Y(1.2, customCheckBox(title: dietList[4],list: preferenceList)),
                   FadeAnimation_Y(1.2, customCheckBox(title: dietList[5],list: preferenceList)),
-                  FadeAnimation_Y(1.2, customCheckBox(title: dietList[6],list: preferenceList)),
-                  FadeAnimation_Y(1.2, customCheckBox(title: dietList[7],list: preferenceList)),
-                  FadeAnimation_Y(1.2, customCheckBox(title: dietList[8],list: preferenceList)),
-                  FadeAnimation_Y(1.2, customCheckBox(title: dietList[9],list: preferenceList)),
-                  SizedBox(height: 20,),
+                  SizedBox(height: 60,),
+                  FadeAnimation_Y(1.2, saveButton(context, userPreferenceList, curUser)),
+
                   ]
             )
         )

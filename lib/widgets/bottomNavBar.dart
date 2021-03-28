@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import '../animation.dart';
-import '../screens/Home/HomePage.dart';
-import '../screens/Login/LoginPage.dart';
-import '../screens/Eateries/EateriesListPage.dart';
-import '../screens/Profile/ProfilePage.dart';
-import '../screens/Recipe/RecipesListPage.dart';
-import 'package:flutter_app/widgets/my_flutter_app_icons.dart';
+import '../screens/Home/HomeUI.dart';
+import '../screens/Login/LoginUI.dart';
+import '../screens/Eateries/EateriesListUI.dart';
+import '../screens/Profile/ProfileUI.dart';
+import '../screens/Recipe/RecipesListUI.dart';
+import 'package:flutter_app/widgets/customIcons.dart';
 
 /*
 class BottomNavBar extends StatefulWidget {

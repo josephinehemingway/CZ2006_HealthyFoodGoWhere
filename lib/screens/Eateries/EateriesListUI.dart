@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_app/screens/Home/HomePage.dart';
+import 'package:flutter_app/screens/Home/HomeUI.dart';
 import 'package:geolocator/geolocator.dart';
 import '../../widgets/bottomNavBar.dart';
 import '../../widgets/customAppBar.dart';
-import 'HealthyEateryRecommender.dart';
+import 'RecommendHealthyEatery.dart';
 import 'package:csv/csv.dart' as csv;
 import 'dart:convert';
 import 'Eatery.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'googleMap.dart';
-import 'package:flutter_app/widgets/my_flutter_app_icons.dart';
+import 'googleMapUI.dart';
+import 'package:flutter_app/widgets/customIcons.dart';
 
 class HealthyEateries extends StatefulWidget {
   static String routeName = '/eateries';
@@ -75,7 +75,7 @@ class _HealthyEateriesState extends State<HealthyEateries> {
         resizeToAvoidBottomInset: false,
         bottomNavigationBar: BottomNavBar(selectedMenu: MenuState.eatery),
         body: nested(),
-      );
+  );
 
   nested() {
     return NestedScrollView(
@@ -92,22 +92,39 @@ class _HealthyEateriesState extends State<HealthyEateries> {
       body: new ListView.builder(
               itemCount: HealthyEateries._withinRadiusEateries.length,
               itemBuilder: (BuildContext context, int index) {
-                return Card(
-                  margin: const EdgeInsets.all(3),
-                  color: Colors.white,
-                  child: ListTile(
-                    leading: Icon(MyFlutterApp.cutlery, color: Colors.teal[100], size: 30),
-                    title: Text(HealthyEateries._withinRadiusEateries[index].name),
-                    subtitle: Text(HealthyEateries._withinRadiusEateries[index].address),
-                    trailing: IconButton(
-                      icon: Icon(Icons.location_on_rounded, color: Colors.teal[200], size:30),
-                      onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => (GoogleMapScreen())));
-                      },
-                    ),
-                    onTap: () {},
-                  ),
-                );
+                return Container(
+                    height: 130,
+                    child: Card(
+                        margin: const EdgeInsets.all(5),
+                        color: Colors.white,
+                        elevation: 2,
+
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[ListTile(
+
+                          leading: Icon(MyFlutterApp.cutlery, color: Colors.teal[100], size: 40),
+                          title: Text(HealthyEateries._withinRadiusEateries[index].name),
+                          subtitle: Text(HealthyEateries._withinRadiusEateries[index].address),
+                          trailing:
+                            IconButton(
+                              icon: Icon(Icons.location_on_rounded, color: Colors.teal[200], size:40),
+                              onPressed: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => (GoogleMapScreen())));
+                              },
+                            ),
+                          ),
+
+                            Row(
+                              children: <Widget>[
+                                SizedBox(width: 72,),
+                                Text(HealthyEateries._withinRadiusEateries[index].distancefromuser.toString() + " km", style: TextStyle(fontSize: 18))
+                              ],
+                            )
+
+                          ])
+                ));
               },
             ),
     );
