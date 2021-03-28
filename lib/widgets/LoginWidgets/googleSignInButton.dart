@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_app/screens/Home/HomePage.dart';
+import 'package:flutter_app/screens/Home/HomeUI.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_app/CurrentUser.dart';
 

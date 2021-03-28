@@ -7,7 +7,6 @@ class CurrentUser {
   String _name;
   String _email;
   String _profilePic;
-  List <String> _intolerances = [];
   List <String> _dietaryPref = [];
 
   void printCurrentUser(){
@@ -45,12 +44,6 @@ class CurrentUser {
   set email(String value) {
     _email = value;
   }
-
-  void setIntolerances(List<String> intolList){
-    _intolerances = intolList;
-  }
-
-  List <String> get intolList => _intolerances;
 
   void setDietPref(List<String> dietList){
     _dietaryPref = dietList;

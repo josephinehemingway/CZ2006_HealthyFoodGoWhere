@@ -41,19 +41,15 @@ class RecommendRecipe {
           if (recipe.vegetarian == false) {
             return 1;
           }
-          else if (user.dietList[i] == "Gluten Free") {
-            if (recipe.glutenFree == false) {
-              return 1;
-            }
-          }
-          else if (user.dietList[i] == "Whole 30") {
-            if (recipe.whole30 == false) {
-              return 1;
-            }
+        }
+        else if (user.dietList[i] == "Whole 30") {
+          if (recipe.whole30 == false) {
+            return 1;
           }
         }
       }
 
       return k;
     }
-  }
+  // }
+}
