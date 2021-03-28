@@ -75,7 +75,7 @@ class _HealthyEateriesState extends State<HealthyEateries> {
         resizeToAvoidBottomInset: false,
         bottomNavigationBar: BottomNavBar(selectedMenu: MenuState.eatery),
         body: nested(),
-      );
+  );
 
   nested() {
     return NestedScrollView(

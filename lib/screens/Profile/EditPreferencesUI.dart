@@ -41,14 +41,16 @@ class _EditPreferencesState extends State<EditPreferences> {
               width: double.infinity,
             child: Column(
                 children: <Widget>[
+                  SizedBox(height: 20,),
                   FadeAnimation_Y(1.2, customCheckBox(title: dietList[0],list: preferenceList)),
                   FadeAnimation_Y(1.2, customCheckBox(title: dietList[1],list: preferenceList)),
                   FadeAnimation_Y(1.2, customCheckBox(title: dietList[2],list: preferenceList)),
                   FadeAnimation_Y(1.2, customCheckBox(title: dietList[3],list: preferenceList)),
                   FadeAnimation_Y(1.2, customCheckBox(title: dietList[4],list: preferenceList)),
                   FadeAnimation_Y(1.2, customCheckBox(title: dietList[5],list: preferenceList)),
-                  saveButton(context, userPreferenceList, curUser),
-                  SizedBox(height: 20,),
+                  SizedBox(height: 60,),
+                  FadeAnimation_Y(1.2, saveButton(context, userPreferenceList, curUser)),
+
                   ]
             )
         )
