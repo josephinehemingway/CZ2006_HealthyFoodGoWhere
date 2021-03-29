@@ -88,7 +88,7 @@ class _HealthyRecipesListState extends State<HealthyRecipesList> with SingleTick
       controller: _scrollController,
       headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
         return <Widget>[
-          collapsibleAppBar('Healthy Recipes',
+          recipeListAppBar('Healthy Recipes',
               'These healthy recipes are tailored to your preferences and will help you achieve your goal!',
               context, HomeUI(),
               'images/appbar_recipe.png'),

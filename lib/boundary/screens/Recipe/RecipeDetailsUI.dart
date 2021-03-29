@@ -19,8 +19,6 @@ class RecipeDetailsPage extends StatefulWidget {
   _RecipeDetailsPageState createState() => _RecipeDetailsPageState();
 }
 
-
-
 class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
   @override
   Widget build(BuildContext context) {

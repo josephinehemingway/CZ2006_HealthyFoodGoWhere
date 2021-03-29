@@ -13,6 +13,7 @@ import 'googleMapUI.dart';
 import 'package:flutter_app/boundary/widgets/customIcons.dart';
 import '../../widgets/animation.dart';
 import 'package:flutter_app/entity/CurrentUser.dart';
+import 'filterRadiusUI.dart';
 
 class HealthyEateriesList extends StatefulWidget {
   static String routeName = '/eateries';
@@ -72,7 +73,8 @@ class _HealthyEateriesListState extends State<HealthyEateriesList> {
 
     await loadAsset();
     createEateryList();
-    HealthyEateriesList._withinRadiusEateries = filterEateryByRadius(EateryList, HealthyEateriesList.currentPosition.latitude, HealthyEateriesList.currentPosition.longitude, 1.5);
+    HealthyEateriesList._withinRadiusEateries = filterEateryByRadius(EateryList,
+        HealthyEateriesList.currentPosition.latitude, HealthyEateriesList.currentPosition.longitude, filterRadius.value);
   }
 
   @override
@@ -99,11 +101,12 @@ class _HealthyEateriesListState extends State<HealthyEateriesList> {
     return NestedScrollView(
       headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
         return <Widget>[
-          collapsibleAppBar(
+          eateryAppBar(
               'Healthy Eateries',
               'These nearby eateries are recommended to you based on your dietary preferences, the set location and the radii distance',
               context,
               HomeUI(),
+              filterRadius(),
               'images/appbar_eatery.png'),
         ];
       },

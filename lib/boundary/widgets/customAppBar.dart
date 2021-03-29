@@ -16,7 +16,7 @@ AppBar myAppBar(String title, context, Widget prevPg){
   );
 }
 
-SliverAppBar collapsibleAppBar(String title, String subtitle, context, Widget prevPg, String image){
+SliverAppBar eateryAppBar(String title, String subtitle, context, Widget prevPg, Widget nextPg, String image){
   return SliverAppBar(
     leading: IconButton(
       onPressed: () {
@@ -37,11 +37,35 @@ SliverAppBar collapsibleAppBar(String title, String subtitle, context, Widget pr
     actions: <Widget>[
       IconButton(icon: Icon(Icons.filter_alt, size: 22, color: Colors.white,),
           onPressed: (){
-            // Navigator.pop(context);
+            Navigator.push(context, MaterialPageRoute(builder: (context) => (nextPg)));
           }
       ),
     ],
 
+    flexibleSpace: FlexibleSpaceBar(
+      background: AppBarContents(subtitle: subtitle, image: image),
+      centerTitle: true,
+    ),
+  );
+}
+
+SliverAppBar recipeListAppBar(String title, String subtitle, context, Widget prevPg, String image){
+  return SliverAppBar(
+    leading: IconButton(
+      onPressed: () {
+        Navigator.pop(context);
+        Navigator.push(context, MaterialPageRoute(builder: (context) => (prevPg)));
+      },
+      icon: Icon(Icons.arrow_back_ios, size: 20, color: Colors.white,),
+    ),
+
+    elevation: 0,
+    backgroundColor: Colors.teal[200],
+    title: Text(title, style: TextStyle(fontSize: 24, color: Colors.white)),
+    centerTitle: true,
+    expandedHeight: 190.0,
+    floating: false,
+    pinned: true,
     flexibleSpace: FlexibleSpaceBar(
       background: AppBarContents(subtitle: subtitle, image: image),
       centerTitle: true,
@@ -98,7 +122,6 @@ class AppBarContents extends StatelessWidget {
   }
 }
 
-//special app bar for recipe page
 SliverAppBar RecipeAppBar(String title, context, Widget prevPg, String image){
   return SliverAppBar(
     leading: IconButton(
@@ -114,14 +137,6 @@ SliverAppBar RecipeAppBar(String title, context, Widget prevPg, String image){
     expandedHeight: 190.0,
     floating: false,
     pinned: true,
-
-    actions: <Widget>[
-      IconButton(icon: Icon(Icons.filter_alt, size: 22, color: Colors.white,),
-          onPressed: (){
-            // Navigator.pop(context);
-          }
-      ),
-    ],
 
     flexibleSpace: FlexibleSpaceBar(
       centerTitle: true,
