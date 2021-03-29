@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_app/widgets/HomeWidgets/HomeMenu.dart';
-import 'package:flutter_app/widgets/ProfileWidgets/ProfilePic.dart';
-import 'package:flutter_app/widgets/customIcons.dart';
+import '../../widgets/customIcons.dart';
 import '../Eateries/EateriesListUI.dart';
+import '../../widgets/HomeWidgets/HomeMenu.dart';
+import '../../widgets/ProfileWidgets/ProfilePic.dart';
 import '../Recipe/RecipesListUI.dart';
-import '../../animation.dart';
+import '../../widgets/animation.dart';
 import '../../widgets/bottomNavBar.dart';
 // resources: https://brainsandbeards.com/blog/bottom-navigation-with-a-list-screen-in-flutter
 

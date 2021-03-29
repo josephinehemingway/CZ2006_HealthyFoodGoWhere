@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Authenticator.dart';
+import 'package:flutter_app/control/Authenticator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_app/screens/Home/HomeUI.dart';
-import 'package:provider/provider.dart';
-import 'package:flutter_app/CurrentUser.dart';
+import 'package:flutter_app/boundary/screens/Home/HomeUI.dart';
+import 'package:flutter_app/entity/CurrentUser.dart';
 
 class GoogleSignInButton extends StatelessWidget {
   User user;

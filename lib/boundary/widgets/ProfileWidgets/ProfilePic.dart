@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Authenticator.dart';
+import 'package:flutter_app/control/Authenticator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 

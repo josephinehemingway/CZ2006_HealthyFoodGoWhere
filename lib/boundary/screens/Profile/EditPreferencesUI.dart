@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/animation.dart';
-import 'package:flutter_app/widgets/bottomNavBar.dart';
-import 'package:flutter_app/widgets/customAppBar.dart';
-import 'package:flutter_app/widgets/customCheckbox.dart';
+import '../../widgets/animation.dart';
+import '../../widgets/bottomNavBar.dart';
+import '../../widgets/customAppBar.dart';
+import '../../widgets/customCheckbox.dart';
+import '../../widgets/ProfileWidgets/ProfileMenu.dart';
 import 'ProfileUI.dart';
-import 'package:flutter_app/widgets/ProfileWidgets/ProfileMenu.dart';
-import 'package:flutter_app/CurrentUser.dart';
+import 'package:flutter_app/entity/CurrentUser.dart';
 
 
 class EditPreferences extends StatefulWidget {

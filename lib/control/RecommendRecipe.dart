@@ -1,5 +1,5 @@
-import '../../CurrentUser.dart';
-import 'Recipe.dart';
+import '../entity/CurrentUser.dart';
+import '../entity/Recipe.dart';
 
 // will change according to user's preferences
 class RecommendRecipe {

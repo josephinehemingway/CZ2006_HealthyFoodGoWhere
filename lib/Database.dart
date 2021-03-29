@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter_app/Authenticator.dart';
-import 'CurrentUser.dart';
+import 'package:flutter_app/control/Authenticator.dart';
+import 'entity/CurrentUser.dart';
 final databaseReference = FirebaseDatabase.instance.reference();
 class Database{
   static Future<String> createPreferences(List dietList) async{

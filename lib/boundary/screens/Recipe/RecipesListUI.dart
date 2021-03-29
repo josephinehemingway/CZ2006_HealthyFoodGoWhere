@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_app/widgets/RecipeWidgets/RecipeCard.dart';
-import 'package:flutter_app/screens/Recipe/Recipe.dart';
-import '../../CurrentUser.dart';
+import '../../widgets/RecipeWidgets/RecipeCard.dart';
+import 'package:flutter_app/entity/Recipe.dart';
+import 'package:flutter_app/entity/CurrentUser.dart';
 import '../../widgets/customAppBar.dart';
 import '../Home/HomeUI.dart';
 import '../../widgets/bottomNavBar.dart';
-import '../../animation.dart';
-import '../../widgets/customIcons.dart';
-import 'package:flutter_app/screens/Recipe/APIRecipeGenerator.dart';
+import '../../widgets/animation.dart';
+import 'package:flutter_app/control/APIRecipeGenerator.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 

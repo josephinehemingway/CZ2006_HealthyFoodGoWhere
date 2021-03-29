@@ -1,5 +1,5 @@
 import 'dart:math';
-import 'Eatery.dart';
+import '../entity/Eatery.dart';
 
 // returns eateries within radius AND updates distanceFromUser attribute
 List<Eatery> filterEateryByRadius(

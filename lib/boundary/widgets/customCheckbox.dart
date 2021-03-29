@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/screens/Profile/EditPreferencesUI.dart';
-import '../CurrentUser.dart';
-import '../Database.dart';
+import 'package:flutter_app/boundary/screens/Profile/EditPreferencesUI.dart';
+import '../../entity/CurrentUser.dart';
+import '../../Database.dart';
 
 class customCheckBox extends StatefulWidget {
   const customCheckBox({

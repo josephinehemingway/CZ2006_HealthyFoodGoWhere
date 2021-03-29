@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/screens/Eateries/EateriesListUI.dart';
-import 'package:flutter_app/widgets/bottomNavBar.dart';
-import 'package:flutter_app/widgets/customAppBar.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'dart:async' show Future;
-import '../../CurrentUser.dart';
-import 'Eatery.dart';
 import 'EateriesListUI.dart';
+import '../../widgets/customAppBar.dart';
+import '../../widgets/bottomNavBar.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter_app/entity/CurrentUser.dart';
+import '../../../entity/Eatery.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter/cupertino.dart';
 

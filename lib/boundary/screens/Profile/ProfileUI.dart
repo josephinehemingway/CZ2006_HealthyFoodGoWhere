@@ -3,13 +3,11 @@ import 'package:flutter/widgets.dart';
 import '../../widgets/customAppBar.dart';
 import '../Home/HomeUI.dart';
 import '../../widgets/bottomNavBar.dart';
-import '../../animation.dart';
+import '../../widgets/animation.dart';
 import '../../widgets/customIcons.dart';
-import 'package:flutter_app/Authenticator.dart';
-import 'package:flutter_app/widgets/ProfileWidgets/ProfileMenu.dart';
-import 'package:flutter_app/widgets/ProfileWidgets/ProfilePic.dart';
-import 'package:flutter_app/widgets/customIcons.dart';
-import '../../../animation.dart';
+import 'package:flutter_app/control/Authenticator.dart';
+import '../../widgets/ProfileWidgets/ProfileMenu.dart';
+import '../../widgets/ProfileWidgets/ProfilePic.dart';
 
 class Profile extends StatefulWidget {
   static String routeName = '/profile';

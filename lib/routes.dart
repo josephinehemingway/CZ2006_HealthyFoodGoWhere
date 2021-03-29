@@ -1,12 +1,12 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_app/screens/Eateries/EateriesListUI.dart';
-import 'package:flutter_app/screens/Eateries/googleMapUI.dart';
-import 'package:flutter_app/screens/Home/HomeUI.dart';
-import 'package:flutter_app/screens/Login/LoginUI.dart';
-import 'package:flutter_app/screens/Profile/EditPreferencesUI.dart';
-import 'package:flutter_app/screens/Profile/ProfileUI.dart';
-import 'package:flutter_app/screens/Recipe/RecipeDetailsUI.dart';
-import 'package:flutter_app/screens/Recipe/RecipesListUI.dart';
+import 'package:flutter_app/boundary/screens/Eateries/EateriesListUI.dart';
+import 'package:flutter_app/boundary/screens/Eateries/googleMapUI.dart';
+import 'package:flutter_app/boundary/screens/Home/HomeUI.dart';
+import 'package:flutter_app/boundary/screens/Login/LoginUI.dart';
+import 'package:flutter_app/boundary/screens/Profile/EditPreferencesUI.dart';
+import 'package:flutter_app/boundary/screens/Profile/ProfileUI.dart';
+import 'package:flutter_app/boundary/screens/Recipe/RecipeDetailsUI.dart';
+import 'package:flutter_app/boundary/screens/Recipe/RecipesListUI.dart';
 
 final Map<String, WidgetBuilder> routes = {
   HomeUI.routeName: (context) => HomeUI(),

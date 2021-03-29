@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/CurrentUser.dart';
+import 'package:flutter_app/entity/CurrentUser.dart';
 
 class ProfileMenu extends StatelessWidget {
   const ProfileMenu({

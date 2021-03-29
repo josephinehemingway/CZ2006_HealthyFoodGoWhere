@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/screens/Recipe/RecipeDetails.dart';
-import 'package:flutter_app/screens/Recipe/RecipesListUI.dart';
-import 'package:flutter_app/widgets/customAppBar.dart';
+import 'package:flutter_app/entity/RecipeDetails.dart';
+import '../../widgets/customAppBar.dart';
+import 'RecipesListUI.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class RecipeDetailsPage extends StatefulWidget {

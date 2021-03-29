@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/screens/Recipe/Recipe.dart';
-import 'package:flutter_app/screens/Recipe/RecipeDetails.dart';
-import 'package:flutter_app/screens/Recipe/RecipeDetailsUI.dart';
-import 'package:flutter_app/screens/Recipe/APIRecipeGenerator.dart';
+import 'package:flutter_app/entity/Recipe.dart';
+import 'package:flutter_app/boundary/screens/Recipe/RecipeDetailsUI.dart';
+import 'package:flutter_app/entity/RecipeDetails.dart';
+import 'package:flutter_app/control/APIRecipeGenerator.dart';
 
 class RecipeCard extends StatelessWidget {
   String imageUrl;
