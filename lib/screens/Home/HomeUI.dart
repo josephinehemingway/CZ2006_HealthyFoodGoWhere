@@ -95,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                                   HomeMenu(
                                       title: "Eating Out?",
                                       subtitle: "healthy eateries nearby",
-                                      NextPg: HealthyEateries(),
+                                      NextPg: HealthyEateriesList(),
                                       customIcon: Icon(MyFlutterApp.cutlery, color: Colors.white, size: 30))
                               ),
                               SizedBox(height: 10,),
@@ -103,7 +103,7 @@ class _HomePageState extends State<HomePage> {
                               FadeAnimation_Y(1, HomeMenu(
                                   title: "Eating at home?",
                                   subtitle: "healthy recipes for you",
-                                  NextPg: HealthyRecipes(),
+                                  NextPg: HealthyRecipesList(),
                                   customIcon: Icon(MyFlutterApp.chefhat, color: Colors.white))
                               ),
                             ]),

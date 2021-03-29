@@ -11,6 +11,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:flutter/cupertino.dart';
 
 class GoogleMapScreen extends StatefulWidget {
+  static String routeName = '/map';
   @override
   _GoogleMapScreenState createState() => _GoogleMapScreenState();
 }
@@ -20,8 +21,8 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
   List<Marker> allMarkers = [];
   List<Eatery> eateriesInRange = getEateriesInRadius(); //.sublist(0,10);
 
-  LatLng currentPosition = HealthyEateries.currentPosition;
-  Position currentPos = HealthyEateries.currentPos;
+  LatLng currentPosition = HealthyEateriesList.currentPosition;
+  Position currentPos = HealthyEateriesList.currentPos;
   GoogleMapController _controller;
   PageController _pageController;
   int prevPage;
@@ -71,7 +72,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: myAppBar('Google Maps', context, HealthyEateries()),
+        appBar: myAppBar('Google Maps', context, HealthyEateriesList()),
         body: Stack(
           children: <Widget>[
             Container(
@@ -82,7 +83,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
                 padding: EdgeInsets.only(bottom: 130,),
                 initialCameraPosition:
                 CameraPosition(target:
-                  HealthyEateries.currentPosition,
+                  HealthyEateriesList.currentPosition,
                   // LatLng(1.3445462237357415, 103.68023836712945),
                   zoom: 13.0,),
                 markers: Set.from(allMarkers),

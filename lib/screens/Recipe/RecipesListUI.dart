@@ -12,37 +12,16 @@ import 'package:flutter_app/services/api_services.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 
-class HealthyRecipes extends StatefulWidget {
+class HealthyRecipesList extends StatefulWidget {
   static String routeName = '/recipeList';
   @override
-  _HealthyRecipesState createState() => _HealthyRecipesState();
+  _HealthyRecipesListState createState() => _HealthyRecipesListState();
 }
 
-class _HealthyRecipesState extends State<HealthyRecipes> with SingleTickerProviderStateMixin {
+class _HealthyRecipesListState extends State<HealthyRecipesList> with SingleTickerProviderStateMixin {
 
   CurrentUser user= CurrentUser();
-  List<Widget> recipeData = [
-    // RecipeCard(
-    //   title: 'Avocado Toast',
-    //   imageUrl: "https://cookieandkate.com/images/2012/04/avocado-toast-with-tomatoes-balsamic-vinegar-basil.jpg",
-    //   calories: '299 kCal',
-    //   duration: 25,
-    // ),
-    //
-    // RecipeCard(
-    //   title: 'French Toast',
-    //   imageUrl: "https://d1e3z2jco40k3v.cloudfront.net/-/media/mccormick-us/recipes/mccormick/q/2000/quick_and_easy_french_toast_new_2000x1125.jpg?rev=9b2607d0dece40daa4b102d5d07a1880&vd=20200628T070902Z&hash=C5615934E26A451872F4DC1C9E10718A",
-    //   calories: '311 kCal',
-    //   duration: 25,
-    // ),
-    //
-    // RecipeCard(
-    //   title: 'Kaya Toast',
-    //   imageUrl: "https://4scoin37ye-flywheel.netdna-ssl.com/wp-content/uploads/2010/10/DSC_0510.jpg",
-    //   calories: '319 kCal',
-    //   duration: 25,
-    // ),
-  ];
+  List<Widget> recipeData = [];
 
   ScrollController _scrollController;
   TabController _tabController;

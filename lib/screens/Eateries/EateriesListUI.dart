@@ -14,24 +14,25 @@ import 'package:flutter_app/widgets/customIcons.dart';
 import '../../animation.dart';
 import '../../CurrentUser.dart';
 
-class HealthyEateries extends StatefulWidget {
+class HealthyEateriesList extends StatefulWidget {
   static String routeName = '/eateries';
   static List<Eatery> _withinRadiusEateries = [];
   static LatLng currentPosition;
   static Position currentPos;
   @override
-  _HealthyEateriesState createState() => _HealthyEateriesState();
+  _HealthyEateriesListState createState() => _HealthyEateriesListState();
 }
 
 List<Eatery> getEateriesInRadius(){
-  return(HealthyEateries._withinRadiusEateries);
+  return(HealthyEateriesList._withinRadiusEateries);
 }
 
-class _HealthyEateriesState extends State<HealthyEateries> {
+class _HealthyEateriesListState extends State<HealthyEateriesList> {
   CurrentUser user;
   List<List<dynamic>> healthyEats = [];
   List<List<String>> eatery = [];
   var geoLocator = Geolocator();
+  List<Eatery> EateryList = [];
 
   loadAsset() async {
     final myEats =  await rootBundle.loadString('EateryData/HealthyEateriesNew.csv');
@@ -41,8 +42,6 @@ class _HealthyEateriesState extends State<HealthyEateries> {
     });
     // print(healthyEats[0]);
   }
-
-  List<Eatery> EateryList = [];
 
   createEateryList(){
       for (int i=1; i<healthyEats.length; i++) {
@@ -68,12 +67,12 @@ class _HealthyEateriesState extends State<HealthyEateries> {
   void asyncLoad() async {
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
-    HealthyEateries.currentPos = position;
-    HealthyEateries.currentPosition = LatLng(position.latitude, position.longitude);
+    HealthyEateriesList.currentPos = position;
+    HealthyEateriesList.currentPosition = LatLng(position.latitude, position.longitude);
 
     await loadAsset();
     createEateryList();
-    HealthyEateries._withinRadiusEateries = filterEateryByRadius(EateryList, HealthyEateries.currentPosition.latitude, HealthyEateries.currentPosition.longitude, 1.5);
+    HealthyEateriesList._withinRadiusEateries = filterEateryByRadius(EateryList, HealthyEateriesList.currentPosition.latitude, HealthyEateriesList.currentPosition.longitude, 1.5);
   }
 
   @override
@@ -89,7 +88,7 @@ class _HealthyEateriesState extends State<HealthyEateries> {
         resizeToAvoidBottomInset: false,
         bottomNavigationBar: BottomNavBar(selectedMenu: MenuState.eatery),
         body: Center(
-          child: HealthyEateries.currentPosition == null
+          child: HealthyEateriesList.currentPosition == null
               ? CircularProgressIndicator(
             valueColor: AlwaysStoppedAnimation(Colors.teal),
           )
@@ -109,7 +108,7 @@ class _HealthyEateriesState extends State<HealthyEateries> {
         ];
       },
       body: new ListView.builder(
-              itemCount: HealthyEateries._withinRadiusEateries.length,
+              itemCount: HealthyEateriesList._withinRadiusEateries.length,
               itemBuilder: (BuildContext context, int index) {
                 return FadeAnimation_Y(1, Container(
                     height: 130,
@@ -123,8 +122,8 @@ class _HealthyEateriesState extends State<HealthyEateries> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[ ListTile(
                               leading: Icon(MyFlutterApp.cutlery, color: Colors.teal[100], size: 40),
-                              title: Text(HealthyEateries._withinRadiusEateries[index].name),
-                              subtitle: Text(HealthyEateries._withinRadiusEateries[index].address),
+                              title: Text(HealthyEateriesList._withinRadiusEateries[index].name),
+                              subtitle: Text(HealthyEateriesList._withinRadiusEateries[index].address),
                               trailing:
 
                             IconButton(
@@ -139,7 +138,7 @@ class _HealthyEateriesState extends State<HealthyEateries> {
                             Row(
                               children: <Widget>[
                                 SizedBox(width: 72,),
-                                Text(HealthyEateries._withinRadiusEateries[index].distancefromuser.toString() + " km", style: TextStyle(fontSize: 18))
+                                Text(HealthyEateriesList._withinRadiusEateries[index].distancefromuser.toString() + " km", style: TextStyle(fontSize: 18))
                               ],
                             )
 

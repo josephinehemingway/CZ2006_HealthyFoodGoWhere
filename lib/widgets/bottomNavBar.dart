@@ -115,7 +115,7 @@ class BottomNavBar extends StatelessWidget {
                     : Colors.grey.withOpacity(.40),
                 onPressed: () {
                   Navigator.pop(context);
-                  Navigator.pushNamed(context, HealthyRecipes.routeName);
+                  Navigator.pushNamed(context, HealthyRecipesList.routeName);
                 },
               ),
               IconButton(
@@ -125,7 +125,7 @@ class BottomNavBar extends StatelessWidget {
                     : Colors.grey.withOpacity(.40),
                 onPressed: () {
                   Navigator.pop(context);
-                  Navigator.pushNamed(context, HealthyEateries.routeName);
+                  Navigator.pushNamed(context, HealthyEateriesList.routeName);
                 },
               ),
               IconButton(
