@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'Eatery.dart';
 
 // returns eateries within radius AND updates distanceFromUser attribute
@@ -23,6 +22,18 @@ List<Eatery> filterEateryByRadius(
   }
 
   withinRadiusEateries.sort((a,b) => a.distancefromuser.compareTo(b.distancefromuser));
+
+  // for(int i=0; i<withinRadiusEateries.length; i++){
+  //   for(int j=i+1; j<withinRadiusEateries.length; j++){
+  //     if (withinRadiusEateries[i].locationCoords.latitude == withinRadiusEateries[j].locationCoords.latitude){
+  //       if (withinRadiusEateries[i].locationCoords.longitude == withinRadiusEateries[j].locationCoords.longitude){
+  //         withinRadiusEateries[j].locationCoords.latitude += 0.0000000000001;
+  //       }
+  //     }
+  //   }
+  // }
+
+
   print(withinRadiusEateries.toString());
 
   return withinRadiusEateries;

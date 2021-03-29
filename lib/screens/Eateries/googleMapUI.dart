@@ -18,7 +18,7 @@ class GoogleMapScreen extends StatefulWidget {
 class _GoogleMapScreenState extends State<GoogleMapScreen> {
   CurrentUser user;
   List<Marker> allMarkers = [];
-  List<Eatery> eateriesInRange = getEateriesInRadius().sublist(0,10);
+  List<Eatery> eateriesInRange = getEateriesInRadius(); //.sublist(0,10);
 
   LatLng currentPosition = HealthyEateries.currentPosition;
   Position currentPos = HealthyEateries.currentPos;
@@ -42,32 +42,22 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
 
     for (int i = 0; i<eateriesInRange.length; i++){
       Eatery element = eateriesInRange[i];
+
       allMarkers.add(Marker(
-          markerId: MarkerId(element.name + i.toString()),
+          markerId: MarkerId(i.toString()),
           draggable: false,
           infoWindow:
           InfoWindow(title: element.name, snippet: element.address),
           position: element.locationCoords,
           onTap: () {
-            _pageController.animateToPage(i, curve: Curves.bounceIn,
-              duration: Duration(seconds: 0),);
+            _pageController.animateToPage(i, curve: Curves.easeIn,
+              duration: Duration(seconds: 1),);
           }
       ));
     }
 
-    print(allMarkers);
-
-    // eateriesInRange.forEach((element) {
-    //   allMarkers.add(Marker(
-    //       markerId: MarkerId(element.name+element.address),
-    //       draggable: false,
-    //       infoWindow:
-    //       InfoWindow(title: element.name, snippet: element.address),
-    //       position: element.locationCoords,
-    //       onTap: () {
-    //         _pageController.animateToPage(page, duration: duration, curve: curve)
-    //       }
-    //   ));
+    print(eateriesInRange.length);
+    print("markers: " + allMarkers.toString());
 
   }
 
@@ -96,6 +86,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
                   // LatLng(1.3445462237357415, 103.68023836712945),
                   zoom: 13.0,),
                 markers: Set.from(allMarkers),
+                // markers: _markers,
                 onMapCreated: mapCreated,
                 myLocationButtonEnabled: true,
                 myLocationEnabled: true,
