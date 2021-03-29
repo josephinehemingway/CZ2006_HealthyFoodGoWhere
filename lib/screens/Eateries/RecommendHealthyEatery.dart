@@ -21,7 +21,9 @@ List<Eatery> filterEateryByRadius(
       withinRadiusEateries.add(healthyEatery);
     }
   }
-  print(withinRadiusEateries[0].name);
+
+  withinRadiusEateries.sort((a,b) => a.distancefromuser.compareTo(b.distancefromuser));
+  print(withinRadiusEateries.toString());
 
   return withinRadiusEateries;
 }
@@ -36,24 +38,3 @@ double getDistance(lat1, lon1, lat2, lon2) {
       c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p)) / 2;
   return 12742 * asin(sqrt(a));
 }
-
-
-// returns a sample of 5 eateries
-// input: list of dict
-// output: list of Eatery
-// List<Eatery> sampleEateries(List<Map<String, dynamic>> healthyEateriesList,
-//     {int max = 5}) {
-//   List<Eatery> sampleEateries = [];
-//   healthyEateriesList..shuffle();
-//   if (max > healthyEateriesList.length) max = healthyEateriesList.length;
-//   for (Map<String, dynamic> E in healthyEateriesList.sublist(0, max)) {
-//     sampleEateries.add(Eatery(
-//         name: E['name'],
-//         address: E['address'],
-//         latitude: E['latitude'],
-//         longitude: E['longitude'],
-//         distanceFromUser: E['distanceFromUser']));
-//   }
-//   return sampleEateries;
-// }
-

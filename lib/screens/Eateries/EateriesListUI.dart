@@ -7,15 +7,18 @@ import '../../widgets/bottomNavBar.dart';
 import '../../widgets/customAppBar.dart';
 import 'RecommendHealthyEatery.dart';
 import 'package:csv/csv.dart' as csv;
-import 'dart:convert';
 import 'Eatery.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'googleMapUI.dart';
 import 'package:flutter_app/widgets/customIcons.dart';
+import '../../animation.dart';
+import '../../CurrentUser.dart';
 
 class HealthyEateries extends StatefulWidget {
   static String routeName = '/eateries';
   static List<Eatery> _withinRadiusEateries = [];
+  static LatLng currentPosition;
+  static Position currentPos;
   @override
   _HealthyEateriesState createState() => _HealthyEateriesState();
 }
@@ -25,8 +28,10 @@ List<Eatery> getEateriesInRadius(){
 }
 
 class _HealthyEateriesState extends State<HealthyEateries> {
+  CurrentUser user;
   List<List<dynamic>> healthyEats = [];
   List<List<String>> eatery = [];
+  var geoLocator = Geolocator();
 
   loadAsset() async {
     final myEats =  await rootBundle.loadString('EateryData/HealthyEateriesNew.csv');
@@ -38,6 +43,7 @@ class _HealthyEateriesState extends State<HealthyEateries> {
   }
 
   List<Eatery> EateryList = [];
+
   createEateryList(){
       for (int i=1; i<healthyEats.length; i++) {
         int j = 0;
@@ -56,6 +62,18 @@ class _HealthyEateriesState extends State<HealthyEateries> {
   @override
   void initState() {
     super.initState();
+    asyncLoad();
+  }
+
+  void asyncLoad() async {
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    HealthyEateries.currentPos = position;
+    HealthyEateries.currentPosition = LatLng(position.latitude, position.longitude);
+
+    await loadAsset();
+    createEateryList();
+    HealthyEateries._withinRadiusEateries = filterEateryByRadius(EateryList, HealthyEateries.currentPosition.latitude, HealthyEateries.currentPosition.longitude, 1.5);
   }
 
   @override
@@ -64,17 +82,18 @@ class _HealthyEateriesState extends State<HealthyEateries> {
       child: Icon(Icons.location_on_rounded),
       backgroundColor: Colors.teal[300],
 
-      onPressed: () async{
-        await loadAsset();
-        createEateryList();
-        HealthyEateries._withinRadiusEateries = filterEateryByRadius(EateryList, 1.344449690791518, 103.68036711260291, 1.5);
-
+      onPressed: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) => (GoogleMapScreen())));
 
       },),
         resizeToAvoidBottomInset: false,
         bottomNavigationBar: BottomNavBar(selectedMenu: MenuState.eatery),
-        body: nested(),
+        body: Center(
+          child: HealthyEateries.currentPosition == null
+              ? CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation(Colors.teal),
+          )
+          : nested(),),
   );
 
   nested() {
@@ -92,7 +111,7 @@ class _HealthyEateriesState extends State<HealthyEateries> {
       body: new ListView.builder(
               itemCount: HealthyEateries._withinRadiusEateries.length,
               itemBuilder: (BuildContext context, int index) {
-                return Container(
+                return FadeAnimation_Y(1, Container(
                     height: 130,
                     child: Card(
                         margin: const EdgeInsets.all(5),
@@ -102,12 +121,12 @@ class _HealthyEateriesState extends State<HealthyEateries> {
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[ListTile(
+                          children: <Widget>[ ListTile(
+                              leading: Icon(MyFlutterApp.cutlery, color: Colors.teal[100], size: 40),
+                              title: Text(HealthyEateries._withinRadiusEateries[index].name),
+                              subtitle: Text(HealthyEateries._withinRadiusEateries[index].address),
+                              trailing:
 
-                          leading: Icon(MyFlutterApp.cutlery, color: Colors.teal[100], size: 40),
-                          title: Text(HealthyEateries._withinRadiusEateries[index].name),
-                          subtitle: Text(HealthyEateries._withinRadiusEateries[index].address),
-                          trailing:
                             IconButton(
                               icon: Icon(Icons.location_on_rounded, color: Colors.teal[200], size:40),
                               onPressed: (){
@@ -124,31 +143,11 @@ class _HealthyEateriesState extends State<HealthyEateries> {
                             )
 
                           ])
-                ));
+                )));
               },
             ),
     );
   }
-
-  // Future<void> _loadCSV(String filePath) async {
-  //   final _rawData = await rootBundle.loadString(filePath);
-  //   csv.CsvToListConverter c = new csv.CsvToListConverter(
-  //       eol: '\r\n', fieldDelimiter: ",", shouldParseNumbers: true);
-  //   List<List<dynamic>> eateriesList = c.convert(_rawData);
-  //   List<Map<String, dynamic>> eateriesListOfDict = [];
-  //   for (List<dynamic> healthyEatery in eateriesList) {
-  //     eateriesListOfDict.add({
-  //       'name': healthyEatery[0],
-  //       'address': healthyEatery[1],
-  //       'latitude': healthyEatery[2],
-  //       'longitude': healthyEatery[3],
-  //       'distanceFromUser': null
-  //     });
-  //   }
-  //   setState(() {
-  //     _healthyEateriesList = eateriesListOfDict;
-  //   });
-  // }
 
 // void setRadiusInKm(double radius) {
   //   // radius setter

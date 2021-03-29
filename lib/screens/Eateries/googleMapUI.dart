@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/Eateries/EateriesListUI.dart';
-import 'package:flutter_app/screens/Home/HomeUI.dart';
 import 'package:flutter_app/widgets/bottomNavBar.dart';
 import 'package:flutter_app/widgets/customAppBar.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async' show Future;
+import '../../CurrentUser.dart';
 import 'Eatery.dart';
 import 'EateriesListUI.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:flutter/cupertino.dart';
 
 class GoogleMapScreen extends StatefulWidget {
   @override
@@ -14,17 +16,26 @@ class GoogleMapScreen extends StatefulWidget {
 }
 
 class _GoogleMapScreenState extends State<GoogleMapScreen> {
+  CurrentUser user;
   List<Marker> allMarkers = [];
-  List<Eatery> eateriesInRange = getEateriesInRadius().sublist(5,11);
+  List<Eatery> eateriesInRange = getEateriesInRadius().sublist(0,10);
 
+  LatLng currentPosition = HealthyEateries.currentPosition;
+  Position currentPos = HealthyEateries.currentPos;
+  GoogleMapController _controller;
   PageController _pageController;
   int prevPage;
-  GoogleMapController _controller;
+  var geoLocator = Geolocator();
 
+  void locatePos() async {
+    CameraPosition cameraPosition = new CameraPosition(target: currentPosition, zoom: 14);
+    _controller.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
+  }
 
   void initState() {
     // TODO: implement initState
     super.initState();
+    locatePos();
 
     eateriesInRange.forEach((element) {
       allMarkers.add(Marker(
@@ -36,6 +47,59 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
     });
     _pageController = PageController(initialPage: 1, viewportFraction: 0.8)
       ..addListener(_onScroll);
+  }
+
+  void mapCreated(controller) {
+    setState(() {
+      _controller = controller;
+      locatePos();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: myAppBar('Google Maps', context, HealthyEateries()),
+        body: Stack(
+          children: <Widget>[
+            Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+
+              child: GoogleMap(
+                padding: EdgeInsets.only(bottom: 130,),
+                initialCameraPosition:
+                CameraPosition(target:
+                  HealthyEateries.currentPosition,
+                  // LatLng(1.3445462237357415, 103.68023836712945),
+                  zoom: 13.0,),
+                markers: Set.from(allMarkers),
+                onMapCreated: mapCreated,
+                myLocationButtonEnabled: true,
+                myLocationEnabled: true,
+                zoomGesturesEnabled: true,
+                zoomControlsEnabled: true,
+
+              ),
+            ),
+
+            Positioned(
+              bottom: 0.0,
+              child: Container(
+                height: 150.0,
+                width: MediaQuery.of(context).size.width,
+                child: PageView.builder(
+                  controller: _pageController,
+                  itemCount: eateriesInRange.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return _healthyEateriesList(index);
+                  },
+                ),
+              ),
+            )
+          ],
+        ),
+        bottomNavigationBar: BottomNavBar(selectedMenu: MenuState.eatery));
   }
 
   void _onScroll() {
@@ -71,7 +135,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
                 child: Container(
                     margin: EdgeInsets.symmetric(
                       horizontal: 10.0,
-                      vertical: 10.0,
+                      vertical: 0,
                     ),
                     height: 155.0,
                     width: 310.0,
@@ -91,7 +155,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
                             color: Colors.white),
                         child: Row(children: [
                           Container(
-                              height: 105.0,
+                              height: 125.0,
                               width: 90.0,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.only(
@@ -114,13 +178,16 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ),
+                                SizedBox(height: 0),
+                                Container(
+                                  width: 180.0,
+                                  child: Text(eateriesInRange[index].distancefromuser.toString() + ' km',
+                                    style: TextStyle(
+                                        fontSize: 16.0,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
                                 SizedBox(height: 10.0),
-                                // Text(
-                                //   eateriesInRange[index].address,
-                                //   style: TextStyle(
-                                //       fontSize: 12.0,
-                                //       fontWeight: FontWeight.w300),
-                                // ),
                                 Container(
                                   width: 180.0,
                                   child: Text(eateriesInRange[index].address,
@@ -128,61 +195,18 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
                                         fontSize: 12.0,
                                         fontWeight: FontWeight.w300),
                                   ),
-                                )
+                                ),
                         ])]))))
           ])),
     );
   }
 
-  void mapCreated(controller) {
-    setState(() {
-      _controller = controller;
-    });
-  }
-
   moveCamera() {
     _controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
         target: eateriesInRange[_pageController.page.toInt()].locationCoords,
-        zoom: 18.0,
-        bearing: 45.0,
+        zoom: 17.0,
+        bearing: 5.0,
         tilt: 10.0)));
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: myAppBar('GoogleMaps', context, HealthyEateries()),
-        body: Stack(
-          children: <Widget>[
-            Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              child: GoogleMap(
-                padding: EdgeInsets.only(bottom: 130,),
-                initialCameraPosition:
-                CameraPosition(target:
-                LatLng(1.3476951854010337, 103.688100402735), zoom: 15,),
-                markers: Set.from(allMarkers),
-                onMapCreated: mapCreated,
-              ),
-            ),
-            Positioned(
-              bottom: 0.0,
-              child: Container(
-                height: 150.0,
-                width: MediaQuery.of(context).size.width,
-                child: PageView.builder(
-                  controller: _pageController,
-                  itemCount: eateriesInRange.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return _healthyEateriesList(index);
-                  },
-                ),
-              ),
-            )
-          ],
-        ),
-        bottomNavigationBar: BottomNavBar(selectedMenu: MenuState.eatery));
   }
 
 
