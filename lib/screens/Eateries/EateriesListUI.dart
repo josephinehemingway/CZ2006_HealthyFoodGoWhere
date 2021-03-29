@@ -131,6 +131,7 @@ class _HealthyEateriesState extends State<HealthyEateries> {
                               icon: Icon(Icons.location_on_rounded, color: Colors.teal[200], size:40),
                               onPressed: (){
                                 Navigator.push(context, MaterialPageRoute(builder: (context) => (GoogleMapScreen())));
+
                               },
                             ),
                           ),

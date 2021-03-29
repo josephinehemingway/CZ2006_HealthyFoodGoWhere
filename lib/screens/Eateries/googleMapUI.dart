@@ -37,16 +37,38 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
     super.initState();
     locatePos();
 
-    eateriesInRange.forEach((element) {
+    _pageController = PageController(initialPage: 0, viewportFraction: 0.8)
+      ..addListener(_onScroll);
+
+    for (int i = 0; i<eateriesInRange.length; i++){
+      Eatery element = eateriesInRange[i];
       allMarkers.add(Marker(
-          markerId: MarkerId(element.name),
+          markerId: MarkerId(element.name + i.toString()),
           draggable: false,
           infoWindow:
           InfoWindow(title: element.name, snippet: element.address),
-          position: element.locationCoords));
-    });
-    _pageController = PageController(initialPage: 1, viewportFraction: 0.8)
-      ..addListener(_onScroll);
+          position: element.locationCoords,
+          onTap: () {
+            _pageController.animateToPage(i, curve: Curves.bounceIn,
+              duration: Duration(seconds: 0),);
+          }
+      ));
+    }
+
+    print(allMarkers);
+
+    // eateriesInRange.forEach((element) {
+    //   allMarkers.add(Marker(
+    //       markerId: MarkerId(element.name+element.address),
+    //       draggable: false,
+    //       infoWindow:
+    //       InfoWindow(title: element.name, snippet: element.address),
+    //       position: element.locationCoords,
+    //       onTap: () {
+    //         _pageController.animateToPage(page, duration: duration, curve: curve)
+    //       }
+    //   ));
+
   }
 
   void mapCreated(controller) {
@@ -109,6 +131,14 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
     }
   }
 
+  moveCamera() {
+    _controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
+        target: eateriesInRange[_pageController.page.toInt()].locationCoords,
+        zoom: 17.0,
+        bearing: 5.0,
+        tilt: 10.0)));
+  }
+
   _healthyEateriesList(index) {
     return AnimatedBuilder(
       animation: _pageController,
@@ -153,7 +183,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.0),
                             color: Colors.white),
-                        child: Row(children: [
+                        child: Row( children: [
                           Container(
                               height: 125.0,
                               width: 90.0,
@@ -199,14 +229,6 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
                         ])]))))
           ])),
     );
-  }
-
-  moveCamera() {
-    _controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-        target: eateriesInRange[_pageController.page.toInt()].locationCoords,
-        zoom: 17.0,
-        bearing: 5.0,
-        tilt: 10.0)));
   }
 
 
