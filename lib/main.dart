@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_app/routes.dart';
 import 'package:flutter_app/theme.dart';
-import 'screens/Login/LoginUI.dart';
+import 'boundary/screens/Login/LoginUI.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 Future<void> main() async {
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         theme: theme(),
         debugShowCheckedModeBanner: false,
         routes: routes,
-        initialRoute: LoginPage.routeName,
+        initialRoute: LoginUI.routeName,
         home: FutureBuilder(
             future: _fbApp,
             builder: (context, snapshot) {
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
                 print('You have an error! ${snapshot.error.toString()}');
                 return Text('Something went wrong!');
               } else if (snapshot.hasData) {
-                return LoginPage();
+                return LoginUI();
               } else {
                 return Center(
                   child: CircularProgressIndicator(),
