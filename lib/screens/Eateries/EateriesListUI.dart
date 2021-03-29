@@ -103,7 +103,7 @@ class _HealthyEateriesListState extends State<HealthyEateriesList> {
               'Healthy Eateries',
               'These nearby eateries are recommended to you based on your dietary preferences, the set location and the radii distance',
               context,
-              HomePage(),
+              HomeUI(),
               'images/appbar_eatery.png'),
         ];
       },
@@ -148,19 +148,4 @@ class _HealthyEateriesListState extends State<HealthyEateriesList> {
             ),
     );
   }
-
-// void setRadiusInKm(double radius) {
-  //   // radius setter
-  //   this._radiusInKm = radius;
-  // }
-  //
-  // getUserLocation() async {
-  //   final coordinates = await Geolocator.getCurrentPosition(
-  //       desiredAccuracy: LocationAccuracy.best);
-  //   print(coordinates);
-  //   setState(() {
-  //     _userLatitude = coordinates.latitude;
-  //     _userLongitude = coordinates.longitude;
-  //   });
-  // }
 }

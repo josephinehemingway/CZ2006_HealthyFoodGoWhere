@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         theme: theme(),
         debugShowCheckedModeBanner: false,
         routes: routes,
-        initialRoute: LoginPage.routeName,
+        initialRoute: LoginUI.routeName,
         home: FutureBuilder(
             future: _fbApp,
             builder: (context, snapshot) {
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
                 print('You have an error! ${snapshot.error.toString()}');
                 return Text('Something went wrong!');
               } else if (snapshot.hasData) {
-                return LoginPage();
+                return LoginUI();
               } else {
                 return Center(
                   child: CircularProgressIndicator(),

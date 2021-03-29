@@ -8,7 +8,7 @@ import '../Home/HomeUI.dart';
 import '../../widgets/bottomNavBar.dart';
 import '../../animation.dart';
 import '../../widgets/customIcons.dart';
-import 'package:flutter_app/services/api_services.dart';
+import 'package:flutter_app/screens/Recipe/APIRecipeGenerator.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 
@@ -91,13 +91,13 @@ class _HealthyRecipesListState extends State<HealthyRecipesList> with SingleTick
         return <Widget>[
           collapsibleAppBar('Healthy Recipes',
               'These healthy recipes are tailored to your preferences and will help you achieve your goal!',
-              context, HomePage(),
+              context, HomeUI(),
               'images/appbar_recipe.png'),
         ];
       },
       body: Container(
         child: FutureBuilder<List<Recipe>>(
-          future: ApiService.instance.getListOfRecipe(1,user),
+          future: APIRecipeGenerator.instance.getListOfRecipe(1,user),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               final recipelist = snapshot.data;

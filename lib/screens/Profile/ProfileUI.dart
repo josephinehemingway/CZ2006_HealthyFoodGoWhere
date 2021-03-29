@@ -5,7 +5,7 @@ import '../Home/HomeUI.dart';
 import '../../widgets/bottomNavBar.dart';
 import '../../animation.dart';
 import '../../widgets/customIcons.dart';
-import 'package:flutter_app/auth.dart';
+import 'package:flutter_app/Authenticator.dart';
 import 'package:flutter_app/widgets/ProfileWidgets/ProfileMenu.dart';
 import 'package:flutter_app/widgets/ProfileWidgets/ProfilePic.dart';
 import 'package:flutter_app/widgets/customIcons.dart';
@@ -22,7 +22,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) => Scaffold(
       resizeToAvoidBottomInset: false,
-    appBar: myAppBar('Profile', context, HomePage()),
+    appBar: myAppBar('Profile', context, HomeUI()),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(vertical: 20),
         child: Column(

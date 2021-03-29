@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/auth.dart';
+import 'package:flutter_app/Authenticator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_app/screens/Home/HomeUI.dart';
 import 'package:provider/provider.dart';
@@ -34,7 +34,7 @@ class GoogleSignInButton extends StatelessWidget {
 
             curUser.printCurrentUser(),
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => HomePage())
+                context, MaterialPageRoute(builder: (context) => HomeUI())
           )
           }});
         },

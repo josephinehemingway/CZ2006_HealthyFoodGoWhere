@@ -1,7 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter_app/screens/Profile/EditPreferencesUI.dart';
 import 'Database.dart';
-import 'auth.dart';
+import 'Authenticator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_app/screens/Eateries/googleMapUI.dart';
 

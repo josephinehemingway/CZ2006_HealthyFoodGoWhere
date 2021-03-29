@@ -9,11 +9,11 @@ import 'package:flutter_app/screens/Recipe/RecipeDetailsUI.dart';
 import 'package:flutter_app/screens/Recipe/RecipesListUI.dart';
 
 final Map<String, WidgetBuilder> routes = {
-  HomePage.routeName: (context) => HomePage(),
+  HomeUI.routeName: (context) => HomeUI(),
   HealthyEateriesList.routeName: (context) => HealthyEateriesList(),
   HealthyRecipesList.routeName: (context) => HealthyRecipesList(),
   Profile.routeName: (context) => Profile(),
-  LoginPage.routeName: (context) => LoginPage(),
+  LoginUI.routeName: (context) => LoginUI(),
   RecipeDetailsPage.routeName: (context) => RecipeDetailsPage(),
   EditPreferences.routeName: (context) => EditPreferences(),
   GoogleMapScreen.routeName: (context) => GoogleMapScreen()

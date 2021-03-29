@@ -105,7 +105,7 @@ class BottomNavBar extends StatelessWidget {
                       : Colors.grey.withOpacity(.40),
                 onPressed: () {
                   Navigator.pop(context);
-                  Navigator.pushNamed(context, HomePage.routeName);
+                  Navigator.pushNamed(context, HomeUI.routeName);
                 },
               ),
               IconButton(

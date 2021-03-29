@@ -8,13 +8,13 @@ import 'package:flutter_app/screens/Recipe/RecommendRecipe.dart';
 import 'package:http/http.dart' as http;
 import 'dart:math';
 
-import '../CurrentUser.dart';
+import '../../CurrentUser.dart';
 
-class ApiService {
-  ApiService._instantiate();
+class APIRecipeGenerator {
+  APIRecipeGenerator._instantiate();
 
   int id;
-  static final ApiService instance = ApiService._instantiate();
+  static final APIRecipeGenerator instance = APIRecipeGenerator._instantiate();
   List<Recipe> recipelist = [];
 
 
@@ -87,7 +87,7 @@ class ApiService {
       { RecommendRecipe(user);
         Random random = new Random();
         // int id = random.nextInt(8000);
-        Recipe recipe = await ApiService.instance.getRecipe(642138);
+        Recipe recipe = await APIRecipeGenerator.instance.getRecipe(642138);
         if (RecommendRecipe.selectedRecipes(recipe, user) == 0) {
           recipelist.add(recipe);
           count++;

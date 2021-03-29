@@ -6,7 +6,7 @@ import 'package:flutter_app/widgets/LoginWidgets/googleSignInButton.dart';
 import '../../animation.dart';
 
 
-class LoginPage extends StatelessWidget {
+class LoginUI extends StatelessWidget {
   static String routeName = '/login';
   User user;
 

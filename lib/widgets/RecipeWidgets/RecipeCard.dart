@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/Recipe/Recipe.dart';
 import 'package:flutter_app/screens/Recipe/RecipeDetails.dart';
 import 'package:flutter_app/screens/Recipe/RecipeDetailsUI.dart';
-import 'package:flutter_app/services/api_services.dart';
+import 'package:flutter_app/screens/Recipe/APIRecipeGenerator.dart';
 
 class RecipeCard extends StatelessWidget {
   String imageUrl;
@@ -28,7 +28,7 @@ class RecipeCard extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () async {
-                RecipeDetails recipeDetails = await ApiService.instance.getRecipeDetails(id);
+                RecipeDetails recipeDetails = await APIRecipeGenerator.instance.getRecipeDetails(id);
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => (RecipeDetailsPage(
                   recipeDetails: recipeDetails, recipeTitle: title, recipeImg: imageUrl,

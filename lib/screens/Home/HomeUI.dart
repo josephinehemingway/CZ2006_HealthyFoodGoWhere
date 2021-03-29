@@ -9,13 +9,13 @@ import '../../animation.dart';
 import '../../widgets/bottomNavBar.dart';
 // resources: https://brainsandbeards.com/blog/bottom-navigation-with-a-list-screen-in-flutter
 
-class HomePage extends StatefulWidget {
+class HomeUI extends StatefulWidget {
   static String routeName = '/home';
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomeUIState createState() => _HomeUIState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomeUIState extends State<HomeUI> {
   @override
   Widget build(BuildContext context) => Scaffold(
         resizeToAvoidBottomInset: false,
