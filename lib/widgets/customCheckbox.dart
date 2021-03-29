@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/screens/Profile/EditPreferencesUI.dart';
 import '../CurrentUser.dart';
+import '../Database.dart';
 
 class customCheckBox extends StatefulWidget {
   const customCheckBox({
@@ -24,7 +26,6 @@ class _customCheckBoxState extends State<customCheckBox> {
   List list;
 
   _customCheckBoxState(this.title, this.list);
-
   @override
   Widget build(BuildContext context) {
     return CheckboxListTile(
@@ -40,10 +41,19 @@ class _customCheckBoxState extends State<customCheckBox> {
           else{
             list.remove(title);
           }
+          Database.createPreferences(list);
           print(list);
         });
       },
       controlAffinity: ListTileControlAffinity.leading,  //  <-- leading Checkbox
     );
   }
+  // void createPreferences(){
+  //   Database.createPreferences().then((String preferencesKey){
+  //     var route = new MaterialPageRoute(builder: (BuildContext context){
+  //       return new EditPreferences();
+  //     });
+  //     Navigator.of(context).push(route);
+  //   });
+  // }
 }

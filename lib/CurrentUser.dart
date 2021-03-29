@@ -1,4 +1,6 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter_app/screens/Profile/EditPreferencesUI.dart';
+import 'Database.dart';
 import 'auth.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_app/screens/Eateries/googleMapUI.dart';
@@ -10,18 +12,21 @@ class CurrentUser {
   String _profilePic;
   LatLng _curlocation;
 
-  List <String> _dietaryPref = ["Vegetarian"];
+  List <String> _dietaryPref = [];
 
   void printCurrentUser(){
-    print(
-        "\nUserID: " + id +
-            "\nUser Name: " + name +
-            "\nUser Email: " + email +
-            "\nUser PhotoURL: " + profilePic +
-            "\nUser Dietary Pref: " + dietList.toString() +
-            "\nUser Current Location: " + curlocation.toString()
-
-    );
+    readPreferences(getUserID());
+    // print(
+    //     // "\nUserID: " + id +
+    //     //     "\nUser Name: " + name +
+    //     //     "\nUser Email: " + email +
+    //     //     "\nUser PhotoURL: " + profilePic +
+    //     //     "\nUser Dietary Pref: " + dietList.toString() +
+    //     //     "\nUser Current Location: " + curlocation.toString()
+    //
+    //     "help" +  _dietaryPref.toString()
+    //
+    // );
   }
 
   LatLng get curlocation => _curlocation;
@@ -57,9 +62,18 @@ class CurrentUser {
 
   void setDietPref(List<String> dietList){
     _dietaryPref = dietList;
+
   }
 
   List <String> get dietList => _dietaryPref;
 
+  void readPreferences(String id){
+    databaseReference.child('User/$id/preferences').once().then((DataSnapshot dataSnapshot){
+        print(dataSnapshot.value);
+
+
+    });
+
+    }
 }
 
