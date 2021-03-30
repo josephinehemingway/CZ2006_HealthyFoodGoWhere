@@ -67,7 +67,7 @@ SliverAppBar recipeListAppBar(String title, String subtitle, context, Widget pre
     floating: false,
     pinned: true,
     flexibleSpace: FlexibleSpaceBar(
-      background: AppBarContents(subtitle: subtitle, image: image),
+      background: AppBarContents(subtitle: subtitle, image: image,),
       centerTitle: true,
     ),
   );
@@ -92,36 +92,66 @@ class AppBarContents extends StatelessWidget {
         .of(context)
         .padding
         .top;
-    return Container(
-      padding: new EdgeInsets.only(top: statusBarHeight),
-      height: statusBarHeight + appBarHeight,
-      child: new Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: <Widget>[
-            Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Container(child: Padding(
-                    padding: const EdgeInsets.only(bottom: 25.0, left: 35, right: 35),
-                    child: new Text(subtitle, textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 18, color: Colors.white)))
-                  ),
-                  Text(subsubtitle, textAlign: TextAlign.center, style: TextStyle(fontSize: 14, color: Colors.grey[300])),
-                SizedBox(height: 15,)],
+    if (subsubtitle != null){
+      return Container(
+        padding: new EdgeInsets.only(top: statusBarHeight),
+        height: statusBarHeight + appBarHeight,
+        child: new Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              Container(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(child: Padding(
+                          padding: const EdgeInsets.only(bottom: 25.0, left: 35, right: 35),
+                          child: new Text(subtitle, textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: 18, color: Colors.white)))
+                      ),
+                      Text(subsubtitle, textAlign: TextAlign.center, style: TextStyle(fontSize: 14, color: Colors.grey[300])),
+                      SizedBox(height: 15,)],
+                  )
               )
-            )
-          ],
-        ),
+            ],
+          ),
 
-      ),
-      decoration: new BoxDecoration(
-      image: DecorationImage(
-        image: AssetImage(image), fit: BoxFit.cover
-        )
-      ),
-    );
+        ),
+        decoration: new BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage(image), fit: BoxFit.cover
+            )
+        ),
+      );
+    }
+    else{
+      return Container(
+        padding: new EdgeInsets.only(top: statusBarHeight),
+        height: statusBarHeight + appBarHeight,
+        child: new Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              Container(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(child: Padding(
+                          padding: const EdgeInsets.only(bottom: 38.0, left: 35, right: 35),
+                          child: new Text(subtitle, textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: 18, color: Colors.white)))
+                      ),
+              ])
+          ),
+          ]
+        )),
+        decoration: new BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage(image), fit: BoxFit.cover
+            )
+        ),
+      );
+    }
   }
 }
 
