@@ -74,7 +74,7 @@ class _HealthyEateriesListState extends State<HealthyEateriesList> {
     await loadAsset();
     createEateryList();
     HealthyEateriesList._withinRadiusEateries = filterEateryByRadius(EateryList,
-        HealthyEateriesList.currentPosition.latitude, HealthyEateriesList.currentPosition.longitude, filterRadius.value);
+        HealthyEateriesList.currentPosition.latitude, HealthyEateriesList.currentPosition.longitude, 1.5);
   }
 
   @override
@@ -84,7 +84,7 @@ class _HealthyEateriesListState extends State<HealthyEateriesList> {
       backgroundColor: Colors.teal[300],
 
       onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => (GoogleMapScreen())));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => (GoogleMapScreen(coord: HealthyEateriesList.currentPosition))));
 
       },),
         resizeToAvoidBottomInset: false,
@@ -132,7 +132,9 @@ class _HealthyEateriesListState extends State<HealthyEateriesList> {
                             IconButton(
                               icon: Icon(Icons.location_on_rounded, color: Colors.teal[200], size:40),
                               onPressed: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => (GoogleMapScreen())));
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => (GoogleMapScreen(coord: HealthyEateriesList._withinRadiusEateries[index].locationCoords, index: index))));
+                                print(HealthyEateriesList._withinRadiusEateries[index].locationCoords);
+                                print(index);
 
                               },
                             ),

@@ -9,7 +9,16 @@ import 'package:geolocator/geolocator.dart';
 import 'package:flutter/cupertino.dart';
 
 class GoogleMapScreen extends StatefulWidget {
+  const GoogleMapScreen({
+    Key key,
+    this.coord,
+    this.index,
+  }) : super(key: key);
+
   static String routeName = '/map';
+  final LatLng coord;
+  final int index;
+
   @override
   _GoogleMapScreenState createState() => _GoogleMapScreenState();
 }
@@ -27,7 +36,13 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
   var geoLocator = Geolocator();
 
   void locatePos() async {
-    CameraPosition cameraPosition = new CameraPosition(target: currentPosition, zoom: 14);
+    CameraPosition cameraPosition;
+    if (widget.index != null){
+      cameraPosition = new CameraPosition(target: widget.coord, zoom: 17);
+    }
+    else{
+      cameraPosition = new CameraPosition(target: widget.coord, zoom: 15);
+    }
     _controller.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
   }
 
@@ -35,9 +50,6 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
     // TODO: implement initState
     super.initState();
     locatePos();
-
-    _pageController = PageController(initialPage: 0, viewportFraction: 0.8)
-      ..addListener(_onScroll);
 
     for (int i = 0; i<eateriesInRange.length; i++){
       Eatery element = eateriesInRange[i];
@@ -55,8 +67,17 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
       ));
     }
 
-    print(eateriesInRange.length);
-    print("markers: " + allMarkers.toString());
+    if (widget.index != null){
+      _pageController = PageController(initialPage: widget.index, viewportFraction: 0.8)
+        ..addListener(_onScroll);
+    }
+    else{
+      _pageController = PageController(initialPage: 0, viewportFraction: 0.8)
+        ..addListener(_onScroll);
+    }
+
+    // print(eateriesInRange.length);
+    // print("markers: " + allMarkers.toString());
 
   }
 
@@ -80,10 +101,8 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
               child: GoogleMap(
                 padding: EdgeInsets.only(bottom: 130,),
                 initialCameraPosition:
-                CameraPosition(target:
-                  HealthyEateriesList.currentPosition,
-                  // LatLng(1.3445462237357415, 103.68023836712945),
-                  zoom: 13.0,),
+                CameraPosition(target: widget.coord,
+                  zoom: 10.0,),
                 markers: Set.from(allMarkers),
                 // markers: _markers,
                 onMapCreated: mapCreated,

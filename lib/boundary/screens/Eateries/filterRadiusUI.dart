@@ -6,7 +6,7 @@ import '../../widgets/customAppBar.dart';
 
 class filterRadius extends StatefulWidget {
   static String routeName = '/filter';
-  static double value;
+  // static double value;
   @override
   _filterRadiusState createState() => _filterRadiusState();
 }
