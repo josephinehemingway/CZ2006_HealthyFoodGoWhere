@@ -16,7 +16,7 @@ AppBar myAppBar(String title, context, Widget prevPg){
   );
 }
 
-SliverAppBar eateryAppBar(String title, String subtitle, context, Widget prevPg, Widget nextPg, String image){
+SliverAppBar eateryAppBar(String title, String subtitle, context, Widget prevPg, Widget nextPg, String image, String subsubtitle){
   return SliverAppBar(
     leading: IconButton(
       onPressed: () {
@@ -28,7 +28,7 @@ SliverAppBar eateryAppBar(String title, String subtitle, context, Widget prevPg,
 
     elevation: 0,
     backgroundColor: Colors.teal[200],
-    title: Text(title, style: TextStyle(fontSize: 24, color: Colors.white)),
+    title: Text(title, style: TextStyle(fontSize: 22, color: Colors.white)),
     centerTitle: true,
     expandedHeight: 190.0,
     floating: false,
@@ -43,7 +43,7 @@ SliverAppBar eateryAppBar(String title, String subtitle, context, Widget prevPg,
     ],
 
     flexibleSpace: FlexibleSpaceBar(
-      background: AppBarContents(subtitle: subtitle, image: image),
+      background: AppBarContents(subtitle: subtitle, image: image, subsubtitle: subsubtitle,),
       centerTitle: true,
     ),
   );
@@ -77,11 +77,12 @@ class AppBarContents extends StatelessWidget {
   const AppBarContents({
     Key key,
     @required this.subtitle,
-    @required this.image
+    @required this.image,
+    this.subsubtitle,
 
   }) : super(key: key);
 
-  final String subtitle, image;
+  final String subtitle, image, subsubtitle;
   final double appBarHeight = 66.0;
 
 
@@ -103,10 +104,12 @@ class AppBarContents extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Container(child: Padding(
-                  padding: const EdgeInsets.only(bottom:38.0, left: 35, right: 35),
-                  child:new Text(subtitle, textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 18, color: Colors.white)))
-                  )],
+                    padding: const EdgeInsets.only(bottom: 25.0, left: 35, right: 35),
+                    child: new Text(subtitle, textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 18, color: Colors.white)))
+                  ),
+                  Text(subsubtitle, textAlign: TextAlign.center, style: TextStyle(fontSize: 14, color: Colors.grey[300])),
+                SizedBox(height: 15,)],
               )
             )
           ],

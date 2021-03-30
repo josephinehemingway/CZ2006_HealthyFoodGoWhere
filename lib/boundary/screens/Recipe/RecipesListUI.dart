@@ -89,7 +89,7 @@ class _HealthyRecipesListState extends State<HealthyRecipesList> with SingleTick
       headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
         return <Widget>[
           recipeListAppBar('Healthy Recipes',
-              'These healthy recipes are tailored to your preferences and will help you achieve your goal!',
+              'These healthy recipes are tailored to your preferences and will help you lead a healthier lifestyle!',
               context, HomeUI(),
               'images/appbar_recipe.png'),
         ];

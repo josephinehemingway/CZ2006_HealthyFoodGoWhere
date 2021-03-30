@@ -91,9 +91,14 @@ class _HealthyEateriesListState extends State<HealthyEateriesList> {
         bottomNavigationBar: BottomNavBar(selectedMenu: MenuState.eatery),
         body: Center(
           child: HealthyEateriesList.currentPosition == null
-              ? CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation(Colors.teal),
-          )
+              ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(height: 40,),
+                  CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(Colors.teal),),
+                  SizedBox(height: 20,),
+                  Text("Loading nearby eateries around you...", style: TextStyle(color: Colors.grey[500], fontSize: 16),)
+                ])
           : nested(),),
   );
 
@@ -102,12 +107,13 @@ class _HealthyEateriesListState extends State<HealthyEateriesList> {
       headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
         return <Widget>[
           eateryAppBar(
-              'Healthy Eateries',
-              'These nearby eateries are recommended to you based on your dietary preferences, the set location and the radii distance',
+              'Healthy Eateries Nearby',
+              'These nearby eateries recommended to you are within the radius distance set from your current location.',
               context,
               HomeUI(),
               filterRadius(),
-              'images/appbar_eatery.png'),
+              'images/appbar_eatery.png',
+              '* Data from Health Promotion Board'),
         ];
       },
       body: new ListView.builder(
@@ -135,7 +141,6 @@ class _HealthyEateriesListState extends State<HealthyEateriesList> {
                                 Navigator.push(context, MaterialPageRoute(builder: (context) => (GoogleMapScreen(coord: HealthyEateriesList._withinRadiusEateries[index].locationCoords, index: index))));
                                 print(HealthyEateriesList._withinRadiusEateries[index].locationCoords);
                                 print(index);
-
                               },
                             ),
                           ),
