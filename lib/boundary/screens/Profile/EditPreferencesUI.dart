@@ -1,6 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Database.dart';
+import 'package:flutter_app/control/Authenticator.dart';
 import 'package:flutter_app/entity/Recipe.dart';
 import '../../widgets/animation.dart';
 import '../../widgets/bottomNavBar.dart';
@@ -31,6 +32,7 @@ class _EditPreferencesState extends State<EditPreferences> {
     'Vegetarian',
     'Whole30'
   ];
+  
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -44,17 +46,11 @@ class _EditPreferencesState extends State<EditPreferences> {
               width: double.infinity,
             child: Container(
               child: FutureBuilder<DataSnapshot>(
-                future: FirebaseDatabase.instance.reference().child('User/2PAXMOZP8BczhLxXgcKU2bZhOBt2/preferences').once(),
+                future: FirebaseDatabase.instance.reference().child('User/${getUserID()}/preferences').once(),
                 builder: (context,snapshot) {
                   if (snapshot.hasData && snapshot.data.value != null) {
                     Recipe recipe;
                     var userPreferenceList = snapshot.data.value;
-                    // var dairyFree = false;
-                    // var glutenFree = false;
-                    // var ketogenic = false;
-                    // var vegan = false;
-                    // var vegetarian = false;
-                    // var whole30 = false;
 
                     for (int i = 0; i < userPreferenceList.length; i++) {
                       if (userPreferenceList[i] == "Dairy Free") {
