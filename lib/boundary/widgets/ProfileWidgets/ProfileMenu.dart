@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/boundary/screens/Profile/EditPreferencesUI.dart';
 import 'package:flutter_app/entity/CurrentUser.dart';
 
 class ProfileMenu extends StatelessWidget {
@@ -47,8 +48,7 @@ Padding saveButton(context, List newlist, CurrentUser curUser){
       // color: Color(0xFFF5F6F9),
       color: Colors.teal[100],
       onPressed: (){
-        // curUser.setDietPref(newlist);
-        // curUser.printCurrentUser();
+
       },
       child: Text('Save', style: TextStyle(fontSize: 20))
   ));

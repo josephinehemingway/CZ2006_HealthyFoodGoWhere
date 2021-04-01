@@ -4,45 +4,46 @@ import '../entity/Recipe.dart';
 // will change according to user's preferences
 class RecommendRecipe {
   //MealPlan class has a list of meals and nutritional info about the meal plan
-  CurrentUser user;
+  List<dynamic> userdiet;
 
-  RecommendRecipe(CurrentUser user) {
-    this.user = user;
+  RecommendRecipe(List<dynamic> userdiet) {
+    this.userdiet = userdiet;
   }
 
-  static int selectedRecipes(Recipe recipe, CurrentUser user) {
+  static int selectedRecipes(Recipe recipe, List<dynamic> userdiet) {
     int k = 0;
-    // if (recipe.veryHealthy == false) {
-    //   return 1;
-    // }
-    // else {
-      for (int i = 0; i < user.dietaryPref.length; i++) {
-        if (user.dietaryPref[i] == "Dairy Free") {
+
+    if (userdiet.isEmpty){
+      return 0;
+    }
+    else{
+      for (int i = 0; i < userdiet.length; i++) {
+        if (userdiet[i] == "Dairy Free") {
           if (recipe.dairyFree == false) {
             return 1;
           }
         }
-        else if (user.dietaryPref[i] == "Gluten Free") {
+        else if (userdiet[i] == "Gluten Free") {
           if (recipe.glutenFree == false) {
             return 1;
           }
         }
-        else if (user.dietaryPref[i] == "Ketogenic") {
+        else if (userdiet[i] == "Ketogenic") {
           if (recipe.ketogenic == false) {
             return 1;
           }
         }
-        else if (user.dietaryPref[i] == "Vegan") {
+        else if (userdiet[i] == "Vegan") {
           if (recipe.vegan == false) {
             return 1;
           }
         }
-        else if (user.dietaryPref[i] == "Vegetarian") {
+        else if (userdiet[i] == "Vegetarian") {
           if (recipe.vegetarian == false) {
             return 1;
           }
         }
-        else if (user.dietaryPref[i] == "Whole30") {
+        else if (userdiet[i] == "Whole30") {
           if (recipe.whole30 == false) {
             return 1;
           }
@@ -50,6 +51,6 @@ class RecommendRecipe {
       }
 
       return k;
+      }
     }
-  // }
 }

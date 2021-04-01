@@ -60,12 +60,4 @@ class _customCheckBoxState extends State<customCheckBox> {
       controlAffinity: ListTileControlAffinity.leading,  //  <-- leading Checkbox
     );
   }
-  // void createPreferences(){
-  //   Database.createPreferences().then((String preferencesKey){
-  //     var route = new MaterialPageRoute(builder: (BuildContext context){
-  //       return new EditPreferences();
-  //     });
-  //     Navigator.of(context).push(route);
-  //   });
-  // }
 }
