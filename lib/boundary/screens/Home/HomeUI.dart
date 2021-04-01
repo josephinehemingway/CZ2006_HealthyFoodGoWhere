@@ -7,14 +7,20 @@ import '../../widgets/ProfileWidgets/ProfilePic.dart';
 import '../Recipe/RecipesListUI.dart';
 import '../../widgets/animation.dart';
 import '../../widgets/bottomNavBar.dart';
-// resources: https://brainsandbeards.com/blog/bottom-navigation-with-a-list-screen-in-flutter
 
+/// This is the boundary class which displays the Home Page in the mobile UI interface.
 class HomeUI extends StatefulWidget {
+
+  /// The route name for navigation to this page.
   static String routeName = '/home';
+
   @override
   _HomeUIState createState() => _HomeUIState();
 }
 
+/// This class manages the state of the Home UI.
+///
+/// Includes the widget build for the Home UI.
 class _HomeUIState extends State<HomeUI> {
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -27,10 +33,14 @@ class _HomeUIState extends State<HomeUI> {
                 .height,
             width: double.infinity,
 
+            /// The elements of the Home screen.
+            ///
+            /// Includes:
+            /// - Page background
+            /// - User's profile picture
+            /// - Descriptive Text widgets
+            /// - Buttons to navigate to ['EateryListUI'] and ['RecipeListUI']
             child: Column(
-              // crossAxisAlignment: CrossAxisAlignment.center,
-              // mainAxisSize: MainAxisSize.max,
-              // mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Stack(
                       overflow: Overflow.visible,
@@ -49,7 +59,7 @@ class _HomeUIState extends State<HomeUI> {
                           ),
                           child: Align(
                               alignment: Alignment(0.05,0.8),
-                              child: FadeAnimation_Y(1,ProfilePic())),),
+                              child: FadeAnimation_Y(1, ProfilePic())),),
                       ]
                   ),
 
