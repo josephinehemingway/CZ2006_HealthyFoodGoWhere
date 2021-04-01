@@ -15,7 +15,7 @@ import '../../widgets/animation.dart';
 import 'package:flutter_app/entity/CurrentUser.dart';
 import 'filterRadiusUI.dart';
 
-/// This is the class which displays the List of Healthy Eateries in the mobile UI interface
+/// This is the boundary class which displays the List of Healthy Eateries in the mobile UI interface.
 class HealthyEateriesList extends StatefulWidget {
 
   /// The route name for navigation to this page.
@@ -124,7 +124,7 @@ class _HealthyEateriesListState extends State<HealthyEateriesList> {
     asyncLoad();
   }
 
-  /// The widget that makes up the UI of the HealthyEateryList UI.
+  /// The building of the widget that makes up the UI of the HealthyEateryList UI.
   @override
   Widget build(BuildContext context) => Scaffold(
 
