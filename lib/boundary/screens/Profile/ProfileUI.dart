@@ -1,5 +1,7 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_app/entity/CurrentUser.dart';
 import '../../widgets/customAppBar.dart';
 import '../Home/HomeUI.dart';
 import '../../widgets/bottomNavBar.dart';
@@ -46,7 +48,7 @@ class _ProfileState extends State<Profile> {
               text: "My Dietary Preferences",
               icon: Icon(MyFlutterApp.cutlery),
               press: () => {
-                // Navigator.pop(context),
+
                 Navigator.pushNamed(context, '/editPref')
               },
             )),

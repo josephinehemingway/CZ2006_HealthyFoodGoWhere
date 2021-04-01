@@ -24,14 +24,26 @@ class _customCheckBoxState extends State<customCheckBox> {
 
   String title;
   List list;
+  bool isSelected;
 
   _customCheckBoxState(this.title, this.list);
+
   @override
   Widget build(BuildContext context) {
+    if (this.list.contains(this.title)){
+      isSelected = true;
+      checkedValue = true;
+    }
+    else{
+      isSelected = false;
+      checkedValue = false;
+    }
+
     return CheckboxListTile(
       title: Text(widget.title, style: TextStyle(fontSize: 20,)),
       activeColor: Colors.teal[300],
       value: checkedValue,
+      selected: isSelected,
       onChanged: (newValue) {
         setState(() {
           checkedValue = newValue;

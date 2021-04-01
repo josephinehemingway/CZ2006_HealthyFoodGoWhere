@@ -13,6 +13,7 @@ import 'googleMapUI.dart';
 import 'package:flutter_app/boundary/widgets/customIcons.dart';
 import '../../widgets/animation.dart';
 import 'package:flutter_app/entity/CurrentUser.dart';
+import 'filterRadiusUI.dart';
 
 class HealthyEateriesList extends StatefulWidget {
   static String routeName = '/eateries';
@@ -72,7 +73,8 @@ class _HealthyEateriesListState extends State<HealthyEateriesList> {
 
     await loadAsset();
     createEateryList();
-    HealthyEateriesList._withinRadiusEateries = filterEateryByRadius(EateryList, HealthyEateriesList.currentPosition.latitude, HealthyEateriesList.currentPosition.longitude, 1.5);
+    HealthyEateriesList._withinRadiusEateries = filterEateryByRadius(EateryList,
+        HealthyEateriesList.currentPosition.latitude, HealthyEateriesList.currentPosition.longitude, 1.5);
   }
 
   @override
@@ -82,16 +84,21 @@ class _HealthyEateriesListState extends State<HealthyEateriesList> {
       backgroundColor: Colors.teal[300],
 
       onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => (GoogleMapScreen())));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => (GoogleMapScreen(coord: HealthyEateriesList.currentPosition))));
 
       },),
         resizeToAvoidBottomInset: false,
         bottomNavigationBar: BottomNavBar(selectedMenu: MenuState.eatery),
         body: Center(
           child: HealthyEateriesList.currentPosition == null
-              ? CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation(Colors.teal),
-          )
+              ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(height: 40,),
+                  CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(Colors.teal),),
+                  SizedBox(height: 20,),
+                  Text("Loading nearby eateries around you...", style: TextStyle(color: Colors.grey[500], fontSize: 16),)
+                ])
           : nested(),),
   );
 
@@ -99,12 +106,14 @@ class _HealthyEateriesListState extends State<HealthyEateriesList> {
     return NestedScrollView(
       headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
         return <Widget>[
-          collapsibleAppBar(
-              'Healthy Eateries',
-              'These nearby eateries are recommended to you based on your dietary preferences, the set location and the radii distance',
+          eateryAppBar(
+              'Healthy Eateries Nearby',
+              'These nearby eateries recommended to you are within the radius distance set from your current location.',
               context,
               HomeUI(),
-              'images/appbar_eatery.png'),
+              filterRadius(),
+              'images/appbar_eatery.png',
+              '* Data from Health Promotion Board'),
         ];
       },
       body: new ListView.builder(
@@ -129,8 +138,9 @@ class _HealthyEateriesListState extends State<HealthyEateriesList> {
                             IconButton(
                               icon: Icon(Icons.location_on_rounded, color: Colors.teal[200], size:40),
                               onPressed: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => (GoogleMapScreen())));
-
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => (GoogleMapScreen(coord: HealthyEateriesList._withinRadiusEateries[index].locationCoords, index: index))));
+                                print(HealthyEateriesList._withinRadiusEateries[index].locationCoords);
+                                print(index);
                               },
                             ),
                           ),
