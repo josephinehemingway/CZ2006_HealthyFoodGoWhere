@@ -16,33 +16,33 @@ class RecommendRecipe {
     //   return 1;
     // }
     // else {
-      for (int i = 0; i < user.dietList.length; i++) {
-        if (user.dietList[i] == "Dairy Free") {
+      for (int i = 0; i < user.dietaryPref.length; i++) {
+        if (user.dietaryPref[i] == "Dairy Free") {
           if (recipe.dairyFree == false) {
             return 1;
           }
         }
-        else if (user.dietList[i] == "Gluten Free") {
+        else if (user.dietaryPref[i] == "Gluten Free") {
           if (recipe.glutenFree == false) {
             return 1;
           }
         }
-        else if (user.dietList[i] == "Ketogenic") {
+        else if (user.dietaryPref[i] == "Ketogenic") {
           if (recipe.ketogenic == false) {
             return 1;
           }
         }
-        else if (user.dietList[i] == "Vegan") {
+        else if (user.dietaryPref[i] == "Vegan") {
           if (recipe.vegan == false) {
             return 1;
           }
         }
-        else if (user.dietList[i] == "Vegetarian") {
+        else if (user.dietaryPref[i] == "Vegetarian") {
           if (recipe.vegetarian == false) {
             return 1;
           }
         }
-        else if (user.dietList[i] == "Whole 30") {
+        else if (user.dietaryPref[i] == "Whole30") {
           if (recipe.whole30 == false) {
             return 1;
           }

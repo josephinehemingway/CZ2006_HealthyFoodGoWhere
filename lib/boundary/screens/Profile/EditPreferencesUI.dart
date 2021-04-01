@@ -1,4 +1,7 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Database.dart';
+import 'package:flutter_app/entity/Recipe.dart';
 import '../../widgets/animation.dart';
 import '../../widgets/bottomNavBar.dart';
 import '../../widgets/customAppBar.dart';
@@ -39,19 +42,65 @@ class _EditPreferencesState extends State<EditPreferences> {
                   .size
                   .height,
               width: double.infinity,
-            child: Column(
-                children: <Widget>[
-                  SizedBox(height: 20,),
-                  FadeAnimation_Y(1.2, customCheckBox(title: dietList[0],list: preferenceList)),
-                  FadeAnimation_Y(1.2, customCheckBox(title: dietList[1],list: preferenceList)),
-                  FadeAnimation_Y(1.2, customCheckBox(title: dietList[2],list: preferenceList)),
-                  FadeAnimation_Y(1.2, customCheckBox(title: dietList[3],list: preferenceList)),
-                  FadeAnimation_Y(1.2, customCheckBox(title: dietList[4],list: preferenceList)),
-                  FadeAnimation_Y(1.2, customCheckBox(title: dietList[5],list: preferenceList)),
-                  SizedBox(height: 60,),
-                  FadeAnimation_Y(1.2, saveButton(context, userPreferenceList, curUser)),
+            child: Container(
+              child: FutureBuilder<DataSnapshot>(
+                future: FirebaseDatabase.instance.reference().child('User/2PAXMOZP8BczhLxXgcKU2bZhOBt2/preferences').once(),
+                builder: (context,snapshot) {
+                  if (snapshot.hasData && snapshot.data.value != null) {
+                    Recipe recipe;
+                    var userPreferenceList = snapshot.data.value;
+                    // var dairyFree = false;
+                    // var glutenFree = false;
+                    // var ketogenic = false;
+                    // var vegan = false;
+                    // var vegetarian = false;
+                    // var whole30 = false;
 
-                  ]
+                    for (int i = 0; i < userPreferenceList.length; i++) {
+                      if (userPreferenceList[i] == "Dairy Free") {
+                        preferenceList.add("Dairy Free");
+                      }
+                      if (userPreferenceList[i] == "Gluten Free") {
+                        preferenceList.add("Glutten Free");
+                      }
+                      if (userPreferenceList[i] == "Ketogenic") {
+                        preferenceList.add("Ketogenic");
+                      }
+                      if (userPreferenceList[i] == "Vegan") {
+                        preferenceList.add("Vegan");
+                      }
+                      if (userPreferenceList[i] == "Vegetarian") {
+                        preferenceList.add("Vegetarian");
+                      }
+                      if (userPreferenceList[i] == "Whole30") {
+                        preferenceList.add("Whole30");
+                      }
+                      print(preferenceList);
+                    }
+                  }
+                  return Column(
+                      children: <Widget>[
+                        SizedBox(height: 20,),
+                        FadeAnimation_Y(1.2, customCheckBox(
+                            title: dietList[0], list: preferenceList)),
+                        FadeAnimation_Y(1.2, customCheckBox(
+                            title: dietList[1], list: preferenceList)),
+                        FadeAnimation_Y(1.2, customCheckBox(
+                            title: dietList[2], list: preferenceList)),
+                        FadeAnimation_Y(1.2, customCheckBox(
+                            title: dietList[3], list: preferenceList)),
+                        FadeAnimation_Y(1.2, customCheckBox(
+                            title: dietList[4], list: preferenceList)),
+                        FadeAnimation_Y(1.2, customCheckBox(
+                            title: dietList[5], list: preferenceList)),
+                        SizedBox(height: 60,),
+                        FadeAnimation_Y(1.2,
+                            saveButton(context, userPreferenceList, curUser)),
+                      ]
+
+                  );
+                }
+            )
             )
         )
   ]
