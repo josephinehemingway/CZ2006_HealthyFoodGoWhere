@@ -79,14 +79,14 @@ class APIRecipeGenerator {
     }
   }
 
-  Future<List<Recipe>> getListOfRecipe(int size, CurrentUser user) async {
+  Future<List<Recipe>> getListOfRecipe(int size, List<dynamic> userdiet) async {
     int count = 0;
     while(count<size) {
-      { RecommendRecipe(user);
+      { RecommendRecipe(userdiet);
         Random random = new Random();
         // int id = random.nextInt(8000);
         Recipe recipe = await APIRecipeGenerator.instance.getRecipe(642138);
-        if (RecommendRecipe.selectedRecipes(recipe, user) == 0) {
+        if (RecommendRecipe.selectedRecipes(recipe, userdiet) == 0) {
           recipelist.add(recipe);
           count++;
         }

@@ -48,7 +48,6 @@ class _ProfileState extends State<Profile> {
               text: "My Dietary Preferences",
               icon: Icon(MyFlutterApp.cutlery),
               press: () => {
-
                 Navigator.pushNamed(context, '/editPref')
               },
             )),

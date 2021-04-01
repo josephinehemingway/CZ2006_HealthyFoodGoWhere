@@ -1,5 +1,7 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_app/control/Authenticator.dart';
 import '../../widgets/RecipeWidgets/RecipeCard.dart';
 import 'package:flutter_app/entity/Recipe.dart';
 import 'package:flutter_app/entity/CurrentUser.dart';
@@ -57,33 +59,8 @@ class _HealthyRecipesListState extends State<HealthyRecipesList> with SingleTick
     super.dispose();
   }
 
-
-  // nested() {
-  //   return NestedScrollView(
-  //     controller: _scrollController,
-  //     headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-  //       return <Widget>[
-  //         collapsibleAppBar('Healthy Recipes',
-  //             'These healthy recipes are tailored to your preferences and will help you achieve your goal!',
-  //             context, HomePage(),
-  //             'images/appbar_recipe.png'),
-  //       ];
-  //     },
-  //     body: Container(
-  //       child: ListView.builder(
-  //         itemCount: recipeData.length,
-  //         physics: BouncingScrollPhysics(),
-  //         itemBuilder: (context, index){
-  //           return FadeAnimation_Y(0.1, recipeData[index]);
-  //         },
-  //         padding:EdgeInsets.symmetric(horizontal: 10),
-  //       ),
-  //     ),
-  //   );
-  // }
-
-
   nested() {
+    var userPreferenceList;
     return NestedScrollView(
       controller: _scrollController,
       headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -95,51 +72,66 @@ class _HealthyRecipesListState extends State<HealthyRecipesList> with SingleTick
         ];
       },
       body: Container(
-        child: FutureBuilder<List<Recipe>>(
-          future: APIRecipeGenerator.instance.getListOfRecipe(1,user),
+        child: FutureBuilder<DataSnapshot>(
+          future: FirebaseDatabase.instance.reference().child('User/${getUserID()}/preferences').once(),
           builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              final recipelist = snapshot.data;
-              for (int i=0; i<1;i++) {
-                var title = recipelist[i].title;
-                var id = recipelist[i].id;
-                var url = recipelist[i].image;
-                var duration = recipelist[i].readyInMinutes;
-                var summary = recipelist[i].summary;
-                final start = "contains <b>";
-                final end = "calories";
-                final startIndex = summary.indexOf(start);
-                final endIndex = summary.indexOf(end);
-                var calories = summary.substring(startIndex + start.length, endIndex).trim();
-
-                recipeData.add(RecipeCard(
-                  imageUrl: url,
-                  title: title,
-                  id: id,
-                  duration: duration,
-                  calories: calories,));
-              }
-              return ListView.builder(
-                itemCount: recipeData.length,
-                physics: BouncingScrollPhysics(),
-                itemBuilder: (context, index){
-                  return FadeAnimation_Y(0.1, recipeData[index]);
-                },
-                padding:EdgeInsets.symmetric(horizontal: 10),
-              );
-            } else if (snapshot.hasError) {
-              return Text(snapshot.error.toString());
+            if (snapshot.hasData && snapshot.data.value != null) {
+              userPreferenceList = snapshot.data.value;
             }
 
-            return CircularPercentIndicator(
-              radius: 40.0,
-              lineWidth: 4.0,
-              percent: 1.0,
-              progressColor: Colors.teal,
+          return FutureBuilder<List<Recipe>>(
+            future: APIRecipeGenerator.instance.getListOfRecipe(1,userPreferenceList),
+            builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            final recipelist = snapshot.data;
+            for (int i=0; i<1;i++) {
+              var title = recipelist[i].title;
+              var id = recipelist[i].id;
+              var url = recipelist[i].image;
+              var duration = recipelist[i].readyInMinutes;
+              var summary = recipelist[i].summary;
+              final start = "contains <b>";
+              final end = "calories";
+              final startIndex = summary.indexOf(start);
+              final endIndex = summary.indexOf(end);
+              var calories = summary.substring(startIndex + start.length, endIndex).trim();
+
+              recipeData.add(RecipeCard(
+                imageUrl: url,
+                title: title,
+                id: id,
+                duration: duration,
+                calories: calories,));
+            }
+            return ListView.builder(
+              itemCount: recipeData.length,
+              physics: BouncingScrollPhysics(),
+              itemBuilder: (context, index){
+                return FadeAnimation_Y(0.1, recipeData[index]);
+              },
+              padding:EdgeInsets.symmetric(horizontal: 10),
             );
-          },
-  ),
+          } else if (snapshot.hasError) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text("No Recipes Found", textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Colors.grey[800]),),
+                  SizedBox(height: 20),
+                  Text(snapshot.error.toString(), textAlign: TextAlign.center,),
+                  SizedBox(height: 40),
+            ]);
+          }
+
+          return CircularPercentIndicator(
+            radius: 40.0,
+            lineWidth: 4.0,
+            percent: 1.0,
+            progressColor: Colors.teal,
+          );
+        });
+          }
       ),
+        )
     );
   }
 
@@ -148,5 +140,12 @@ class _HealthyRecipesListState extends State<HealthyRecipesList> with SingleTick
     resizeToAvoidBottomInset: false,
     bottomNavigationBar: BottomNavBar(selectedMenu: MenuState.recipe),
     body: nested(),
+    floatingActionButton: FloatingActionButton(
+      child: Icon(Icons.refresh),
+      backgroundColor: Colors.teal[300],
+
+      onPressed: () {
+
+      },),
     );
 }
