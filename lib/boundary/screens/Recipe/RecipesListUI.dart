@@ -27,21 +27,21 @@ class _HealthyRecipesListState extends State<HealthyRecipesList> with SingleTick
     RecipeCard(
     title: 'Avocado Toast',
     imageUrl: "https://cookieandkate.com/images/2012/04/avocado-toast-with-tomatoes-balsamic-vinegar-basil.jpg",
-    calories: '299 kCal',
+    calories: '299',
     duration: 25,
     ),
 
     RecipeCard(
     title: 'French Toast',
     imageUrl: "https://d1e3z2jco40k3v.cloudfront.net/-/media/mccormick-us/recipes/mccormick/q/2000/quick_and_easy_french_toast_new_2000x1125.jpg?rev=9b2607d0dece40daa4b102d5d07a1880&vd=20200628T070902Z&hash=C5615934E26A451872F4DC1C9E10718A",
-    calories: '311 kCal',
+    calories: '311',
     duration: 30,
     ),
 
     RecipeCard(
     title: 'Kaya Toast',
     imageUrl: "https://4scoin37ye-flywheel.netdna-ssl.com/wp-content/uploads/2010/10/DSC_0510.jpg",
-    calories: '319 kCal',
+    calories: '319',
     duration: 25,
     )
   ];
@@ -110,7 +110,7 @@ class _HealthyRecipesListState extends State<HealthyRecipesList> with SingleTick
             builder: (context, snapshot) {
           if (snapshot.hasData) {
             final recipelist = snapshot.data;
-            for (int i=0; i<4;i++) {
+            for (int i=0; i<1;i++) {
               var title = recipelist[i].title;
               var id = recipelist[i].id;
               var url = recipelist[i].image;
