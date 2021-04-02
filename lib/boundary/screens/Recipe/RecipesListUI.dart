@@ -82,7 +82,8 @@ class _HealthyRecipesListState extends State<HealthyRecipesList> with SingleTick
   }
 
   nested() {
-    var userPreferenceList;
+    var userPreferenceList=[];
+    int size=5;
     return NestedScrollView(
       controller: _scrollController,
       headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -119,8 +120,8 @@ class _HealthyRecipesListState extends State<HealthyRecipesList> with SingleTick
               final end = "calories";
               final startIndex = summary.indexOf(start);
               final endIndex = summary.indexOf(end);
-              var calories = summary.substring(startIndex + start.length, endIndex).trim();
-
+              var calories =regExp.allMatches(summary).map((z) => z.group(0)).toList().toString();
+              // summary.substring(startIndex + start.length, endIndex).trim();
               recipeData.add(RecipeCard(
                 imageUrl: url,
                 title: title,
@@ -173,4 +174,8 @@ class _HealthyRecipesListState extends State<HealthyRecipesList> with SingleTick
     //
     //   },),
     );
+
+  RegExp regExp = new RegExp(
+      r'(\d+)(?=\s*calories)'
+  );
 }
