@@ -8,7 +8,7 @@ import '../../../entity/Eatery.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter/cupertino.dart';
 
-/// This is the boundary class which displays the Google Maps in the mobile UI interface.
+/// This is the boundary class which displays the Google Maps in the mobile UI.
 ///
 /// Displays the location markers of each Eatery and a scrollable horizontal list of cards
 /// consisting of the Eatery's information.
@@ -21,7 +21,7 @@ class GoogleMapScreen extends StatefulWidget {
     this.index,
   }) : super(key: key);
 
-  /// The route name for navigation to this page.
+  /// The route name for navigation to GoogleMapScreen.
   static String routeName = '/map';
 
   /// The coordinates of the initial camera position in LatLng datatype.

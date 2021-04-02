@@ -4,10 +4,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_app/boundary/screens/Home/HomeUI.dart';
 import 'package:flutter_app/entity/CurrentUser.dart';
 
+/// This is the boundary class which displays the 'Sign in with Gmail' button in the Login Screen.
 class GoogleSignInButton extends StatelessWidget {
+
+  /// Instantiates the Firebase User for authentication.
   User user;
+
+  /// Instantiating a new CurrentUser object.
   CurrentUser curUser = CurrentUser();
 
+  /// Widget Build method for the ['GoogleSignInButton']
   @override
   Widget build(BuildContext context) =>
       MaterialButton(
@@ -20,9 +26,8 @@ class GoogleSignInButton extends StatelessWidget {
             .size
             .width * 0.15,
         onPressed: () {
-          // final provider = Provider.of<GoogleAuth>(context, listen: false);
-          // provider.signIn();
-          // Navigator.pop(context);
+
+          /// SignIn with Google process
           signInWithGoogle().then((result) =>
           { if(result!=null){
             this.user = user,
@@ -37,11 +42,13 @@ class GoogleSignInButton extends StatelessWidget {
           )
           }});
         },
+
         color: Colors.teal[200],
         elevation: 3,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),
         ),
+
         child: Text("Login via Gmail", style: TextStyle(
             fontWeight: FontWeight.w600,
             fontSize: 18,

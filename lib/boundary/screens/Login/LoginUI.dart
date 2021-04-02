@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import '../../widgets/animation.dart';
 import '../../widgets/LoginWidgets/googleSignInButton.dart';
 
-
+/// This is the boundary class which displays the Login Page in the mobile UI.
 class LoginUI extends StatelessWidget {
-  static String routeName = '/login';
-  User user;
 
+  /// The route name for navigation to LoginUI page.
+  static String routeName = '/login';
+
+  /// The build method to build the login page elements.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,22 +20,20 @@ class LoginUI extends StatelessWidget {
               .size
               .height,
           width: double.infinity,
+
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
             children: <Widget>[
               Expanded(
                 child: Column(
-                  // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     Column(
                       children: <Widget>[
-
                         FadeAnimation_Y(1, Container(
-                          //height: MediaQuery.of(context).size.height / 3,
-                          // margin: EdgeInsets.only(top: 182, left: 10),
                           height: MediaQuery.of(context).size.width *0.5,
                           width: MediaQuery.of(context).size.width *0.65,
                           decoration: BoxDecoration(
@@ -51,7 +50,6 @@ class LoginUI extends StatelessWidget {
                                 fontSize: 25,
                                 color: Colors.grey[700],
                                 fontFamily: 'GlacialIndifference'
-                              //fontWeight: FontWeight.bold
                             ),)),
 
                         SizedBox(height: 7,),
@@ -61,16 +59,13 @@ class LoginUI extends StatelessWidget {
                             fontSize: 15,
                             color: Colors.grey,
                             fontFamily: 'GlacialIndifference'
-                          //fontWeight: FontWeight.bold
                         ),)),
                         SizedBox(height: 20,),
 
                         FadeAnimation_Y(1.5, GoogleSignInButton()),
 
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.05, ),
+                        SizedBox(height: MediaQuery.of(context).size.height * 0.05, ),
                         FadeAnimation_Y(1, Container(
-                          //height: MediaQuery.of(context).size.height / 3,
                           margin: EdgeInsets.only(top: 3),
                           height: 200,
                           width: 500,

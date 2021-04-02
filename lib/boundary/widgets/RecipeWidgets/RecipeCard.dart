@@ -30,7 +30,7 @@ class RecipeCard extends StatelessWidget {
               onTap: () async {
                 RecipeDetails recipeDetails = await APIRecipeGenerator.instance.getRecipeDetails(id);
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => (RecipeDetailsPage(
+                    context, MaterialPageRoute(builder: (context) => (RecipeDetailsUI(
                   recipeDetails: recipeDetails, recipeTitle: title, recipeImg: imageUrl,
                 ))));
               },

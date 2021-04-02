@@ -8,10 +8,10 @@ import '../Recipe/RecipesListUI.dart';
 import '../../widgets/animation.dart';
 import '../../widgets/bottomNavBar.dart';
 
-/// This is the boundary class which displays the Home Page in the mobile UI interface.
+/// This is the boundary class which displays the Home Screen in the mobile UI.
 class HomeUI extends StatefulWidget {
 
-  /// The route name for navigation to this page.
+  /// The route name for navigation to HomeUI page.
   static String routeName = '/home';
 
   @override
@@ -22,6 +22,8 @@ class HomeUI extends StatefulWidget {
 ///
 /// Includes the widget build for the Home UI.
 class _HomeUIState extends State<HomeUI> {
+
+  /// Widget Build method for the User Interface of the Home Screen.
   @override
   Widget build(BuildContext context) => Scaffold(
         resizeToAvoidBottomInset: false,

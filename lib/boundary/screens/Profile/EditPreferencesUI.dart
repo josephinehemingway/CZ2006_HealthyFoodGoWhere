@@ -11,12 +11,12 @@ import '../../widgets/ProfileWidgets/ProfileMenu.dart';
 import 'ProfileUI.dart';
 import 'package:flutter_app/entity/CurrentUser.dart';
 
-/// This is the boundary class which displays the User's Dietary Preferences in the mobile UI interface.
+/// This is the boundary class which displays the User's Dietary Preferences in the mobile UI.
 ///
 /// Consists of checkboxes for the user to indicate their dietary preferences.
 class EditPreferences extends StatefulWidget {
 
-  /// The route name for navigation to this page.
+  /// The route name for navigation to EditPreferences page.
   static String routeName = '/editPref';
 
   @override
@@ -28,10 +28,18 @@ class EditPreferences extends StatefulWidget {
 /// Includes the business logic behind EditPreferences.
 class _EditPreferencesState extends State<EditPreferences> {
 
+  /// Instantiating a new ['CurrentUser'] object.
   CurrentUser curUser = CurrentUser();
+
+  /// Initializing the user's preference list from the Firebase Realtime Database.
   List<String> userPreferenceList = [];
 
+  /// Initializing the user's preference list that is used to store user's preferences
+  /// directly from the checkboxes when ticked.
   List<String> preferenceList = [];
+
+  /// A list of dietary preferences used as conditions when filtering recipes
+  /// from the API.
   List<String> dietList = [
     'Dairy Free',
     'Gluten Free',
@@ -40,8 +48,8 @@ class _EditPreferencesState extends State<EditPreferences> {
     'Vegetarian',
     'Whole30'
   ];
-  
 
+  /// Widget Build method for the User Interface of the Edit Preference Screen.
   @override
   Widget build(BuildContext context) => Scaffold(
       resizeToAvoidBottomInset: false,
@@ -52,6 +60,12 @@ class _EditPreferencesState extends State<EditPreferences> {
                   .size
                   .height,
               width: double.infinity,
+
+          /// FutureBuilder method to obtain the user's dietary preferences from the Firebase Realtime Database.
+          ///
+          /// Database preferences will be stored in the ['userPreferenceList'].
+          /// This method is to repopulate the ['preferenceList'] with the database preferences
+          /// so as to initialise the initial checkbox state.
             child: Container(
               child: FutureBuilder<DataSnapshot>(
                 future: FirebaseDatabase.instance.reference().child('User/${getUserID()}/preferences').once(),

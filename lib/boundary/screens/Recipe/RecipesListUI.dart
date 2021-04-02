@@ -12,13 +12,19 @@ import '../../widgets/animation.dart';
 import 'package:flutter_app/control/APIRecipeGenerator.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-
+/// This is the boundary class which displays the List of Healthy Recipes in the mobile UI.
 class HealthyRecipesList extends StatefulWidget {
+
+  /// The route name for navigation to HealthyRecipesList page.
   static String routeName = '/recipeList';
+
   @override
   _HealthyRecipesListState createState() => _HealthyRecipesListState();
 }
 
+/// This class manages the state of the HealthyRecipesList UI.
+///
+/// Includes the business logic behind HealthyRecipesList UI.
 class _HealthyRecipesListState extends State<HealthyRecipesList> with SingleTickerProviderStateMixin {
 
   CurrentUser user= CurrentUser();

@@ -8,7 +8,7 @@ import '../../widgets/customAppBar.dart';
 /// Consists of the radius slider.
 class filterRadius extends StatefulWidget {
 
-  /// The route name for navigation to this page.
+  /// The route name for navigation to filterRadius.
   static String routeName = '/filter';
 
   // static double value;
