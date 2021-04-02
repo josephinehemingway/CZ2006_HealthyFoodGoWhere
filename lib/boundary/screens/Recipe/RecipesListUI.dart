@@ -84,11 +84,11 @@ class _HealthyRecipesListState extends State<HealthyRecipesList> with SingleTick
             }
 
           return FutureBuilder<List<Recipe>>(
-            future: APIRecipeGenerator.instance.getListOfRecipe(3,userPreferenceList),
+            future: APIRecipeGenerator.instance.getListOfRecipe(1,userPreferenceList),
             builder: (context, snapshot) {
           if (snapshot.hasData) {
             final recipelist = snapshot.data;
-            for (int i=0; i<3;i++) {
+            for (int i=0; i<1;i++) {
               var title = recipelist[i].title;
               var id = recipelist[i].id;
               var url = recipelist[i].image;
@@ -98,8 +98,8 @@ class _HealthyRecipesListState extends State<HealthyRecipesList> with SingleTick
               final end = "calories";
               final startIndex = summary.indexOf(start);
               final endIndex = summary.indexOf(end);
-              var calories = summary.substring(startIndex + start.length, endIndex).trim();
-
+              var calories =regExp.allMatches(summary).map((z) => z.group(0)).toList().toString();
+              // summary.substring(startIndex + start.length, endIndex).trim();
               recipeData.add(RecipeCard(
                 imageUrl: url,
                 title: title,
@@ -152,4 +152,8 @@ class _HealthyRecipesListState extends State<HealthyRecipesList> with SingleTick
 
       },),
     );
+
+  RegExp regExp = new RegExp(
+      r'(\d+)(?=\s*calories)'
+  );
 }
