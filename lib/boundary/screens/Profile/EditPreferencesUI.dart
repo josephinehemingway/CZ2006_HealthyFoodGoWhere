@@ -11,13 +11,21 @@ import '../../widgets/ProfileWidgets/ProfileMenu.dart';
 import 'ProfileUI.dart';
 import 'package:flutter_app/entity/CurrentUser.dart';
 
-
+/// This is the boundary class which displays the User's Dietary Preferences in the mobile UI interface.
+///
+/// Consists of checkboxes for the user to indicate their dietary preferences.
 class EditPreferences extends StatefulWidget {
+
+  /// The route name for navigation to this page.
   static String routeName = '/editPref';
+
   @override
   _EditPreferencesState createState() => _EditPreferencesState();
 }
 
+/// This class manages the state of the EditPreferences.
+///
+/// Includes the business logic behind EditPreferences.
 class _EditPreferencesState extends State<EditPreferences> {
 
   CurrentUser curUser = CurrentUser();
