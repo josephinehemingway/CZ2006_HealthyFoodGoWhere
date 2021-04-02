@@ -31,6 +31,10 @@ class HealthyEateriesList extends StatefulWidget {
 
   /// The current user's current position in Position datatype.
   static Position currentPos;
+
+  /// The user's set radius distance.
+  static double radiusDistance = 1.0;
+
   @override
   _HealthyEateriesListState createState() => _HealthyEateriesListState();
 }
@@ -112,7 +116,7 @@ class _HealthyEateriesListState extends State<HealthyEateriesList> {
     await loadAsset();
     createEateryList();
     HealthyEateriesList._withinRadiusEateries = filterEateryByRadius(EateryList,
-        HealthyEateriesList.currentPosition.latitude, HealthyEateriesList.currentPosition.longitude, 1.5);
+        HealthyEateriesList.currentPosition.latitude, HealthyEateriesList.currentPosition.longitude, HealthyEateriesList.radiusDistance);
   }
 
   /// A method that initializes the state of the UI.
@@ -179,7 +183,7 @@ class _HealthyEateriesListState extends State<HealthyEateriesList> {
 
       /// Initializing a ['ListView.builder'] to generate the list of nearby Eateries
       /// within the set radius.
-      body: new ListView.builder(
+      body: HealthyEateriesList._withinRadiusEateries.isNotEmpty ? new ListView.builder(
               itemCount: HealthyEateriesList._withinRadiusEateries.length,
               itemBuilder: (BuildContext context, int index) {
                 return FadeAnimation_Y(1, Container(
@@ -224,7 +228,20 @@ class _HealthyEateriesListState extends State<HealthyEateriesList> {
                           ])
                 )));
               },
-            ),
+            ) : Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      SizedBox(height: 20,),
+                      Container(
+                          width: 350,
+                          child: Text("No nearby eateries found \nwithin ${HealthyEateriesList.radiusDistance} km of your current location.",
+                            style: TextStyle(color: Colors.grey[800], fontSize: 20),
+                            textAlign: TextAlign.center,)
+                      ),
+                      SizedBox(height: 10,),
+                      Text("Try a larger radius distance.", style: TextStyle(color: Colors.grey[600], fontSize: 16),)
+                    ]),
     );
   }
 }
