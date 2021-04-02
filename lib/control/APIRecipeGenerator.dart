@@ -51,7 +51,7 @@ class APIRecipeGenerator {
 
   Future<RecipeDetails> getRecipeDetails(id) async {
     final String _baseURL = "api.spoonacular.com";
-    const String API_KEY = "07eeb2eabcc448ceb5363f7c3dcbf0f5";
+    const String API_KEY = "a6412bca93ee4da2b8a5c5010742d652";
 
     Map<String, String> parameters = {
       'apiKey': API_KEY,

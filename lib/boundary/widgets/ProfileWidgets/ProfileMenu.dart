@@ -39,18 +39,18 @@ class ProfileMenu extends StatelessWidget {
   }
 }
 
-Padding saveButton(context, List newlist, CurrentUser curUser){
-  return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-      child: FlatButton(
-      padding: EdgeInsets.only(bottom: 5),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      // color: Color(0xFFF5F6F9),
-      color: Colors.teal[100],
-      onPressed: (){
-
-      },
-      child: Text('Save', style: TextStyle(fontSize: 20))
-  ));
-}
+// Padding saveButton(context, List newlist, CurrentUser curUser){
+//   return Padding(
+//       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+//       child: FlatButton(
+//       padding: EdgeInsets.only(bottom: 5),
+//       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+//       // color: Color(0xFFF5F6F9),
+//       color: Colors.teal[100],
+//       onPressed: (){
+//
+//       },
+//       child: Text('Save', style: TextStyle(fontSize: 20))
+//   ));
+// }
 

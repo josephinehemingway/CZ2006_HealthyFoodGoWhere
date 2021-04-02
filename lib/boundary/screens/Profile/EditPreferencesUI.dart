@@ -98,8 +98,6 @@ class _EditPreferencesState extends State<EditPreferences> {
                         FadeAnimation_Y(1.2, customCheckBox(
                             title: dietList[5], list: preferenceList)),
                         SizedBox(height: 60,),
-                        FadeAnimation_Y(1.2,
-                            saveButton(context, userPreferenceList, curUser)),
                       ]
 
                   );
