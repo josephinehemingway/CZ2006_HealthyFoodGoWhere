@@ -88,7 +88,7 @@ class _HealthyEateriesListState extends State<HealthyEateriesList> {
             name: healthyEats[i][j].toString(),
             address: healthyEats[i][j + 1].toString(),
             description: null,
-            thumbNail: "https://d1sag4ddilekf6.cloudfront.net/compressed/merchants/4-CZJTRFUVVYMBR6/hero/eef5b5223b4e47fe826903cc14131ae1_1591598479662885781.jpeg",
+            thumbNail: healthyEats[i][j + 4].toString(),
             locationCoords: LatLng(
                 double.parse(healthyEats[i][j + 2].toString()), double.parse(healthyEats[i][j + 3].toString()))
         );
