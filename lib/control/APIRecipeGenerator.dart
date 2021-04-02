@@ -18,11 +18,11 @@ class APIRecipeGenerator {
 
   //add base URL for spoonacular API, endpoint and API key as constant
   final String _baseURL = "api.spoonacular.com";
-  static const String API_KEY = "2f3c1b88a1e048819d9d57cad263dc04";
+  static const String API_KEY = "07eeb2eabcc448ceb5363f7c3dcbf0f5";
 
   Future<Recipe> getRecipe(id) async {
     final String _baseURL = "api.spoonacular.com";
-    const String API_KEY = "2f3c1b88a1e048819d9d57cad263dc04";
+    const String API_KEY = "07eeb2eabcc448ceb5363f7c3dcbf0f5";
 
     Map<String, String> parameters = {
       'apiKey': API_KEY,
@@ -51,7 +51,7 @@ class APIRecipeGenerator {
 
   Future<RecipeDetails> getRecipeDetails(id) async {
     final String _baseURL = "api.spoonacular.com";
-    const String API_KEY = "2f3c1b88a1e048819d9d57cad263dc04";
+    const String API_KEY = "07eeb2eabcc448ceb5363f7c3dcbf0f5";
 
     Map<String, String> parameters = {
       'apiKey': API_KEY,
@@ -84,8 +84,8 @@ class APIRecipeGenerator {
     while(count<size) {
       { RecommendRecipe(userdiet);
         Random random = new Random();
-        // int id = random.nextInt(8000);
-        Recipe recipe = await APIRecipeGenerator.instance.getRecipe(642138);
+        int id = random.nextInt(80000);
+        Recipe recipe = await APIRecipeGenerator.instance.getRecipe(id);
         if (RecommendRecipe.selectedRecipes(recipe, userdiet) == 0) {
           recipelist.add(recipe);
           count++;

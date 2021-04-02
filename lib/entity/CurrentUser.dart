@@ -17,7 +17,7 @@ class CurrentUser {
   String profilePic;
   LatLng curlocation;
 
-  List <String> dietaryPref = [];
+  List <dynamic> dietaryPref = [];
 
   CurrentUser({
     this.id,
