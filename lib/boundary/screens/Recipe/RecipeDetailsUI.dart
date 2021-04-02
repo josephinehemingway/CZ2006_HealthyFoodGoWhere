@@ -3,6 +3,7 @@ import 'package:flutter_app/entity/RecipeDetails.dart';
 import '../../widgets/customAppBar.dart';
 import 'RecipesListUI.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import '../../widgets/bottomNavBar.dart';
 
 class RecipeDetailsPage extends StatefulWidget {
   static String routeName = '/recipeDetails';
@@ -22,18 +23,22 @@ class RecipeDetailsPage extends StatefulWidget {
 class _RecipeDetailsPageState extends State<RecipeDetailsPage> {
   @override
   Widget build(BuildContext context) {
-    return NestedScrollView(
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      bottomNavigationBar: BottomNavBar(selectedMenu: MenuState.recipe),
+      body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-      return <Widget>[
-        RecipeAppBar(widget.recipeTitle, context, HealthyRecipesList(),
-            widget.recipeImg),
-      ];
-    },
-      body: WebView(
-    initialUrl: widget.recipeDetails.spoonacularSourceUrl,
-    //JS unrestricted, so that JS can execute in the webview
-    javascriptMode: JavascriptMode.unrestricted,
+          return <Widget>[
+            RecipeAppBar(widget.recipeTitle, context, HealthyRecipesList(),
+                widget.recipeImg),
+          ];
+        },
+        body: WebView(
+          initialUrl: widget.recipeDetails.spoonacularSourceUrl,
+          //JS unrestricted, so that JS can execute in the webview
+          javascriptMode: JavascriptMode.unrestricted,
+        ),
       ),
-      );
+    );
   }
 }
