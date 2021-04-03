@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import '../../widgets/animation.dart';
-import '../../widgets/LoginWidgets/googleSignInButton.dart';
+import 'package:flutter_app/boundary/widgets/animation.dart';
+import 'package:flutter_app/boundary/widgets/LoginWidgets/googleSignInButton.dart';
 
 /// This is the boundary class which displays the Login Page in the mobile UI.
 class LoginUI extends StatelessWidget {

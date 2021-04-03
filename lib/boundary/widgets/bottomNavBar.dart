@@ -6,31 +6,31 @@ import '../screens/Profile/ProfileUI.dart';
 import '../screens/Recipe/RecipesListUI.dart';
 import 'customIcons.dart';
 
-/// ['MenuState'] enumerates the page routes for each item in the bottom navigation bar.
+/// [MenuState] enumerates the page routes for each item in the bottom navigation bar.
 enum MenuState { home, recipe, eatery, profile }
 
-/// This is the boundary class for displaying a custom bottom navigation bar widget.
+/// This is the boundary class for displaying a custom bottom navigation bar [BottomNavBar] widget.
 ///
 /// Used in every page of the application consistently.
-/// Consists of navigation buttons to HomeUI, RecipeListUI, EateryListUI and ProfileUI.
+/// Consists of navigation buttons to [HomeUI], [HealthyEateriesList], [HealthyRecipesList] and [ProfileUI].
 class BottomNavBar extends StatelessWidget {
 
-  /// Class constructor for BottomNavBar
+  /// Class constructor for [BottomNavBar]
   const BottomNavBar({
     Key key,
     @required this.selectedMenu,
   }) : super(key: key);
 
-  /// Parameter for BottomNavBar.
+  /// Parameter for [BottomNavBar].
   ///
-  /// ['selectedMenu'] is the currently selected item of the bottom navigation bar.
+  /// [selectedMenu] is the currently selected item of the bottom navigation bar.
   /// It must correspond to the currently active page.
   ///
   /// When selected, the bottom navigation bar item that is active will turn teal-coloured.
   /// When not selected, the bottom navigation icons that are inactive remain grey.
   final MenuState selectedMenu;
 
-  // Widget Build method to implement the BottomNavBar.
+  /// Widget Build method to implement the [BottomNavBar].
   @override
   Widget build(BuildContext context) {
     final Color inActiveIconColor = Color(0xFFB6B6B6);

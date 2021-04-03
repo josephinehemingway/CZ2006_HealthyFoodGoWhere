@@ -28,20 +28,20 @@ class GoogleSignInButton extends StatelessWidget {
             .size
             .width * 0.15,
         onPressed: () {
+          /// SignIn with Google process.
+          signInWithGoogle().then((result) => {
 
-          /// SignIn with Google process
-          signInWithGoogle().then((result) =>
-          { if(result!=null){
-            this.user = user,
-            curUser.name = getProfileName(),
-            curUser.email = getEmail(),
-            curUser.id = getUserID(),
-            curUser.profilePic = getUserImageURL(),
+            if(result!=null){
+              // initialising the user.
+              this.user = user,
+              curUser.name = getProfileName(),
+              curUser.email = getEmail(),
+              curUser.id = getUserID(),
+              curUser.profilePic = getUserImageURL(),
 
-            curUser.printCurrentUser(),
-            Navigator.push(
+              Navigator.push(
                 context, MaterialPageRoute(builder: (context) => HomeUI())
-          )
+              )
           }});
         },
 

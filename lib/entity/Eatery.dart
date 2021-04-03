@@ -68,46 +68,5 @@ class Eatery implements Comparable{
 
     return null;
   }
-  //
-  // int compareLat(other){
-  //   if (this.locationCoords.latitude == null || other == null) {
-  //     return null;
-  //   }
-  //
-  //   if (this.locationCoords.latitude < other.locationCoords.latitude) {
-  //     return 1;
-  //   }
-  //
-  //   if (this.locationCoords.latitude > other.locationCoords.latitude) {
-  //     return -1;
-  //   }
-  //
-  //   if (this.locationCoords.latitude == other.locationCoords.latitude) {
-  //     return 0;
-  //   }
-  //
-  //   return null;
-  // }
-  //
-  // int compareLon(other){
-  //   if (this.locationCoords.longitude == null || other == null) {
-  //     return null;
-  //   }
-  //
-  //   if (this.locationCoords.longitude < other.locationCoords.longitude) {
-  //     return 1;
-  //   }
-  //
-  //   if (this.locationCoords.longitude > other.locationCoords.longitude) {
-  //     return -1;
-  //   }
-  //
-  //   if (this.locationCoords.longitude == other.locationCoords.longitude) {
-  //     return 0;
-  //   }
-  //
-  //   return null;
-  // }
-
 
 }

@@ -28,8 +28,4 @@ class CurrentUser {
     this.dietaryPref
   });
 
-
-  void printCurrentUser() {
-    print(dietaryPref);
-  }
 }

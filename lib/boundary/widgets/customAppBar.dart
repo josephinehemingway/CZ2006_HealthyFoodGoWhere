@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 /// A simple custom App Bar.
 ///
-/// Used in ProfileUI.
+/// Used in [ProfileUI] and [filterRadius].
 AppBar myAppBar(String title, context, Widget prevPg){
   return AppBar(
     centerTitle: true,
@@ -22,7 +22,7 @@ AppBar myAppBar(String title, context, Widget prevPg){
 
 /// A custom sliver app bar that minimises to just the title when user scrolls down the screen.
 ///
-/// Used in EateryListUI.
+/// Used in [EateryListUI].
 /// Consists of an image background, title, subtitle, sub-subtitle and an action button.
 SliverAppBar eateryAppBar(String title, String subtitle, context, Widget prevPg, Widget nextPg, String image, String subsubtitle){
   return SliverAppBar(
@@ -69,7 +69,7 @@ SliverAppBar eateryAppBar(String title, String subtitle, context, Widget prevPg,
 
 /// A custom sliver app bar that minimises to just the title when user scrolls down the screen.
 ///
-/// Used in RecipeListUI.
+/// Used in [RecipeListUI].
 /// Consists of an image background, title, subtitle and sub-subtitle only.
 SliverAppBar recipeListAppBar(String title, String subtitle, context, Widget prevPg, String image){
   return SliverAppBar(
@@ -105,10 +105,12 @@ SliverAppBar recipeListAppBar(String title, String subtitle, context, Widget pre
   );
 }
 
-/// This is the class that implements the content of the sliver app bar.
+/// This is the class that implements the contents of the custom sliver app bars.
+///
+/// Used in [recipeListAppBar], [eateryAppBar].
 class AppBarContents extends StatelessWidget {
 
-  /// Class constructor for ['AppBarContents'].
+  /// Class constructor for [AppBarContents].
   const AppBarContents({
     Key key,
     @required this.subtitle,
@@ -116,13 +118,13 @@ class AppBarContents extends StatelessWidget {
     this.subsubtitle, // optional parameter
   }) : super(key: key);
 
-  /// Parameters for ['AppBarContents']
+  /// Parameters for [AppBarContents]
   final String subtitle, image, subsubtitle;
 
   /// Height of the app bar.
   final double appBarHeight = 66.0;
 
-  /// Widget Build method for implementation of ['AppBarContents'].
+  /// Widget Build method for implementation of [AppBarContents].
   @override
   Widget build(BuildContext context) {
     final double statusBarHeight = MediaQuery
@@ -133,8 +135,8 @@ class AppBarContents extends StatelessWidget {
     // This 'if' condition is to determine whether the AppBarContents is generated for the
     // Recipe or Eatery sliver app bar.
     //
-    // If subsubtitle is null, it is for the Recipe App Bar.
-    // If subsubtitle is not null, it is for the Eatery App Bar.
+    // If subsubtitle is null, it is for [recipeListAppBar].
+    // If subsubtitle is not null, it is for [eateryAppBar].
     if (subsubtitle != null){
       return Container(
         padding: new EdgeInsets.only(top: statusBarHeight),

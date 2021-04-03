@@ -4,20 +4,20 @@ import 'package:simple_animations/simple_animations.dart';
 /// An animation class that animates widgets with a Fade effect upon loading each screen.
 class FadeAnimation extends StatelessWidget {
 
-  /// Parameters for FadeAnimation
+  /// Parameters for [FadeAnimation]
   ///
   /// Delay before animation starts after each screen is loaded.
   final double delay;
 
-  /// Parameters for FadeAnimation
+  /// Parameters for [FadeAnimation]
   ///
   /// Widget to be animated.
   final Widget child;
 
-  /// Class constructor for FadeAnimation.
+  /// Class constructor for [FadeAnimation].
   FadeAnimation(this.delay, this.child);
 
-  /// Widget Build to implement FadeAnimation.
+  /// Widget Build to implement [FadeAnimation].
   @override
   Widget build(BuildContext context) {
     final tween = MultiTrackTween([

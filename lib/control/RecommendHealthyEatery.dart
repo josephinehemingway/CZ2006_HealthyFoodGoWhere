@@ -1,7 +1,9 @@
 import 'dart:math';
 import '../entity/Eatery.dart';
 
-// returns eateries within radius AND updates distanceFromUser attribute
+/// A method to filter [EateryList] to obtain Eateries that is within the radius distance from user's current location.
+///
+///returns eateries within radius AND updates distanceFromUser attribute
 List<Eatery> filterEateryByRadius(
     List<Eatery> EateryList,
     double userLatitude,
@@ -22,25 +24,14 @@ List<Eatery> filterEateryByRadius(
   }
 
   withinRadiusEateries.sort((a,b) => a.distancefromuser.compareTo(b.distancefromuser));
-
-  // for(int i=0; i<withinRadiusEateries.length; i++){
-  //   for(int j=i+1; j<withinRadiusEateries.length; j++){
-  //     if (withinRadiusEateries[i].locationCoords.latitude == withinRadiusEateries[j].locationCoords.latitude){
-  //       if (withinRadiusEateries[i].locationCoords.longitude == withinRadiusEateries[j].locationCoords.longitude){
-  //         withinRadiusEateries[j].locationCoords.latitude += 0.0000000000001;
-  //       }
-  //     }
-  //   }
-  // }
-
-
   print(withinRadiusEateries.toString());
 
   return withinRadiusEateries;
 }
 
-// return distance between the coordinates
-// output: double
+/// A method to return distance between a pair of coordinates.
+///
+/// Returns distance ['double'].
 double getDistance(lat1, lon1, lat2, lon2) {
   var p = 0.017453292519943295;
   var c = cos;
@@ -49,18 +40,3 @@ double getDistance(lat1, lon1, lat2, lon2) {
       c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p)) / 2;
   return 12742 * asin(sqrt(a));
 }
-
-// void setRadiusInKm(double radius) {
-//   // radius setter
-//   this._radiusInKm = radius;
-// }
-//
-// getUserLocation() async {
-//   final coordinates = await Geolocator.getCurrentPosition(
-//       desiredAccuracy: LocationAccuracy.best);
-//   print(coordinates);
-//   setState(() {
-//     _userLatitude = coordinates.latitude;
-//     _userLongitude = coordinates.longitude;
-//   });
-// }

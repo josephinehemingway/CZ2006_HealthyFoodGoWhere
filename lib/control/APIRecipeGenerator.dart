@@ -1,12 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter_app/entity/Recipe.dart';
-import 'package:flutter_app/boundary/widgets/RecipeWidgets/RecipeCard.dart';
 import 'package:flutter_app/entity/RecipeDetails.dart';
 import 'package:flutter_app/control/RecommendRecipe.dart';
 import 'package:http/http.dart' as http;
 import 'dart:math';
-import '../entity/CurrentUser.dart';
 
 class APIRecipeGenerator {
   APIRecipeGenerator._instantiate();
@@ -15,14 +13,17 @@ class APIRecipeGenerator {
   static final APIRecipeGenerator instance = APIRecipeGenerator._instantiate();
   List<Recipe> recipelist = [];
 
-
   //add base URL for spoonacular API, endpoint and API key as constant
   final String _baseURL = "api.spoonacular.com";
-  static const String API_KEY = "07eeb2eabcc448ceb5363f7c3dcbf0f5";
+  static const String API_KEY = "a6412bca93ee4da2b8a5c5010742d652";
+
+  // jo's API key: "a6412bca93ee4da2b8a5c5010742d652"
+  // joey's API key: "07eeb2eabcc448ceb5363f7c3dcbf0f5"
+  // shannon's API key: "2f3c1b88a1e048819d9d57cad263dc04"
 
   Future<Recipe> getRecipe(id) async {
-    final String _baseURL = "api.spoonacular.com";
-    const String API_KEY = "07eeb2eabcc448ceb5363f7c3dcbf0f5";
+    // final String _baseURL = "api.spoonacular.com";
+    // const String API_KEY = "a6412bca93ee4da2b8a5c5010742d652";
 
     Map<String, String> parameters = {
       'apiKey': API_KEY,
@@ -50,12 +51,8 @@ class APIRecipeGenerator {
   }
 
   Future<RecipeDetails> getRecipeDetails(id) async {
-    final String _baseURL = "api.spoonacular.com";
-    const String API_KEY = "a6412bca93ee4da2b8a5c5010742d652";
-
-    // jo's API key: "a6412bca93ee4da2b8a5c5010742d652"
-    // joey's API key: "07eeb2eabcc448ceb5363f7c3dcbf0f5"
-    // shannon's API key: "2f3c1b88a1e048819d9d57cad263dc04"
+    // final String _baseURL = "api.spoonacular.com";
+    // const String API_KEY = "a6412bca93ee4da2b8a5c5010742d652";
 
     Map<String, String> parameters = {
       'apiKey': API_KEY,
