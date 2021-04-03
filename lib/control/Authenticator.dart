@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+///Instantiate FirebaseAuthenication instance
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final GoogleSignIn  googleSignIn = GoogleSignIn();
 
-/// A method for Google sign in.
+/// A method for Google sign in to check for authentication
 Future<String> signInWithGoogle() async{
   //Triger authetication flow
   await Firebase.initializeApp();

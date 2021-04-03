@@ -6,10 +6,11 @@ import 'package:flutter_app/control/RecommendRecipe.dart';
 import 'package:http/http.dart' as http;
 import 'dart:math';
 
+/// This is a control class [APIRecipeGenerator] which instantiates API instance to access Spoonacular API
 class APIRecipeGenerator {
   APIRecipeGenerator._instantiate();
 
-  ///Parameters of [APIRecipeGenerator]
+  ///Attributes of [APIRecipeGenerator]
 
   /// id of Recipe to be fetched from API
   int id;
@@ -91,13 +92,17 @@ class APIRecipeGenerator {
   ///Getter method to get a List of [Recipe]
   ///Parameters [size] is the number of recipe cards that would be generated on [RecipeListPageUI]
   ///Paramter [userdiet] is the list of user preferences to obtain recipes suited to the user
+  ///If [RecommendRecipe] selectedRecipe method returns 0, [Recipe] object passes the user's preference test and is added to [recipelist]
+  ///Else [Recipe] object is not added into [recipelist]
   Future<List<Recipe>> getListOfRecipe(int size, List<dynamic> userdiet) async {
     int count = 0;
     while(count<size) {
       /// Instantiate [RecommendRecipe] by inputting [userdiet] list.
       { RecommendRecipe(userdiet);
         Random random = new Random();
+        ///Generates random numbers from 1-80000 to be used as Recipe [id].
         int id = random.nextInt(80000);
+        //Method to get [Recipe] object by calling getRecipe Method.
         Recipe recipe = await APIRecipeGenerator.instance.getRecipe(id);
         if (RecommendRecipe.selectedRecipes(recipe, userdiet) == 0) {
           recipelist.add(recipe);
