@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/boundary/screens/Login/LoginUI.dart';
 
-
+/// Application overall theme data.
 ThemeData theme(){
   return ThemeData(
     scaffoldBackgroundColor: Colors.white,
@@ -12,6 +11,7 @@ ThemeData theme(){
   );
 }
 
+/// Application Text theme.
 TextTheme textTheme() {
   return TextTheme(
     bodyText1: TextStyle(color: Colors.grey),
@@ -19,6 +19,7 @@ TextTheme textTheme() {
   );
 }
 
+/// Application App Bar theme.
 AppBarTheme appBarTheme() {
   return AppBarTheme(
     color: Colors.white,

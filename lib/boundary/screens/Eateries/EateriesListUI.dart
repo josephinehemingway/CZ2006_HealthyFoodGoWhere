@@ -122,7 +122,7 @@ class _HealthyEateriesListState extends State<HealthyEateriesList> {
 
     await loadAsset();
     createEateryList();
-    HealthyEateriesList._withinRadiusEateries = filterEateryByRadius(EateryList,
+    HealthyEateriesList._withinRadiusEateries = RecommendHealthyEatery.filterEateryByRadius(EateryList,
         HealthyEateriesList.currentPosition.latitude, HealthyEateriesList.currentPosition.longitude, HealthyEateriesList.radiusDistance);
   }
 

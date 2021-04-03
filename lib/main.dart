@@ -5,11 +5,13 @@ import 'package:flutter_app/theme.dart';
 import 'boundary/screens/Login/LoginUI.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+/// Main function to run the application.
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
 
+/// Implementation of application.
 class MyApp extends StatelessWidget {
   final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
 

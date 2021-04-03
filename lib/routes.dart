@@ -9,7 +9,7 @@ import 'package:flutter_app/boundary/screens/Profile/ProfileUI.dart';
 import 'package:flutter_app/boundary/screens/Recipe/RecipeDetailsUI.dart';
 import 'package:flutter_app/boundary/screens/Recipe/RecipesListUI.dart';
 
-
+/// A map of routes to all pages of the UI.
 final Map<String, WidgetBuilder> routes = {
   HomeUI.routeName: (context) => HomeUI(),
   HealthyEateriesList.routeName: (context) => HealthyEateriesList(),

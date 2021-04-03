@@ -1,10 +1,11 @@
 import 'dart:async';
-
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter_app/control/Authenticator.dart';
-import 'entity/CurrentUser.dart';
+import 'CurrentUser.dart';
+
 final databaseReference = FirebaseDatabase.instance.reference();
-class Database{
+
+class Database {
   static Future<String> createPreferences(List dietList) async{
     String accountKey = await _getAccountKey(getUserID());
     List preference = dietList;
@@ -20,6 +21,7 @@ class Database{
     reference.set(preferences);
     return reference.key;
   }
+
   static Future<void> savePreferences(CurrentUser user, List preferences) async{
     String accountKey = await _getAccountKey(user.id);
     return FirebaseDatabase.instance
@@ -31,6 +33,7 @@ class Database{
 
   }
 }
+
 Future<String> _getAccountKey(String id) async{
   return id;
 }

@@ -1,4 +1,5 @@
 //page of recipe instructions
+
 class RecipeDetails {
   final String spoonacularSourceUrl; //has Equipment, Ingredients, Steps, e.t.c
 
