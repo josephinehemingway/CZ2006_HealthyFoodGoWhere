@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/boundary/screens/Profile/EditPreferencesUI.dart';
-import 'package:flutter_app/entity/CurrentUser.dart';
 
+/// This is the boundary class for displaying a reusable menu button widget.
+///
+/// Used in [ProfileUI].
 class ProfileMenu extends StatelessWidget {
+
+  /// Class constructor for [ProfileMenu].
   const ProfileMenu({
     Key key,
     @required this.text,
@@ -10,10 +13,22 @@ class ProfileMenu extends StatelessWidget {
     this.press,
   }) : super(key: key);
 
+  /// Parameters for [ProfileMenu].
+  ///
+  /// The title of the button.
   final String text;
+
+  /// Parameters for [ProfileMenu].
+  ///
+  /// The icon displayed on the button.
   final Widget icon;
+
+  /// Parameters for [ProfileMenu]
+  ///
+  /// Logic that will be carried out when the button is pressed.
   final VoidCallback press;
 
+  /// Widget build method to implement the [ProfileMenu].
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,7 +39,6 @@ class ProfileMenu extends StatelessWidget {
             .size
             .width *0.07,),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        // color: Color(0xFFF5F6F9),
         color: Colors.teal[100],
         onPressed: press,
         child: Row(
@@ -38,19 +52,3 @@ class ProfileMenu extends StatelessWidget {
     );
   }
 }
-
-// Padding saveButton(context, List newlist, CurrentUser curUser){
-//   return Padding(
-//       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-//       child: FlatButton(
-//       padding: EdgeInsets.only(bottom: 5),
-//       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-//       // color: Color(0xFFF5F6F9),
-//       color: Colors.teal[100],
-//       onPressed: (){
-//
-//       },
-//       child: Text('Save', style: TextStyle(fontSize: 20))
-//   ));
-// }
-

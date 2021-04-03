@@ -3,34 +3,34 @@ import 'package:flutter_app/boundary/screens/Eateries/EateriesListUI.dart';
 import '../../widgets/bottomNavBar.dart';
 import '../../widgets/customAppBar.dart';
 
-/// This is the filterRadius UI to allow users to adjust the radius of the nearby eateries.
-///
-/// Consists of the radius slider.
+/// This is the boundary class which displays a [Slider] UI to allow users to adjust the radius range of the nearby eateries.
 class filterRadius extends StatefulWidget {
 
-  /// The route name for navigation to filterRadius.
+  /// The route name for navigation to [filterRadius].
   static String routeName = '/filter';
 
-  // static double value;
   @override
   _filterRadiusState createState() => _filterRadiusState();
 }
 
+/// This class manages the state of the [filterRadius] UI.
+///
+/// Includes the business logic behind [filterRadius] UI.
 class _filterRadiusState extends State<filterRadius> {
+
+  /// The current slider value.
   double _currentSliderValue = HealthyEateriesList.radiusDistance;
 
-  /// The building of the filterRadius widget page.
-  ///
-  /// Returns a scaffold of the screen.
+  /// The building of the [filterRadius] widget page.
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
-      /// Initialising a custom app bar for this page.
+      // Initialising [myAppBar] for this page.
       appBar: myAppBar("Filter Eateries", context, HealthyEateriesList()),
       resizeToAvoidBottomInset: false,
 
-      /// Initialising a custom bottom navigation bar for this page.
+      // Initialising [BottomNavBar] for this page.
       bottomNavigationBar: BottomNavBar(selectedMenu: MenuState.eatery),
 
       body: Container(
@@ -46,7 +46,7 @@ class _filterRadiusState extends State<filterRadius> {
             )),
             SizedBox(height: 20,),
 
-            /// This is the slider widget for the users to adjust the radius in km.
+            // This is the slider widget for the users to adjust the radius in km.
             Slider(
                 value: _currentSliderValue,
                 activeColor: Colors.teal[300],

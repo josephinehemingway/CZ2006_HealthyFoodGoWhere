@@ -1,7 +1,9 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
+/// A simple custom App Bar.
+///
+/// Used in ProfileUI.
 AppBar myAppBar(String title, context, Widget prevPg){
   return AppBar(
     centerTitle: true,
@@ -18,8 +20,17 @@ AppBar myAppBar(String title, context, Widget prevPg){
   );
 }
 
+/// A custom sliver app bar that minimises to just the title when user scrolls down the screen.
+///
+/// Used in EateryListUI.
+/// Consists of an image background, title, subtitle, sub-subtitle and an action button.
 SliverAppBar eateryAppBar(String title, String subtitle, context, Widget prevPg, Widget nextPg, String image, String subsubtitle){
   return SliverAppBar(
+    stretch: true,
+    onStretchTrigger: () {
+      // Function callback for stretch
+      return Future<void>.value();
+    },
     leading: IconButton(
       onPressed: () {
         Navigator.pop(context);
@@ -45,14 +56,28 @@ SliverAppBar eateryAppBar(String title, String subtitle, context, Widget prevPg,
     ],
 
     flexibleSpace: FlexibleSpaceBar(
+      stretchModes: const <StretchMode>[
+        StretchMode.zoomBackground,
+        StretchMode.blurBackground,
+        StretchMode.fadeTitle,
+      ],
       background: AppBarContents(subtitle: subtitle, image: image, subsubtitle: subsubtitle,),
       centerTitle: true,
     ),
   );
 }
 
+/// A custom sliver app bar that minimises to just the title when user scrolls down the screen.
+///
+/// Used in RecipeListUI.
+/// Consists of an image background, title, subtitle and sub-subtitle only.
 SliverAppBar recipeListAppBar(String title, String subtitle, context, Widget prevPg, String image){
   return SliverAppBar(
+    stretch: true,
+    onStretchTrigger: () {
+      // Function callback for stretch
+      return Future<void>.value();
+    },
     leading: IconButton(
       onPressed: () {
         Navigator.pop(context);
@@ -63,37 +88,53 @@ SliverAppBar recipeListAppBar(String title, String subtitle, context, Widget pre
 
     elevation: 0,
     backgroundColor: Colors.teal[200],
-    title: Text(title, style: TextStyle(fontSize: 24, color: Colors.white)),
+    title: Text(title, style: TextStyle(fontSize: 22, color: Colors.white)),
     centerTitle: true,
     expandedHeight: 190.0,
     floating: false,
     pinned: true,
     flexibleSpace: FlexibleSpaceBar(
+      stretchModes: const <StretchMode>[
+        StretchMode.zoomBackground,
+        StretchMode.blurBackground,
+        StretchMode.fadeTitle,
+      ],
       background: AppBarContents(subtitle: subtitle, image: image,),
       centerTitle: true,
     ),
   );
 }
 
+/// This is the class that implements the content of the sliver app bar.
 class AppBarContents extends StatelessWidget {
+
+  /// Class constructor for ['AppBarContents'].
   const AppBarContents({
     Key key,
     @required this.subtitle,
     @required this.image,
-    this.subsubtitle,
-
+    this.subsubtitle, // optional parameter
   }) : super(key: key);
 
+  /// Parameters for ['AppBarContents']
   final String subtitle, image, subsubtitle;
+
+  /// Height of the app bar.
   final double appBarHeight = 66.0;
 
-
+  /// Widget Build method for implementation of ['AppBarContents'].
   @override
   Widget build(BuildContext context) {
     final double statusBarHeight = MediaQuery
         .of(context)
         .padding
         .top;
+
+    // This 'if' condition is to determine whether the AppBarContents is generated for the
+    // Recipe or Eatery sliver app bar.
+    //
+    // If subsubtitle is null, it is for the Recipe App Bar.
+    // If subsubtitle is not null, it is for the Eatery App Bar.
     if (subsubtitle != null){
       return Container(
         padding: new EdgeInsets.only(top: statusBarHeight),
@@ -157,6 +198,10 @@ class AppBarContents extends StatelessWidget {
   }
 }
 
+/// A custom sliver app bar that minimises to just the title when user scrolls down the screen.
+///
+/// Used in RecipeDetailsUI.
+/// Consists of an image background and title only.
 SliverAppBar RecipeAppBar(String title, context, Widget prevPg, String image){
   return SliverAppBar(
     leading: IconButton(
@@ -166,6 +211,11 @@ SliverAppBar RecipeAppBar(String title, context, Widget prevPg, String image){
       },
       icon: Icon(Icons.arrow_back_ios, size: 20, color: Colors.white,),
     ),
+    stretch: true,
+    onStretchTrigger: () {
+    // Function callback for stretch
+    return Future<void>.value();
+    },
 
     elevation: 0,
     backgroundColor: Colors.teal[200],
@@ -174,9 +224,31 @@ SliverAppBar RecipeAppBar(String title, context, Widget prevPg, String image){
     pinned: true,
 
     flexibleSpace: FlexibleSpaceBar(
+        stretchModes: const <StretchMode>[
+          StretchMode.zoomBackground,
+          StretchMode.blurBackground,
+          StretchMode.fadeTitle,
+        ],
       centerTitle: true,
-      title: Text(title, style: TextStyle(fontSize: 20, color: Colors.white)),
-      background: Image.network(image, fit: BoxFit.cover, colorBlendMode: BlendMode.darken,),
+      title: Text(title, style: TextStyle(fontSize: 17, color: Colors.white), textAlign: TextAlign.center,),
+      background: Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          Image.network(image, fit: BoxFit.cover),
+          const DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment(0.0, 0.5),
+                  end: Alignment(0.0, 0.0),
+                  colors: <Color>[
+                    Color(0x60000000),
+                    Color(0x00000000),
+                  ],
+                ),
+              ),
+          )
+        ]
+      )
     ),
   );
 }

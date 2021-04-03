@@ -18,7 +18,7 @@ import 'filterRadiusUI.dart';
 /// This is the boundary class which displays the List of Healthy Eateries in the mobile UI.
 class HealthyEateriesList extends StatefulWidget {
 
-  /// The route name for navigation to HealthyEateriesList.
+  /// The route name for navigation to [HealthyEateriesList].
   static String routeName = '/eateries';
 
   /// The list of within radius Healthy Eateries to be displayed on the page.
@@ -26,10 +26,10 @@ class HealthyEateriesList extends StatefulWidget {
   /// As it is a private variable, a getter is required.
   static List<Eatery> _withinRadiusEateries = [];
 
-  /// The current user's current position in Latitude and Longitude (LatLng) datatype.
+  /// The current user's current position in Latitude and Longitude ([LatLng]) datatype.
   static LatLng currentPosition;
 
-  /// The current user's current position in Position datatype.
+  /// The current user's current position in [Position] datatype.
   static Position currentPos;
 
   /// The user's set radius distance.
@@ -39,52 +39,54 @@ class HealthyEateriesList extends StatefulWidget {
   _HealthyEateriesListState createState() => _HealthyEateriesListState();
 }
 
-/// This is the getter for the within radius Healthy Eateries from the user's current position.
+/// This is the getter for [HealthyEateriesList._withinRadiusEateries].
+///
+/// Returns Eateries that are in range from the user's current position.
 List<Eatery> getEateriesInRadius(){
   return(HealthyEateriesList._withinRadiusEateries);
 }
 
-/// This class manages the state of the HealthyEateriesList UI.
+/// This class manages the state of the [HealthyEateriesList] UI.
 ///
-/// Includes the business logic behind HealthyEateriesList UI.
+/// Includes the business logic behind [HealthyEateriesList] UI.
 class _HealthyEateriesListState extends State<HealthyEateriesList> {
 
-  /// Initializing current user.
+  /// Initializing [CurrentUser].
   CurrentUser user;
 
-  /// Initializing a nested list of dynamic elements to store the Eateries' data which is obtained from the .csv file.
+  /// Initializing a nested list of [dynamic] elements to store the Eateries' data which is obtained from [HealthyEateriesNew.csv] file.
   List<List<dynamic>> healthyEats = [];
 
-  /// Initializing a nested list of String elements to store the Eateries' data as string.
+  /// Initializing a nested list of [String] elements to store the Eateries' data as [String].
   List<List<String>> eatery = [];
 
-  /// Initializing a list of Eatery objects to store the Eateries' data.
+  /// Initializing a list of [Eatery] objects to store the Eateries' data.
   List<Eatery> EateryList = [];
 
   /// A tool to locate the user's current position.
   var geoLocator = Geolocator();
 
 
-  /// A method to load the Eateries' data from the ['HealthyEateriesNew.csv"].
+  /// A method to load the Eateries' data from [HealthyEateriesNew.csv].
   ///
-  /// First obtains the data as a String,
-  /// which is then converted into a nested list of dynamic elements.
+  /// First obtains the data as a [String],
+  /// which is then converted into a nested list of [dynamic] elements.
   loadAsset() async {
     final myEats =  await rootBundle.loadString('EateryData/HealthyEateriesNew.csv');
     List<List<dynamic>> csvTable = const csv.CsvToListConverter().convert(myEats);
 
-    /// Notify the framework that the internal state of this object has changed.
-    ///
-    /// Passes the nested list of dynamic elements ['csvTable'] into ['healthyEats'] nested list.
+    // Notify the framework that the internal state of this object has changed.
+    //
+    // Passes the nested list of dynamic elements [csvTable] into [healthyEats] nested list.
     setState(() {
       healthyEats = csvTable;
     });
   }
 
-  /// A method defined to create a list of Eatery objects ['EateryList'].
+  /// A method defined to create a list of [Eatery] objects [EateryList].
   ///
-  /// Reads the nested list of dynamic elements ['healthyEats'] and convert them into instances of
-  /// Eatery objects to be added into the list of Eatery objects ['EateryList'].
+  /// Reads [healthyEats] list and convert its elements into instances of
+  /// [Eatery] objects to be added into [EateryList].
   createEateryList(){
       for (int i=1; i<healthyEats.length; i++) {
         int j = 0;
@@ -100,12 +102,13 @@ class _HealthyEateriesListState extends State<HealthyEateriesList> {
       }
   }
 
-  /// A method defined to load the necessary data for our HealthyEateryList UI.
+  /// A method defined to load the necessary data for our [HealthyEateryList] UI.
   ///
-  /// Calls the Geolocator to get the user's current position,
-  /// Calls the ['loadAsset'] method to load the Eateries' data from the csv file.
-  /// Calls the ['createEateryList'] method to create the list of Eatery objects.
-  /// Calls the ['filterEateryByRadius'] method to filter the list of eateries to retrieve
+  /// Calls:
+  /// - [Geolocator] to get the user's current position,
+  /// - [loadAsset] method to load the Eateries' data from the csv file,
+  /// - [createEateryList] method to create the list of Eatery objects, and
+  /// - [filterEateryByRadius] method to filter the list of eateries to retrieve
   /// eateries that are within the radius range from the user's current position.
   void asyncLoad() async {
     Position position = await Geolocator.getCurrentPosition(
@@ -121,18 +124,18 @@ class _HealthyEateriesListState extends State<HealthyEateriesList> {
 
   /// A method that initializes the state of the UI.
   ///
-  /// Calls the function ['asyncLoad'] to initialize the data required.
+  /// Calls the function [asyncLoad] to initialize the data required.
   @override
   void initState() {
     super.initState();
     asyncLoad();
   }
 
-  /// The building of the widget that makes up the UI of the HealthyEateryList UI.
+  /// Widget Build method to implement [HealthyEateryList] UI.
   @override
   Widget build(BuildContext context) => Scaffold(
 
-    /// An action button that allows user to navigate to the Google Maps Page.
+    // An action button that allows user to navigate to the Google Maps Page.
     floatingActionButton: FloatingActionButton(
         child: Icon(Icons.location_on_rounded),
         backgroundColor: Colors.teal[300],
@@ -144,11 +147,11 @@ class _HealthyEateriesListState extends State<HealthyEateriesList> {
           resizeToAvoidBottomInset: false,
           bottomNavigationBar: BottomNavBar(selectedMenu: MenuState.eatery),
 
-    /// Creating the body of the widget.
-    ///
-    /// Returns a circular progress indicator when the user's current position is
-    /// still being obtained by Geolocator, in which ['HealthyEateriesList.currentPosition'] will return null.
-    /// Otherwise, it will return the ['nested'] widget.
+    // Creating the body of the widget.
+    //
+    // Returns a circular progress indicator when the user's current position is
+    // still being obtained by Geolocator, in which [HealthyEateriesList.currentPosition] will return null.
+    // Otherwise, it will return [nested()] widget.
         body: Center(
           child: HealthyEateriesList.currentPosition == null
               ? Column(
@@ -163,11 +166,11 @@ class _HealthyEateriesListState extends State<HealthyEateriesList> {
   );
 
 
-  /// A widget that returns a ['NestedScrollView'] that contains a scrollable listview for the eatery list.
+  /// A widget that returns a [NestedScrollView] that contains a scrollable listview for the eatery list.
   nested() {
     return NestedScrollView(
 
-      /// Initializing a custom sliver AppBar for the page.
+      // Initializing a custom sliver AppBar [eateryAppBar] for the page.
       headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
         return <Widget>[
           eateryAppBar(
@@ -181,12 +184,12 @@ class _HealthyEateriesListState extends State<HealthyEateriesList> {
         ];
       },
 
-      /// Initializing a ['ListView.builder'] to generate the list of nearby Eateries
-      /// within the set radius.
+      // Initializing a [ListView.builder] to generate the list of nearby Eateries
+      // within the set radius.
       body: HealthyEateriesList._withinRadiusEateries.isNotEmpty ? new ListView.builder(
               itemCount: HealthyEateriesList._withinRadiusEateries.length,
               itemBuilder: (BuildContext context, int index) {
-                return FadeAnimation_Y(1, Container(
+                return FadeAnimation(1, Container(
                     height: 130,
                     child: Card(
                         margin: const EdgeInsets.all(5),
@@ -198,9 +201,9 @@ class _HealthyEateriesListState extends State<HealthyEateriesList> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
                           children: <Widget>[
-                            /// Creating a ['ListTile'] for each eatery in the list.
-                            ///
-                            /// Each ListTile will display the title, location and distance from user for each Eatery.
+                            // Creating a [ListTile] for each eatery in the list.
+                            //
+                            // Each ListTile will display the title, location and distance from user for each Eatery.
                             ListTile(
                               leading: Icon(MyFlutterApp.cutlery, color: Colors.teal[100], size: 40),
                               title: Text(HealthyEateriesList._withinRadiusEateries[index].name),
@@ -228,20 +231,22 @@ class _HealthyEateriesListState extends State<HealthyEateriesList> {
                           ])
                 )));
               },
-            ) : Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      SizedBox(height: 20,),
-                      Container(
-                          width: 350,
-                          child: Text("No nearby eateries found \nwithin ${HealthyEateriesList.radiusDistance} km of your current location.",
-                            style: TextStyle(color: Colors.grey[800], fontSize: 20),
-                            textAlign: TextAlign.center,)
-                      ),
-                      SizedBox(height: 10,),
-                      Text("Try a larger radius distance.", style: TextStyle(color: Colors.grey[600], fontSize: 16),)
-                    ]),
+      ) : Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(height: 20,),
+
+            // Exception Handling if [HealthyEateriesList._withinRadiusEateries] is empty.
+            Container(
+                width: 350,
+                child: Text("No nearby eateries found \nwithin ${HealthyEateriesList.radiusDistance} km of your current location.",
+                  style: TextStyle(color: Colors.grey[800], fontSize: 20),
+                  textAlign: TextAlign.center,)
+            ),
+            SizedBox(height: 10,),
+            Text("Try a larger radius distance.", style: TextStyle(color: Colors.grey[600], fontSize: 16),)
+          ]),
     );
   }
 }

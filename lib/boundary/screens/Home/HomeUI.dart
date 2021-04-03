@@ -11,19 +11,17 @@ import '../../widgets/bottomNavBar.dart';
 /// This is the boundary class which displays the Home Screen in the mobile UI.
 class HomeUI extends StatefulWidget {
 
-  /// The route name for navigation to HomeUI page.
+  /// The route name for navigation to [HomeUI].
   static String routeName = '/home';
 
   @override
   _HomeUIState createState() => _HomeUIState();
 }
 
-/// This class manages the state of the Home UI.
-///
-/// Includes the widget build for the Home UI.
+/// This class manages the state of the [HomeUI].
 class _HomeUIState extends State<HomeUI> {
 
-  /// Widget Build method for the User Interface of the Home Screen.
+  /// Widget Build method for [HomeUI].
   @override
   Widget build(BuildContext context) => Scaffold(
         resizeToAvoidBottomInset: false,
@@ -35,13 +33,13 @@ class _HomeUIState extends State<HomeUI> {
                 .height,
             width: double.infinity,
 
-            /// The elements of the Home screen.
-            ///
-            /// Includes:
-            /// - Page background
-            /// - User's profile picture
-            /// - Descriptive Text widgets
-            /// - Buttons to navigate to ['EateryListUI'] and ['RecipeListUI']
+            // The elements of the Home screen.
+            //
+            // Includes:
+            // - Page background
+            // - User's profile picture
+            // - Descriptive Text widgets
+            // - Buttons to navigate to [HealthyEateriesList] and [HealthyRecipesList]
             child: Column(
                 children: <Widget>[
                   Stack(
@@ -61,7 +59,7 @@ class _HomeUIState extends State<HomeUI> {
                           ),
                           child: Align(
                               alignment: Alignment(0.05,0.8),
-                              child: FadeAnimation_Y(1, ProfilePic())),),
+                              child: FadeAnimation(1, ProfilePic())),),
                       ]
                   ),
 
@@ -74,7 +72,7 @@ class _HomeUIState extends State<HomeUI> {
                         Column(
                             children: <Widget>[
                               SizedBox(height: 10,),
-                              FadeAnimation_Y(
+                              FadeAnimation(
                                   1, Text("Welcome Back!", style: TextStyle(
                                   fontSize: 32,
                                   fontWeight: FontWeight.bold
@@ -82,7 +80,7 @@ class _HomeUIState extends State<HomeUI> {
 
                               SizedBox(height: 15,),
 
-                              FadeAnimation_Y(1, Text(
+                              FadeAnimation(1, Text(
                                 "here's to a healthier you!", style: TextStyle(
                                   fontSize: 24,
                                   color: Colors.grey[700]
@@ -90,7 +88,7 @@ class _HomeUIState extends State<HomeUI> {
 
                               SizedBox(height: 10,),
 
-                              FadeAnimation_Y(1, Column(
+                              FadeAnimation(1, Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
                                   Text("Tune in to our healthy food",
@@ -103,7 +101,7 @@ class _HomeUIState extends State<HomeUI> {
 
                               SizedBox(height: 20,),
 
-                              FadeAnimation_Y(1,
+                              FadeAnimation(1,
                                   HomeMenu(
                                       title: "Eating Out?",
                                       subtitle: "healthy eateries nearby",
@@ -112,7 +110,7 @@ class _HomeUIState extends State<HomeUI> {
                               ),
                               SizedBox(height: 10,),
 
-                              FadeAnimation_Y(1, HomeMenu(
+                              FadeAnimation(1, HomeMenu(
                                   title: "Eating at home?",
                                   subtitle: "healthy recipes for you",
                                   NextPg: HealthyRecipesList(),

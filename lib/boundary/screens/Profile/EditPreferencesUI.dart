@@ -1,13 +1,11 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Database.dart';
 import 'package:flutter_app/control/Authenticator.dart';
 import 'package:flutter_app/entity/Recipe.dart';
 import '../../widgets/animation.dart';
 import '../../widgets/bottomNavBar.dart';
 import '../../widgets/customAppBar.dart';
 import '../../widgets/customCheckbox.dart';
-import '../../widgets/ProfileWidgets/ProfileMenu.dart';
 import 'ProfileUI.dart';
 import 'package:flutter_app/entity/CurrentUser.dart';
 
@@ -16,19 +14,19 @@ import 'package:flutter_app/entity/CurrentUser.dart';
 /// Consists of checkboxes for the user to indicate their dietary preferences.
 class EditPreferences extends StatefulWidget {
 
-  /// The route name for navigation to EditPreferences page.
+  /// The route name for navigation to [EditPreferences].
   static String routeName = '/editPref';
 
   @override
   _EditPreferencesState createState() => _EditPreferencesState();
 }
 
-/// This class manages the state of the EditPreferences.
+/// This class manages the state of the [EditPreferences].
 ///
-/// Includes the business logic behind EditPreferences.
+/// Includes the business logic behind [EditPreferences].
 class _EditPreferencesState extends State<EditPreferences> {
 
-  /// Instantiating a new ['CurrentUser'] object.
+  /// Instantiating a new [CurrentUser] object.
   CurrentUser curUser = CurrentUser();
 
   /// Initializing the user's preference list from the Firebase Realtime Database.
@@ -49,11 +47,11 @@ class _EditPreferencesState extends State<EditPreferences> {
     'Whole30'
   ];
 
-  /// Widget Build method for the User Interface of the Edit Preference Screen.
+  /// Widget Build method to implement [EditPreferences].
   @override
   Widget build(BuildContext context) => Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: myAppBar('Edit Dietary Preferences', context, Profile()),
+      appBar: myAppBar('Edit Dietary Preferences', context, ProfileUI()),
       body: ListView(children: [Container(
               height: MediaQuery
                   .of(context)
@@ -61,11 +59,11 @@ class _EditPreferencesState extends State<EditPreferences> {
                   .height,
               width: double.infinity,
 
-          /// FutureBuilder method to obtain the user's dietary preferences from the Firebase Realtime Database.
-          ///
-          /// Database preferences will be stored in the ['userPreferenceList'].
-          /// This method is to repopulate the ['preferenceList'] with the database preferences
-          /// so as to initialise the initial checkbox state.
+          // FutureBuilder method to obtain the user's dietary preferences from the Firebase Realtime Database.
+          //
+          // Database preferences will be stored in the [userPreferenceList].
+          // This method repopulates the [preferenceList] with the database preferences
+          // so as to initialise the initial checkbox state.
             child: Container(
               child: FutureBuilder<DataSnapshot>(
                 future: FirebaseDatabase.instance.reference().child('User/${getUserID()}/preferences').once(),
@@ -99,17 +97,17 @@ class _EditPreferencesState extends State<EditPreferences> {
                   return Column(
                       children: <Widget>[
                         SizedBox(height: 20,),
-                        FadeAnimation_Y(1.2, customCheckBox(
+                        FadeAnimation(1.2, customCheckBox(
                             title: dietList[0], list: preferenceList)),
-                        FadeAnimation_Y(1.2, customCheckBox(
+                        FadeAnimation(1.2, customCheckBox(
                             title: dietList[1], list: preferenceList)),
-                        FadeAnimation_Y(1.2, customCheckBox(
+                        FadeAnimation(1.2, customCheckBox(
                             title: dietList[2], list: preferenceList)),
-                        FadeAnimation_Y(1.2, customCheckBox(
+                        FadeAnimation(1.2, customCheckBox(
                             title: dietList[3], list: preferenceList)),
-                        FadeAnimation_Y(1.2, customCheckBox(
+                        FadeAnimation(1.2, customCheckBox(
                             title: dietList[4], list: preferenceList)),
-                        FadeAnimation_Y(1.2, customCheckBox(
+                        FadeAnimation(1.2, customCheckBox(
                             title: dietList[5], list: preferenceList)),
                         SizedBox(height: 60,),
                       ]

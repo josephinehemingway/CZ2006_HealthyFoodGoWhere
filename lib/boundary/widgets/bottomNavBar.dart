@@ -6,72 +6,31 @@ import '../screens/Profile/ProfileUI.dart';
 import '../screens/Recipe/RecipesListUI.dart';
 import 'customIcons.dart';
 
-/*
-class BottomNavBar extends StatefulWidget {
-  @override
-  _BottomNavBarState createState() => _BottomNavBarState();
-}
-
-class _BottomNavBarState extends State<BottomNavBar> {
-// class BottomNavBar extends StatelessWidget {
-  @override
-  int _currentIndex = 0;
-  final List<Widget> _children = [
-    HomePage(),
-    HealthyRecipes(),
-    HealthyEateries(),
-    Profile()
-  ];
-
-  void onTabTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
-
-  Widget build(BuildContext context) {
-    return new Scaffold(
-        body: _children[_currentIndex],
-        bottomNavigationBar: BottomNavigationBar(
-          onTap: onTabTapped, // new
-          selectedItemColor: Colors.teal[300],
-          unselectedItemColor: Colors.grey.withOpacity(.60),
-          currentIndex: _currentIndex, // new
-          backgroundColor: Colors.black12,
-          items: [
-            new BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              title: Text('Home'),
-            ),
-            new BottomNavigationBarItem(
-              icon: Icon(MyFlutterApp.chefhat),
-              title: Text('Recipes'),
-            ),
-            new BottomNavigationBarItem(
-              icon: Icon(MyFlutterApp.cutlery),
-              title: Text('Eateries'),
-            ),
-            new BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                title: Text('Profile')
-            )],
-        )
-    );
-  }
-}
-
- */
-
+/// ['MenuState'] enumerates the page routes for each item in the bottom navigation bar.
 enum MenuState { home, recipe, eatery, profile }
 
+/// This is the boundary class for displaying a custom bottom navigation bar widget.
+///
+/// Used in every page of the application consistently.
+/// Consists of navigation buttons to HomeUI, RecipeListUI, EateryListUI and ProfileUI.
 class BottomNavBar extends StatelessWidget {
+
+  /// Class constructor for BottomNavBar
   const BottomNavBar({
     Key key,
     @required this.selectedMenu,
   }) : super(key: key);
 
+  /// Parameter for BottomNavBar.
+  ///
+  /// ['selectedMenu'] is the currently selected item of the bottom navigation bar.
+  /// It must correspond to the currently active page.
+  ///
+  /// When selected, the bottom navigation bar item that is active will turn teal-coloured.
+  /// When not selected, the bottom navigation icons that are inactive remain grey.
   final MenuState selectedMenu;
 
+  // Widget Build method to implement the BottomNavBar.
   @override
   Widget build(BuildContext context) {
     final Color inActiveIconColor = Color(0xFFB6B6B6);
@@ -91,6 +50,7 @@ class BottomNavBar extends StatelessWidget {
           topRight: Radius.circular(40),
         ),
       ),
+
       child: SafeArea(
           top: false,
           child: Row(
@@ -133,7 +93,7 @@ class BottomNavBar extends StatelessWidget {
                       : Colors.grey.withOpacity(.40),
                 onPressed: () {
                   Navigator.pop(context);
-                  Navigator.pushNamed(context, Profile.routeName);
+                  Navigator.pushNamed(context, ProfileUI.routeName);
                   },
               ),
             ],

@@ -8,16 +8,16 @@ import '../../widgets/bottomNavBar.dart';
 /// This is the boundary class which displays the Individual Recipes Screen in the mobile UI.
 class RecipeDetailsUI extends StatefulWidget {
 
-  /// The route name for navigation to RecipeDetailsUI page.
+  /// The route name for navigation to [RecipeDetailsUI].
   static String routeName = '/recipeDetails';
   
-  /// Parameters for RecipeDetailsPage.
+  /// Parameters for [RecipeDetailsUI].
   final RecipeDetails recipeDetails;
 
-  /// Parameters for RecipeDetailsPage.
+  /// Parameters for [RecipeDetailsUI].
   final String recipeTitle, recipeImg;
 
-  /// Class constructor for RecipeDetailsPage.
+  /// Class constructor for [RecipeDetailsUI].
   RecipeDetailsUI({
     this.recipeDetails,
     this.recipeTitle,
@@ -28,12 +28,12 @@ class RecipeDetailsUI extends StatefulWidget {
   _RecipeDetailsUIState createState() => _RecipeDetailsUIState();
 }
 
-/// This class manages the state of the RecipeDetails UI.
+/// This class manages the state of the [RecipeDetailsUI].
 ///
-/// Includes the business logic behind RecipeDetails UI.
+/// Includes the business logic behind [RecipeDetailsUI].
 class _RecipeDetailsUIState extends State<RecipeDetailsUI> {
   
-  /// Widget build method for the elements of the RecipeDetailsPage.
+  /// Widget build method to implement [RecipeDetailsUI].
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,8 +46,8 @@ class _RecipeDetailsUIState extends State<RecipeDetailsUI> {
                 widget.recipeImg),
           ];
         },
-        
-        /// To display the website of the recipe selected.
+
+        // To display the website of the recipe selected.
         body: WebView(
           initialUrl: widget.recipeDetails.spoonacularSourceUrl,
           //JS unrestricted, so that JS can execute in the webview

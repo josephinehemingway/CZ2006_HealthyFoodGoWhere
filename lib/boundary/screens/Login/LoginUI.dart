@@ -6,10 +6,10 @@ import '../../widgets/LoginWidgets/googleSignInButton.dart';
 /// This is the boundary class which displays the Login Page in the mobile UI.
 class LoginUI extends StatelessWidget {
 
-  /// The route name for navigation to LoginUI page.
+  /// The route name for navigation to [LoginUI].
   static String routeName = '/login';
 
-  /// The build method to build the login page elements.
+  /// Widget Build method to implement [LoginUI].
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +33,7 @@ class LoginUI extends StatelessWidget {
                   children: <Widget>[
                     Column(
                       children: <Widget>[
-                        FadeAnimation_Y(1, Container(
+                        FadeAnimation(1, Container(
                           height: MediaQuery.of(context).size.width *0.5,
                           width: MediaQuery.of(context).size.width *0.65,
                           decoration: BoxDecoration(
@@ -45,7 +45,7 @@ class LoginUI extends StatelessWidget {
                         )),
                         SizedBox(height: MediaQuery.of(context).size.height *0.02),
 
-                        FadeAnimation_Y(1,
+                        FadeAnimation(1,
                             Text("h e a l t h y  g o  w h e r e", style: TextStyle(
                                 fontSize: 25,
                                 color: Colors.grey[700],
@@ -54,7 +54,7 @@ class LoginUI extends StatelessWidget {
 
                         SizedBox(height: 7,),
 
-                        FadeAnimation_Y(
+                        FadeAnimation(
                             1, Text("healthy food everywhere", style: TextStyle(
                             fontSize: 15,
                             color: Colors.grey,
@@ -62,10 +62,10 @@ class LoginUI extends StatelessWidget {
                         ),)),
                         SizedBox(height: 20,),
 
-                        FadeAnimation_Y(1.5, GoogleSignInButton()),
+                        FadeAnimation(1.5, GoogleSignInButton()),
 
                         SizedBox(height: MediaQuery.of(context).size.height * 0.05, ),
-                        FadeAnimation_Y(1, Container(
+                        FadeAnimation(1, Container(
                           margin: EdgeInsets.only(top: 3),
                           height: 200,
                           width: 500,

@@ -14,43 +14,43 @@ import 'package:flutter/cupertino.dart';
 /// consisting of the Eatery's information.
 class GoogleMapScreen extends StatefulWidget {
 
-  /// A constructor for the ['GoogleMapScreen'] class.
+  /// Class constructor for [GoogleMapScreen].
   const GoogleMapScreen({
     Key key,
     this.coord,
     this.index,
   }) : super(key: key);
 
-  /// The route name for navigation to GoogleMapScreen.
+  /// The route name for navigation to [GoogleMapScreen].
   static String routeName = '/map';
 
-  /// The coordinates of the initial camera position in LatLng datatype.
+  /// The coordinates of the initial camera position in [LatLng] datatype.
   ///
-  /// It is an argument passed from ['EateriesListUI'].
+  /// It is an argument passed from [EateriesListUI].
   /// When the user accesses the Google Maps Screen by clicking on the location button
   /// associated with the Eatery he wishes to view, this coordinate will correspond to the
   /// selected Eatery's coordinates.
   ///
   /// However, if the user clicks on the floating location button at the bottom right of the
-  /// ['EateryListUI'] screen, this coordinate will correspond to the user's current location.
+  /// [HealthyEateriesList] screen, this coordinate will correspond to the user's current location.
   final LatLng coord;
 
   /// Index of the eatery from the Eatery list.
   ///
-  /// It is an argument passed from ['EateriesListUI'] when the user clicks on the location
+  /// It is an argument passed from [HealthyEateriesList] when the user clicks on the location
   /// button associated with the Eatery he wishes to view.
   ///
   /// If the user wishes to see all the eateries nearby his location, index = null
-  /// when he clicks on the floating location button at the bottom right of the ['EateryListUI'].
+  /// when he clicks on the floating location button at the bottom right of the [HealthyEateriesList].
   final int index;
 
   @override
   _GoogleMapScreenState createState() => _GoogleMapScreenState();
 }
 
-/// This class manages the state of the GoogleMaps UI.
+/// This class manages the state of the [GoogleMapScreen].
 ///
-/// Includes the business logic behind GoogleMaps UI.
+/// Includes the business logic behind [GoogleMapScreen].
 class _GoogleMapScreenState extends State<GoogleMapScreen> {
 
   /// Initializes the current user.
@@ -59,13 +59,13 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
   /// A list of location markers for all the eateries in the list.
   List<Marker> allMarkers = [];
 
-  /// A list of eateriesInRange as Eatery objects.
+  /// A list of eateriesInRange as [Eatery] objects.
   List<Eatery> eateriesInRange = getEateriesInRadius(); //.sublist(0,10);
 
-  /// The current user's current position in Latitude and Longitude (LatLng) datatype.
+  /// The current user's current position in Latitude and Longitude ([LatLng]) datatype.
   LatLng currentPosition = HealthyEateriesList.currentPosition;
 
-  /// The current user's current position in Position datatype.
+  /// The current user's current position in [Position] datatype.
   Position currentPos = HealthyEateriesList.currentPos;
 
   var geoLocator = Geolocator();
@@ -119,10 +119,10 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
       ));
     }
 
-    /// A condition to control the initial page of the horizontal list when the user navigates to the Google Maps Screen.
+    /// A condition to control the initial page of the horizontal list when the user navigates to [GoogleMapScreen].
     ///
     /// If index is not null, the initial page of the horizontal list will show the Eatery that the user has clicked on
-    /// from the ['EateriesListUI'] screen.
+    /// from the [HealthyEateriesList] screen.
     /// If null, the initial page of the horizontal list will show the nearest eatery to the user's current location.
     if (widget.index != null){
       _pageController = PageController(initialPage: widget.index, viewportFraction: 0.8)
@@ -217,7 +217,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
   /// The creation of the horizontal list to display the Eateries' information.
   ///
   /// The eatery's name, address and distance from user's current location will be displayed.
-  /// Uses an animated builder to create animated transitions as the user scrolls the list.
+  /// Uses [AnimatedBuilder] to create animated transitions as the user scrolls the list.
   _healthyEateriesList(index) {
     return AnimatedBuilder(
       animation: _pageController,

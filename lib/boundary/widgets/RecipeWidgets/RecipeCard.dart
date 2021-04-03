@@ -1,23 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/entity/Recipe.dart';
 import 'package:flutter_app/boundary/screens/Recipe/RecipeDetailsUI.dart';
 import 'package:flutter_app/entity/RecipeDetails.dart';
 import 'package:flutter_app/control/APIRecipeGenerator.dart';
 
+/// This is the boundary class for displaying a Recipe Card widget.
+///
+/// Used in RecipeListUI.
+/// Consists of recipe title, recipe image, calories of recipe,
+/// duration of preparation of recipe and id of recipe.
 class RecipeCard extends StatelessWidget {
+
+  /// Parameters of [RecipeCard]
+  ///
+  /// Recipe image url to be placed as background of RecipeCard.
+  /// For network images only.
   String imageUrl;
+
+  /// Parameters of [RecipeCard]
+  ///
+  /// Title of the recipe to be displayed on the RecipeCard.
   String title;
-  int duration,id;
+
+  /// Parameters of [RecipeCard]
+  ///
+  /// ['duration'] is the duration of preparation of the recipe.
+  /// ['id'] is the recipe ID.
+  int duration, id;
+
+  /// Parameters of [RecipeCard]
+  ///
+  /// Calories of the recipe to be displayed on the RecipeCard.
   String calories;
 
+  /// Class constructor for [RecipeCard]
   RecipeCard({Key key,
-    this.imageUrl, //insert url,
-    this.title, //insert title
-    this.duration, //insert duration
-    this.calories, //insert calories
+    this.imageUrl,
+    this.title,
+    this.duration,
+    this.calories,
     this.id
   }) : super(key: key);
 
+  /// Widget build method to implement the [RecipeCard].
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -63,7 +87,9 @@ class RecipeCard extends StatelessWidget {
                                 children: [
                                   Text(title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22, color: Colors.white),
                                     maxLines: 3,
-                                    overflow: TextOverflow.fade,),
+                                    overflow: TextOverflow.fade,
+                                    textAlign: TextAlign.center,
+                                  ),
                                   Text(duration.toString() + " mins", style: TextStyle(fontSize: 16, color: Colors.white)),
                                   Text(calories + " calories", style: TextStyle(fontSize: 16, color: Colors.white))])
                         ),
@@ -73,7 +99,6 @@ class RecipeCard extends StatelessWidget {
                 ),
               ),
             )
-
           ],
         )
     );

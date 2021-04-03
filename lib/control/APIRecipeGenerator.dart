@@ -53,6 +53,10 @@ class APIRecipeGenerator {
     final String _baseURL = "api.spoonacular.com";
     const String API_KEY = "a6412bca93ee4da2b8a5c5010742d652";
 
+    // jo's API key: "a6412bca93ee4da2b8a5c5010742d652"
+    // joey's API key: "07eeb2eabcc448ceb5363f7c3dcbf0f5"
+    // shannon's API key: "2f3c1b88a1e048819d9d57cad263dc04"
+
     Map<String, String> parameters = {
       'apiKey': API_KEY,
       'includeNutrition': "true",
