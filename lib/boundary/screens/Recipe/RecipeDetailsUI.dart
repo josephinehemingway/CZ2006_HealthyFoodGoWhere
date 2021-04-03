@@ -4,6 +4,7 @@ import '../../widgets/customAppBar.dart';
 import 'RecipesListUI.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import '../../widgets/bottomNavBar.dart';
+import 'package:flutter_app/boundary/widgets/animation.dart';
 
 /// This is the boundary class which displays the Individual Recipes Screen in the mobile UI.
 class RecipeDetailsUI extends StatefulWidget {

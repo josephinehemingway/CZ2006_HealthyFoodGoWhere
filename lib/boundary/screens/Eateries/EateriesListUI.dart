@@ -14,6 +14,7 @@ import 'package:flutter_app/boundary/widgets/customIcons.dart';
 import '../../widgets/animation.dart';
 import 'package:flutter_app/entity/CurrentUser.dart';
 import 'filterRadiusUI.dart';
+import 'package:flutter_app/boundary/widgets/animation.dart';
 
 /// This is the boundary class which displays the List of Healthy Eateries in the mobile UI.
 class HealthyEateriesList extends StatefulWidget {

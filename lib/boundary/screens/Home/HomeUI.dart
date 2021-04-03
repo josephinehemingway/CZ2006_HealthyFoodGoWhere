@@ -7,6 +7,7 @@ import '../../widgets/ProfileWidgets/ProfilePic.dart';
 import '../Recipe/RecipesListUI.dart';
 import '../../widgets/animation.dart';
 import '../../widgets/bottomNavBar.dart';
+import 'package:flutter_app/boundary/widgets/animation.dart';
 
 /// This is the boundary class which displays the Home Screen in the mobile UI.
 class HomeUI extends StatefulWidget {

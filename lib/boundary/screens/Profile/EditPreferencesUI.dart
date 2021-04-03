@@ -7,6 +7,7 @@ import '../../widgets/bottomNavBar.dart';
 import '../../widgets/customAppBar.dart';
 import '../../widgets/customCheckbox.dart';
 import 'ProfileUI.dart';
+import 'package:flutter_app/boundary/widgets/animation.dart';
 import 'package:flutter_app/entity/CurrentUser.dart';
 
 /// This is the boundary class which displays the User's Dietary Preferences in the mobile UI.

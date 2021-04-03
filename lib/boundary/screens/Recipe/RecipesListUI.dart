@@ -1,6 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_app/boundary/widgets/animation.dart';
 import 'package:flutter_app/control/Authenticator.dart';
 import '../../widgets/RecipeWidgets/RecipeCard.dart';
 import 'package:flutter_app/entity/Recipe.dart';
@@ -137,10 +138,10 @@ class _HealthyRecipesListState extends State<HealthyRecipesList> with SingleTick
                 var url = recipelist[i].image;
                 var duration = recipelist[i].readyInMinutes;
                 var summary = recipelist[i].summary;
-                final start = "contains <b>";
-                final end = "calories";
-                final startIndex = summary.indexOf(start);
-                final endIndex = summary.indexOf(end);
+                // final start = "contains <b>";
+                // final end = "calories";
+                // final startIndex = summary.indexOf(start);
+                // final endIndex = summary.indexOf(end);
                 var calories =regExp.allMatches(summary).map((z) => z.group(0)).toList().toString();
                 
                 // Adds each recipe from the API generated recipe list into [recipeData]
