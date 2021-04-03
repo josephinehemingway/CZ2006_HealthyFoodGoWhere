@@ -9,8 +9,14 @@ import 'dart:math';
 class APIRecipeGenerator {
   APIRecipeGenerator._instantiate();
 
+  ///Parameters of [APIRecipeGenerator]
+
+  /// id of Recipe to be fetched from API
   int id;
+  /// API instance to access API
   static final APIRecipeGenerator instance = APIRecipeGenerator._instantiate();
+
+  /// Empty list of [Recipe] to store Recipe Objects
   List<Recipe> recipelist = [];
 
   //add base URL for spoonacular API, endpoint and API key as constant
@@ -21,6 +27,7 @@ class APIRecipeGenerator {
   // joey's API key: "07eeb2eabcc448ceb5363f7c3dcbf0f5"
   // shannon's API key: "2f3c1b88a1e048819d9d57cad263dc04"
 
+  //Getter for recipe object using recipe's [id]. [Recipe]
   Future<Recipe> getRecipe(id) async {
     // final String _baseURL = "api.spoonacular.com";
     // const String API_KEY = "a6412bca93ee4da2b8a5c5010742d652";
@@ -50,6 +57,7 @@ class APIRecipeGenerator {
     }
   }
 
+  //Getter for Recipe's details [RecipeDetail]
   Future<RecipeDetails> getRecipeDetails(id) async {
     // final String _baseURL = "api.spoonacular.com";
     // const String API_KEY = "a6412bca93ee4da2b8a5c5010742d652";
@@ -80,9 +88,13 @@ class APIRecipeGenerator {
     }
   }
 
+  ///Getter method to get a List of [Recipe]
+  ///Parameters [size] is the number of recipe cards that would be generated on [RecipeListPageUI]
+  ///Paramter [userdiet] is the list of user preferences to obtain recipes suited to the user
   Future<List<Recipe>> getListOfRecipe(int size, List<dynamic> userdiet) async {
     int count = 0;
     while(count<size) {
+      /// Instantiate [RecommendRecipe] by inputting [userdiet] list.
       { RecommendRecipe(userdiet);
         Random random = new Random();
         int id = random.nextInt(80000);
