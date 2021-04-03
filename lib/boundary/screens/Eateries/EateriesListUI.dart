@@ -33,6 +33,9 @@ class HealthyEateriesList extends StatefulWidget {
   static Position currentPos;
 
   /// The user's set radius distance.
+  ///
+  /// By default, [radiusDistance] is set to 1.0 km.
+  /// It will update when users adjust the radius distance in [filterRadius].
   static double radiusDistance = 1.0;
 
   @override

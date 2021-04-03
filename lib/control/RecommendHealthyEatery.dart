@@ -1,21 +1,32 @@
 import 'dart:math';
 import '../entity/Eatery.dart';
 
-/// A method to filter [EateryList] to obtain Eateries that is within the radius distance from user's current location.
+/// A list of [Eatery] objects that are within set radius from user's current location.
+List<Eatery> withinRadiusEateries;
+
+/// Distance between Eatery and user.
+double distanceFromUser;
+
+/// A method to filter [EateryList] to obtain Eateries that is within the set radius distance from user's current location.
 ///
-///returns eateries within radius AND updates distanceFromUser attribute
+/// Returns [Eatery] objects that are within radius.
+/// Takes the parameters:
+/// - [EateryList]: List of all [Eatery] objects obtained from [HealthyEateriesNew.csv]
+/// - [userLatitude] and [userLongitude]: User's current coordinates
+/// - [radiusInKm]: user's set radius distance (1.0 km by default)
 List<Eatery> filterEateryByRadius(
     List<Eatery> EateryList,
     double userLatitude,
     double userLongitude,
     double radiusInKm) {
 
-  List<Eatery> withinRadiusEateries = [];
+  withinRadiusEateries = [];
 
   for (Eatery healthyEatery in EateryList) {
-    double distanceFromUser = getDistance(healthyEatery.locationCoords.latitude, healthyEatery.locationCoords.longitude, userLatitude, userLongitude);
 
+    distanceFromUser = getDistance(healthyEatery.locationCoords.latitude, healthyEatery.locationCoords.longitude, userLatitude, userLongitude);
     distanceFromUser = (distanceFromUser * 10).round() / 10;
+
     healthyEatery.distancefromuser = distanceFromUser;
 
     if (distanceFromUser <= radiusInKm) {
@@ -23,6 +34,7 @@ List<Eatery> filterEateryByRadius(
     }
   }
 
+  /// A method to sort [withinRadiusEateries] in ascending distance from user.
   withinRadiusEateries.sort((a,b) => a.distancefromuser.compareTo(b.distancefromuser));
   print(withinRadiusEateries.toString());
 
