@@ -93,7 +93,6 @@ class _HealthyRecipesListState extends State<HealthyRecipesList> with SingleTick
   /// A custom [NestedScrollView] implementation.
   nested() {
     var userPreferenceList=[];
-    int size=5;
     return NestedScrollView(
         physics: const BouncingScrollPhysics(
             parent: AlwaysScrollableScrollPhysics()),
@@ -128,11 +127,11 @@ class _HealthyRecipesListState extends State<HealthyRecipesList> with SingleTick
             // While retrieving recipes, load a circular percentage indicator.
             // If there is none, return an error message.
             return FutureBuilder<List<Recipe>>(
-              future: APIRecipeGenerator.instance.getListOfRecipe(1,userPreferenceList),
+              future: APIRecipeGenerator.instance.getListOfRecipe(5,userPreferenceList),
               builder: (context, snapshot) {
             if (snapshot.hasData) {
               final recipelist = snapshot.data;
-              for (int i=0; i<1;i++) {
+              for (int i=0; i<5;i++) {
                 var title = recipelist[i].title;
                 var id = recipelist[i].id;
                 var url = recipelist[i].image;
