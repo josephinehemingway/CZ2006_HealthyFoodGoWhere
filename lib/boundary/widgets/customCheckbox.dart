@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/boundary/screens/Profile/EditPreferencesUI.dart';
-import '../../control/Database.dart';
+import '../../control/DatabaseReader.dart';
 
 /// The boundary class for a simple custom Checkbox.
 ///
