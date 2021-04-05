@@ -1,4 +1,3 @@
-import '../entity/CurrentUser.dart';
 import '../entity/Recipe.dart';
 
 /// This is a control class [RecommendRecipe] which will create methods to match [Recipe] to [CurrentUser]'s preferences [userdiet].

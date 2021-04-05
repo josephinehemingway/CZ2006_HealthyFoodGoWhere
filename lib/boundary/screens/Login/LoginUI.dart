@@ -46,8 +46,8 @@ class LoginUI extends StatelessWidget {
                         SizedBox(height: MediaQuery.of(context).size.height *0.02),
 
                         FadeAnimation(1,
-                            Text("h e a l t h y  g o  w h e r e", style: TextStyle(
-                                fontSize: 25,
+                            Text("h e a l t h y  f o o d  g o  w h e r e", style: TextStyle(
+                                fontSize: 23,
                                 color: Colors.grey[700],
                                 fontFamily: 'GlacialIndifference'
                             ),)),

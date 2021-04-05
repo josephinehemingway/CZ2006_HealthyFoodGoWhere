@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_app/routes.dart';
+import 'package:flutter_app/control/routes.dart';
 import 'package:flutter_app/theme.dart';
 import 'boundary/screens/Login/LoginUI.dart';
 import 'package:firebase_core/firebase_core.dart';

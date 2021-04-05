@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/boundary/screens/Profile/EditPreferencesUI.dart';
-import '../../control/DatabaseReader.dart';
+import '../../control/WritePreferences.dart';
 
 /// The boundary class for a simple custom Checkbox.
 ///
@@ -83,7 +83,7 @@ class _customCheckBoxState extends State<customCheckBox> {
           else{
             list.remove(title);
           }
-          Database.createPreferences(list);
+          WritePreferences.createPreferences(list);
           print(list);
         });
       },
