@@ -221,7 +221,7 @@ SliverAppBar RecipeAppBar(String title, context, Widget prevPg, String image){
 
     elevation: 0,
     backgroundColor: Colors.teal[200],
-    expandedHeight: 190.0,
+    expandedHeight: 60.0,
     floating: false,
     pinned: true,
 
@@ -232,7 +232,7 @@ SliverAppBar RecipeAppBar(String title, context, Widget prevPg, String image){
           StretchMode.fadeTitle,
         ],
       centerTitle: true,
-      title: Text(title, style: TextStyle(fontSize: 17, color: Colors.white), textAlign: TextAlign.center,),
+      title: Text(title, style: TextStyle(fontSize: 15, color: Colors.white), textAlign: TextAlign.center, maxLines: 1, overflow: TextOverflow.ellipsis ,),
       background: Stack(
         fit: StackFit.expand,
         children: <Widget>[

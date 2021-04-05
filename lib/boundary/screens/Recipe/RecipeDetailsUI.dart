@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/entity/RecipeDetails.dart';
 import '../../widgets/customAppBar.dart';
@@ -38,6 +40,7 @@ class _RecipeDetailsUIState extends State<RecipeDetailsUI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // appBar: myAppBar(widget.recipeTitle, context, HealthyRecipesList()),
       resizeToAvoidBottomInset: false,
       bottomNavigationBar: BottomNavBar(selectedMenu: MenuState.recipe),
       body: NestedScrollView(
@@ -50,11 +53,52 @@ class _RecipeDetailsUIState extends State<RecipeDetailsUI> {
 
         // To display the website of the recipe selected.
         body: WebView(
-          initialUrl: widget.recipeDetails.spoonacularSourceUrl,
-          //JS unrestricted, so that JS can execute in the webview
-          javascriptMode: JavascriptMode.unrestricted,
+            initialUrl: widget.recipeDetails.spoonacularSourceUrl,
+            //JS unrestricted, so that JS can execute in the webview
+            javascriptMode: JavascriptMode.unrestricted,
+            gestureRecognizers: [
+              Factory(() => PlatformViewVerticalGestureRecognizer()),
+            ].toSet()
         ),
-      ),
-    );
+      )
+      );
   }
+}
+
+class PlatformViewVerticalGestureRecognizer
+    extends VerticalDragGestureRecognizer {
+  PlatformViewVerticalGestureRecognizer({PointerDeviceKind kind})
+      : super(kind: kind);
+
+  Offset _dragDistance = Offset.zero;
+
+  @override
+  void addPointer(PointerEvent event) {
+    startTrackingPointer(event.pointer);
+  }
+
+  @override
+  void handleEvent(PointerEvent event) {
+    _dragDistance = _dragDistance + event.delta;
+    if (event is PointerMoveEvent) {
+      final double dy = _dragDistance.dy.abs();
+      final double dx = _dragDistance.dx.abs();
+
+      if (dy > dx && dy > kTouchSlop) {
+        // vertical drag - accept
+        resolve(GestureDisposition.accepted);
+        _dragDistance = Offset.zero;
+      } else if (dx > kTouchSlop && dx > dy) {
+        // horizontal drag - stop tracking
+        stopTrackingPointer(event.pointer);
+        _dragDistance = Offset.zero;
+      }
+    }
+  }
+
+  @override
+  String get debugDescription => 'horizontal drag (platform view)';
+
+  @override
+  void didStopTrackingLastPointer(int pointer) {}
 }
