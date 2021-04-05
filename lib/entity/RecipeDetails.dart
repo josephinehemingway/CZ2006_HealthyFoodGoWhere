@@ -1,12 +1,20 @@
-//page of recipe instructions
 
+/// This is the entity class to instantiate [RecipeDetails] object.
 class RecipeDetails {
-  final String spoonacularSourceUrl; //has Equipment, Ingredients, Steps, e.t.c
 
+  /// The source url of the Json data.
+  ///
+  /// Contains the details of [RecipeDetails] including the equipment, ingredients and steps needed.
+  final String spoonacularSourceUrl;
+
+  /// The constructor for [RecipeDetails].
+  ///
+  /// The spoonacularSourceURL displays the [RecipeDetails] in a webview.
   RecipeDetails({
     this.spoonacularSourceUrl,
-  });//The spoonacularSourceURL displays the meals recipe in our webview
+  });
 
+  /// A method to obtain [RecipeDetails] contents from Json.
   factory RecipeDetails.fromJson(final json) {
     return RecipeDetails(
       spoonacularSourceUrl: json['sourceUrl'],

@@ -1,9 +1,32 @@
 
+/// This is an entity class that instantiates a [Recipe] object.
 class Recipe {
-  int id,readyInMinutes;
-  String title, image, summary, calories;
+
+  /// The [Recipe]'s id.
+  int id;
+
+  /// The [Recipe]'s preparation duration in minutes.
+  int readyInMinutes;
+
+  /// The [Recipe]'s title.
+  String title;
+
+  /// The [Recipe]'s image.
+  String image;
+
+  /// The [Recipe]'s summary.
+  String summary;
+
+  /// The [Recipe]'s calorie.
+  String calories;
+
+  /// The [Recipe]'s dietary considerations list.
   List diets;
+
+  /// Returns true if [diets] list contain these dietary preferences.
   bool dairyFree,glutenFree,ketogenic,vegan,vegetarian,whole30,veryHealthy;
+
+  /// The [Recipe]'s constructor.
   Recipe({
     this.id,
     this.title,
@@ -20,8 +43,10 @@ class Recipe {
     this.summary
   });
 
-  //This class has ID which allows us to get Recipes and other info
-  //Factory Constructor Recipe.fromMap parases decoded JSON data to get values of the meal and returns Recipe object
+  /// A method to obtain [Recipe] details from Json database from the API.
+  ///
+  /// This class has ID which allows us to get Recipes and other info.
+  /// Factory Constructor Recipe.fromMap parases decoded JSON data to get values of the meal and returns Recipe object.
   factory Recipe.fromJson(final json) {
     //Recipe object
     return Recipe(
@@ -40,23 +65,4 @@ class Recipe {
       summary: json["summary"]
     );
   }
-
-  getRecipeID() {
-    return this.id;
-  }
-
-  getRecipeTitle() {
-    return this.title;
-  }
-
-  getRecipeImg() {
-    return this.image;
-  }
-
-  getDuration() {
-    return this.readyInMinutes;
-  }
-
-
-
 }
