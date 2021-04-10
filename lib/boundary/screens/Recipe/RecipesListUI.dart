@@ -167,7 +167,7 @@ class _HealthyRecipesListState extends State<HealthyRecipesList> with SingleTick
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text("No Recipes Found.", textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Colors.grey[800]),),
+                    Text("No recipes found based on your dietary preferences.", textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Colors.grey[800]),),
                     SizedBox(height: 20),
                     // Text(snapshot.error.toString(), textAlign: TextAlign.center,),
                     SizedBox(height: 40),
