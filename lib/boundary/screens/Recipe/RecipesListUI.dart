@@ -26,7 +26,10 @@ class HealthyRecipesList extends StatefulWidget {
 ///
 /// Includes the business logic behind [HealthyRecipesList].
 class _HealthyRecipesListState extends State<HealthyRecipesList> with SingleTickerProviderStateMixin {
-  
+
+  /// The number of recipe cards to be generated on the [HealthyRecipesList] screen.
+  static int size = 5;
+
   /// A list of [RecipeCard] to be displayed.
   List<Widget> recipeData = [
     // Sample Data
@@ -127,11 +130,11 @@ class _HealthyRecipesListState extends State<HealthyRecipesList> with SingleTick
             // While retrieving recipes, load a circular percentage indicator.
             // If there is none, return an error message.
             return FutureBuilder<List<Recipe>>(
-              future: APIRecipeGenerator.instance.getListOfRecipe(5,userPreferenceList),
+              future: APIRecipeGenerator.instance.getListOfRecipe(size,userPreferenceList),
               builder: (context, snapshot) {
             if (snapshot.hasData) {
               final recipelist = snapshot.data;
-              for (int i=0; i<5;i++) {
+              for (int i=0; i<size;i++) {
                 var title = recipelist[i].title;
                 var id = recipelist[i].id;
                 var url = recipelist[i].image;

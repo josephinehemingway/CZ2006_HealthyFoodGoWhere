@@ -25,13 +25,15 @@ class APIRecipeGenerator {
   final String _baseURL = "api.spoonacular.com";
 
   /// API key for Spoonacular API.
-  // static const String API_KEY = "a6412bca93ee4da2b8a5c5010742d652";
+  static const String API_KEY = "a6412bca93ee4da2b8a5c5010742d652";
   // static const String API_KEY = "07eeb2eabcc448ceb5363f7c3dcbf0f5";
-  static const String API_KEY = "2f3c1b88a1e048819d9d57cad263dc04";
+  // static const String API_KEY = "2f3c1b88a1e048819d9d57cad263dc04";
+  // static const String API_KEY = "9c6beec71bef4c52a9258f6e3b751491";
 
   // jo's API key: "a6412bca93ee4da2b8a5c5010742d652"
   // joey's API key: "07eeb2eabcc448ceb5363f7c3dcbf0f5"
   // shannon's API key: "2f3c1b88a1e048819d9d57cad263dc04"
+  // kenn's API key: "9c6beec71bef4c52a9258f6e3b751491"
 
   /// Getter for [Recipe] object using recipe's [id].
   Future<Recipe> getRecipe(id) async {
