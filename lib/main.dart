@@ -13,7 +13,7 @@ Future<void> main() async {
 
 /// Implementation of application.
 class MyApp extends StatelessWidget {
-  final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
+  final Future<FirebaseApp> _FBAPP = Firebase.initializeApp();
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         routes: routes,
         initialRoute: LoginUI.routeName,
         home: FutureBuilder(
-            future: _fbApp,
+            future: _FBAPP,
             builder: (context, snapshot) {
               if (snapshot.hasError) {
                 print('You have an error! ${snapshot.error.toString()}');
