@@ -1,7 +1,5 @@
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_app/entity/CurrentUser.dart';
 import 'package:flutter_app/boundary/widgets/animation.dart';
 import '../../widgets/customAppBar.dart';
 import '../Home/HomeUI.dart';
@@ -68,6 +66,15 @@ class _ProfileUIState extends State<ProfileUI> {
                 Navigator.pushNamed(context, '/login')
               },
             )),
+            SizedBox(height: 90),
+            FadeAnimation(1,Text("Need help?", style: TextStyle( //name
+                fontSize: 16,
+                fontWeight: FontWeight.bold
+            ),)),
+            SizedBox(height: 5),
+            FadeAnimation(1,Text("Contact us at help@HealthyFoodGoWhere.com", style: TextStyle( //name
+                fontSize: 14
+            ),)),
           ],
         ),
       ),
