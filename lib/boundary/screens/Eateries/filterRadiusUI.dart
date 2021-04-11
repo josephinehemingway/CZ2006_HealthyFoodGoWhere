@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/boundary/screens/Eateries/EateriesListUI.dart';
+import '../../../control/RecommendHealthyEatery.dart';
 import '../../widgets/bottomNavBar.dart';
 import '../../widgets/customAppBar.dart';
 
@@ -42,7 +43,7 @@ class _filterRadiusState extends State<filterRadius> {
             Container(
               width: 350,
               child: Text("Edit the radius to filter nearby healthy eateries within this radius.",
-                style: TextStyle(fontSize: 20, color: Colors.grey[700]), textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 21, color: Colors.grey[700]), textAlign: TextAlign.center,
             )),
             SizedBox(height: 20,),
 
@@ -66,9 +67,12 @@ class _filterRadiusState extends State<filterRadius> {
             Container(
                 width: 300,
                 child: Text("Filter eateries within ${_currentSliderValue} km from my current location.",
-                  style: TextStyle(fontSize: 18, color: Colors.grey[500]), textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.grey[500]), textAlign: TextAlign.center,
                 )),
+            SizedBox(height: 15,),
+            RecommendHealthyEatery.returnError(_currentSliderValue)
           ])),
+
       );
   }
 }

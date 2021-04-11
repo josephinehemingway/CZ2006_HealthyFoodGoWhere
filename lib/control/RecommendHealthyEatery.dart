@@ -1,4 +1,6 @@
 import 'dart:math';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import '../entity/Eatery.dart';
 
 /// This is a control class to recommend Healthy Eateries nearby.
@@ -47,6 +49,22 @@ class RecommendHealthyEatery {
         c((lat2 - lat1) * p) / 2 +
         c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p)) / 2;
     return 12742 * asin(sqrt(a));
+  }
+
+  /// A method to return an error message if the user slides the radius distance to 0.0km.
+  ///
+  /// Returns a Widget.
+  static Widget returnError(distance){
+    if (distance == 0){
+      return Container(
+          width: 300,
+          child: Text("Invalid distance chosen, try a larger radius.",
+          style: TextStyle(fontSize: 16, color: Colors.red[900]), textAlign: TextAlign.center,
+      ));
+    }
+    else{
+      return SizedBox(height: 0,);
+    }
   }
 
 }
