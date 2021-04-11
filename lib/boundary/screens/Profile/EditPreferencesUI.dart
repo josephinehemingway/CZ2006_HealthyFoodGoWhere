@@ -8,7 +8,6 @@ import '../../widgets/customAppBar.dart';
 import '../../widgets/customCheckbox.dart';
 import 'ProfileUI.dart';
 import 'package:flutter_app/boundary/widgets/animation.dart';
-import 'package:flutter_app/entity/CurrentUser.dart';
 
 /// This is the boundary class which displays the User's Dietary Preferences in the mobile UI.
 ///
@@ -26,9 +25,6 @@ class EditPreferences extends StatefulWidget {
 ///
 /// Includes the business logic behind [EditPreferences].
 class _EditPreferencesState extends State<EditPreferences> {
-
-  /// Instantiating a new [CurrentUser] object.
-  CurrentUser curUser = CurrentUser();
 
   /// Initializing the user's preference list from the Firebase Realtime Database.
   List<String> userPreferenceList = [];

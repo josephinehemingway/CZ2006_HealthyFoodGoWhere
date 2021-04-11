@@ -3,7 +3,6 @@ import 'EateriesListUI.dart';
 import '../../widgets/customAppBar.dart';
 import '../../widgets/bottomNavBar.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:flutter_app/entity/CurrentUser.dart';
 import '../../../entity/Eatery.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter/cupertino.dart';
@@ -52,9 +51,6 @@ class GoogleMapScreen extends StatefulWidget {
 ///
 /// Includes the business logic behind [GoogleMapScreen].
 class _GoogleMapScreenState extends State<GoogleMapScreen> {
-
-  /// Initializes the current user.
-  CurrentUser user;
 
   /// A list of location markers for all the eateries in the list.
   List<Marker> allMarkers = [];

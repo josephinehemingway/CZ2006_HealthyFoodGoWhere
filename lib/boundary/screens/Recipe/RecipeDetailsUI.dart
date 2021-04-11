@@ -41,7 +41,6 @@ class _RecipeDetailsUIState extends State<RecipeDetailsUI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: myAppBar(widget.recipeTitle, context, HealthyRecipesList()),
       resizeToAvoidBottomInset: false,
       bottomNavigationBar: BottomNavBar(selectedMenu: MenuState.recipe),
       body: NestedScrollView(
