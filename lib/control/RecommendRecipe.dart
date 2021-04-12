@@ -25,7 +25,7 @@ class RecommendRecipe {
     int k = 0;
 
     if (userdiet.isEmpty){
-      return 0;
+      return k;
     }
     else{
       for (int i = 0; i < userdiet.length; i++) {
